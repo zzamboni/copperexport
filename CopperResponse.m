@@ -38,59 +38,47 @@
 
 
 @implementation CopperResponse
-+ (id)responseWithXML: (NSString *)xmlString imageIndex: (int)idx {
-	return [[[CopperResponse alloc] initWithXML: xmlString imageIndex: idx] autorelease];
++ (id)responseWithString: (NSString *)responseString {
+	return [[[CopperResponse alloc] initWithString: responseString] autorelease];
 }
 
-- (id)initWithXML: (NSString *)xmlString imageIndex: (int)idx {
+- (id)initWithString: (NSString *)responseString {
 	self = [super init];
 	if(self) {
-		[self setXml: xmlString];
-		[self setUploadIndex: idx];
+		[self setStr: responseString];
 		
-		// Scan XML
-		NSString *temp;
-		NSScanner *scan = [NSScanner scannerWithString: [self xml]];
-		[scan scanUpToString: @"<status>" intoString: NULL];
-		[scan scanString: @"<status>" intoString: NULL];
-		[scan scanUpToString: @"</status>" intoString: &temp];
-		[self setStatus: [temp isEqualToString:@"ok"] ? FRStatusOK : FRStatusFail];
-		
-		
-		if([self status] == FRStatusFail) {
-			// Parse the errno
-			[scan scanUpToString: @"<error>" intoString: NULL];
-			[scan scanString: @"<error>" intoString: NULL];
-			int err;
-			[scan scanInt: &err];
-			[self setError: err];
+		// Scan string
+		if ([str rangeOfString:@"SUCCESS"].location != NSNotFound) {
+			[self setStatus: CpgStatusOK];
+		}
+		else if ([str rangeOfString:@"Critical error"].location != NSNotFound) {
+			[self setStatus: CpgStatusCritError];
+		}
+		else if ([str rangeOfString:@"Error"].location != NSNotFound) {
+			[self setStatus: CpgStatusError];
 		}
 		else {
-			[self setError: 0];
-			[scan scanUpToString:@"<photoid>" intoString: NULL];
-			[scan scanString:@"<photoid>" intoString: NULL];
-			int picid;
-			[scan scanInt: &picid];
-			[self setPhotoid: picid];
+			[self setStatus: CpgStatusUnknown];
 		}
 	}
 	return self;
 }
+
 // ===========================================================
-// - xml:
+// - str:
 // ===========================================================
-- (NSString *)xml {
-    return xml; 
+- (NSString *)str {
+    return str;
 }
 
 // ===========================================================
-// - setXml:
+// - setStr:
 // ===========================================================
-- (void)setXml:(NSString *)aXml {
-    if (xml != aXml) {
-        [aXml retain];
-        [xml release];
-        xml = aXml;
+- (void)setStr:(NSString *)aStr {
+    if (str != aStr) {
+        [aStr retain];
+        [str release];
+        str = aStr;
     }
 }
 
@@ -109,6 +97,7 @@
 	status = aStatus;
 }
 
+/*
 // ===========================================================
 // - photoid:
 // ===========================================================
@@ -153,4 +142,6 @@
 - (void)setError:(int)anError {
 	error = anError;
 }
+*/
+
 @end

@@ -38,27 +38,28 @@
 #import <Cocoa/Cocoa.h>
 
 enum {
-	FRStatusOK = 0,
-	FRStatusFail
+	CpgStatusOK = 0,
+	CpgStatusError,
+	CpgStatusCritError,
+	CpgStatusUnknown
 };
 
 @interface CopperResponse : NSObject {
-	NSString *xml;
+	NSString *str;
 	int status;
-	int photoid;
-	int uploadIndex;
-	int error;
+//	int error;
 }
 
-+ (id)responseWithXML: (NSString *)xmlString imageIndex: (int)idx;
-- (id)initWithXML: (NSString *)xmlString imageIndex: (int)idx;
++ (id)responseWithString: (NSString *)responseString;
+- (id)initWithString: (NSString *)responseString;
 
-- (NSString *)xml;
-- (void)setXml:(NSString *)aXml;
+- (NSString *)str;
+- (void)setStr:(NSString *)aStr;
 
 - (int)status;
 - (void)setStatus:(int)aStatus;
 
+/*
 - (int)photoid;
 - (void)setPhotoid:(int)aPhotoid;
 
@@ -67,4 +68,6 @@ enum {
 
 - (int)error;
 - (void)setError:(int)anError;
+*/
+
 @end

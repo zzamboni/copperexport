@@ -46,7 +46,7 @@
 - (void)uploaderWillResizeImageAtIndex: (NSNumber *)idx;
 - (void)uploaderDidResizeImageAtIndex: (NSNumber *)idx;
 - (void)uploaderWillUploadImageAtIndex: (NSNumber *)idx;
-- (void)uploaderRecievedResponse: (CopperResponse *)response;
+- (void)uploaderReceivedResponse: (CopperResponse *)response;
 - (void)uploaderDidUploadImageAtIndex: (NSNumber *)idx;
 - (void)uploaderDidEndProcess;
 - (void)uploaderDidCancelProcess;

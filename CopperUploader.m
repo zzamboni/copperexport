@@ -199,6 +199,8 @@ The idea here is that we kick off the first image upload, and set our cursor to 
 	// Get the "publish" form, which includes the possible albums.
 	NSString *resultstr = [self postForm:post_dict toURL:[self urlplus:@"xp_publish.php?cmd=publish&lang=english"]];
 	
+	//NSLog(@"Response string for publish information: %s", [resultstr cString]);
+	
 	if (albums) {
 		[albums removeAllObjects];
 		[albums release];
@@ -421,8 +423,6 @@ The idea here is that we kick off the first image upload, and set our cursor to 
 											   waitUntilDone: YES];
 		
 	// Phase 2 - send the file
-//	[post_dict setObject:[NSURL fileURLWithPath:tmpfile] forKey:@"file_upload_array[]"];
-//	[post_dict setValue:@"phase_1" forKey:@"control"];
 	[post_dict setObject:[NSURL fileURLWithPath:tmpfile] forKey:@"userpicture"];
 	[post_dict setValue:[image title] forKey:@"title"];
 	[post_dict setValue:[image descriptionText] forKey:@"caption"];
@@ -433,15 +433,24 @@ The idea here is that we kick off the first image upload, and set our cursor to 
 									   [NSString stringWithFormat:@"xp_publish.php?cmd=add_picture&album=%d&lang=english",
 										   [selectedAlbum number]]]];
 	
+//	NSLog(@"Result from post: %s", [resultstr cString]);
+
+	CopperResponse *resp = [CopperResponse responseWithString:resultstr];
+	[(NSObject *)[self delegate] performSelectorOnMainThread: @selector(uploaderReceivedResponse:)
+												  withObject: resp
+											   waitUntilDone: YES];
+
+	/*
 	if ([resultstr rangeOfString:@"Error"].location != NSNotFound) {
 		NSLog(@"Error uploading files - aborting\n");
-//		NSLog(resultstr);
 		[self cancelUpload];
 		return;
 	}
 	else {
 //		NSLog(@"Success!");
 	}
+	 */
+
 	
 	[(NSObject *)[self delegate] performSelectorOnMainThread: @selector(uploaderDidUploadImageAtIndex:)
 												  withObject: [NSNumber numberWithInt: cursor]

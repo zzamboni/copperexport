@@ -108,10 +108,11 @@
 		[self setNewAlbumName: nil];
 		[self setNewAlbumNameIsEmpty: YES];
 		[self setCanCreateAlbums: [uploader canCreateAlbums]];
-		
+
 		if (!([uploader areThereAlbums] || [uploader canCreateAlbums])) {
 			NSRunAlertPanel(NSLocalizedString(@"You cannot upload pictures", @"Title of you cannot upload pictures alert"),
-							NSLocalizedString(@"There are no albums where you can upload pictures, and you do not have permission to create new albums.",
+							NSLocalizedString(@"There are no albums where you can upload pictures, and you do not have permission to create new albums. "
+											  "Please make sure your authentication information is correct, and that your account has the appropriate permissions.",
 											  @"Message telling the user that he cannot upload pictures"),
 							NSLocalizedString(@"OK", @"OK"), nil, nil);
 			return;
@@ -312,45 +313,28 @@
 	[progressSheet orderOut: self];
 }
 
-- (void)uploaderRecievedResponse: (CopperResponse *)response {
-	if([response status] != FRStatusOK) {
-		switch([response error]) {
-			case 1: // Credentials
-				NSRunAlertPanel(NSLocalizedString(@"Authentication Error",@""),
-								NSLocalizedString(@"An incorrect email address or password was supplied.  This upload will terminate.", @""),
-								NSLocalizedString(@"OK", @"OK"),nil,nil);
-				break;
-			case 2:
-				NSRunAlertPanel(NSLocalizedString(@"No Photo",@""),
-								NSLocalizedString(@"The server reports that \"no photo was specified\", which is odd.",@""),
-								NSLocalizedString(@"OK", @"OK"),nil,nil);
-				break;
-			case 3:
-				NSRunAlertPanel(NSLocalizedString(@"General Failure",@""),
-								NSLocalizedString(@"The server reports a general failure in uploading your image.",@""),
-								NSLocalizedString(@"OK", @"OK"),nil,nil);
-				break;
-			case 4:
-				NSRunAlertPanel(NSLocalizedString(@"Zero file size",@""),
-								NSLocalizedString(@"The server reports that it received no data.",@""),
-								NSLocalizedString(@"OK", @"OK"),nil,nil);
-				break;
-			case 5:
-				NSRunAlertPanel(NSLocalizedString(@"Unrecognised Filetype",@""),
-								NSLocalizedString(@"The server does not recognise the type of file you are sending.",@""),
-								NSLocalizedString(@"OK", @"OK"),nil,nil);
-				break;
-			case 6:
-				NSRunAlertPanel(NSLocalizedString(@"Upload Limit Exceeded", @""),
-								NSLocalizedString(@"The server reports that you have exceeded your upload limit.",@""),
-								NSLocalizedString(@"OK", @"OK"),nil,nil);
-				break;
-		}
-		[uploader cancelUpload];
+- (void)uploaderReceivedResponse: (CopperResponse *)response {
+//	NSLog(@"In uploaderReceivedResponse: status=%d, str=%s", [response status], [[response str] cString]);
+	switch([response status]) {
+		case CpgStatusOK:	// Nothing to do
+			return;
+		case CpgStatusError:  // Simple (user) error
+			NSRunAlertPanel(NSLocalizedString(@"Error", @""),
+							[NSString stringWithFormat:@"An error occurred. The server said:\n%s", [[response str] cString]],
+							NSLocalizedString(@"OK", @"OK"), nil, nil);
+			break;
+		case CpgStatusCritError: // Bad (server) error
+			NSRunAlertPanel(NSLocalizedString(@"Critical Error", @""),
+							[NSString stringWithFormat:@"A server-side error occurred:\n%s", [[response str] cString]],
+							NSLocalizedString(@"OK", @"OK"), nil, nil);
+			break;
+		case CpgStatusUnknown:   // who knows
+			NSRunAlertPanel(NSLocalizedString(@"Unknown response", @""),
+							[NSString stringWithFormat:@"The server sent a response I don't understand. Please report this to copperexport@zzamboni.org:\n%s", [[response str] cString]],
+							NSLocalizedString(@"OK", @"OK"), nil, nil);
+			break;			
 	}
-	
-	// Stash the CopperResponse in the responseArray
-	[responses addObject: response];
+	[uploader cancelUpload];
 }
 
 - (void)controlTextDidChange: (NSNotification *)note {
