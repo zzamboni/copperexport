@@ -352,9 +352,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>513212EE07B2D6F300114E4E</string>
+				<string>5185BF6E07B40378002986CA</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>513212EF07B2D6F300114E4E</string>
+				<string>5185BF6F07B40378002986CA</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -383,7 +383,6 @@
 	<key>WindowOrderList</key>
 	<array>
 		<string>/Users/zamboni/Devel/Cocoa/CopperExport/CopperExport.xcode</string>
-		<string>513212F007B2D6F300114E4E</string>
 	</array>
 	<key>WindowString</key>
 	<string>383 260 690 397 0 0 1280 832 </string>
