@@ -1,3 +1,15 @@
+2005-02-24  Diego Zamboni  <copperexport@zzamboni.org>
+
+	* Version 0.2.1.
+
+	Bug fixes:
+
+	* Fixed security vulnerability in my modifications to
+	  xp_publish.php, which did not properly quote the input. It is
+	  very important to install the fixed version of the file!
+	* Error messages are now also printed to the console log in
+	  addition to being shown in a dialog, to aid in reporting.
+
 2005-02-04  Diego Zamboni  <copperexport@zzamboni.org>
 
 	* Version 0.2.
