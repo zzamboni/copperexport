@@ -8,7 +8,7 @@ DSTDIR=..
 
 DISTFILES="build/CopperExport.iPhotoExporter ReadMe.rtf ChangeLog xp_publish.php xp_publish.php.cpg132.patch"
 
-VERSION=`perl -ne '/CFBundleVersion/ && do { $_ = <> ; /([\d.]+)/ && print "$1\n" }' Info.plist`
+VERSION=`perl -ne '/CFBundleVersion/ && do { $_ = <> ; /<string>(.+)<\/string>/ && print "$1\n" }' Info.plist`
 if [ -z "$VERSION" ]; then
     echo "Cannot determine version number!" >&2
     exit 1
