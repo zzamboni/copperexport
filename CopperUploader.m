@@ -167,11 +167,10 @@ The idea here is that we kick off the first image upload, and set our cursor to 
 // - setCpgurl:
 // ===========================================================
 - (void)setCpgurl:(NSString *)aCpgurl {
-    if (cpgurl != aCpgurl) {
+	if (cpgurl != aCpgurl) {
         [aCpgurl retain];
         [cpgurl release];
         cpgurl = aCpgurl;
-//		NSLog([@"cpgurl = " stringByAppendingString:cpgurl]);
     }
 }
 
@@ -494,7 +493,7 @@ The idea here is that we kick off the first image upload, and set our cursor to 
 
 		if ([value class] != [NSURL class]) {
 			[result appendData:[[NSString stringWithFormat: @"Content-Disposition: form-data; name=\"%@\"\n\n", [keys objectAtIndex:i]] dataUsingEncoding:NSUTF8StringEncoding]];
-			[result appendData:[[NSString stringWithFormat:@"%@",value] dataUsingEncoding:NSUTF8StringEncoding]];
+			[result appendData:[[NSString stringWithFormat:@"%@",value] dataUsingEncoding:NSISOLatin1StringEncoding]];
 		}
 		else if ([value class] == [NSURL class] && [value isFileURL]) {
 			NSString *disposition = [NSString stringWithFormat: @"Content-Disposition: form-data; name=\"%@\"; filename=\"%@\"\n", [keys objectAtIndex:i], [[value path] lastPathComponent]];
@@ -550,8 +549,12 @@ The idea here is that we kick off the first image upload, and set our cursor to 
 		NSLog(@"HTTP status code: %d, response string: %s", [response statusCode], [[NSHTTPURLResponse localizedStringForStatusCode: [response statusCode]] cString]);
 
 		if ([response statusCode] == 404) {
-			errdict = [NSDictionary dictionaryWithObject:@"The URL you specified could not be found. Please double-check your settings."
-												  forKey:NSLocalizedDescriptionKey];
+			errdict = [NSDictionary dictionaryWithObject:
+				@"I cannot find the file /xp_publish.php under the URL you specified. "
+				"Please make sure you entered the base URL for your gallery "
+				"(where the album list appears), and that it ends with a slash (/) or "
+				"with /index.php."
+												  forKey: NSLocalizedDescriptionKey];
 		}
 		else {
 			errdict = [NSDictionary dictionaryWithObject:[NSString stringWithFormat:@"HTTP Error %d: %s",
@@ -569,8 +572,6 @@ The idea here is that we kick off the first image upload, and set our cursor to 
 - (NSString *)urlplus: (NSString *)suffix {
 	NSMutableString *urlString = [NSMutableString stringWithCapacity: 100];
 	[urlString appendString: [self cpgurl]];
-	if ([urlString characterAtIndex:([urlString length]-1)] != '/')
-		[urlString appendString:@"/"];
 	[urlString appendString: suffix];
 	return urlString;
 }

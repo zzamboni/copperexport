@@ -542,11 +542,25 @@
 // - setCpgurl:
 // ===========================================================
 - (void)setCpgurl:(NSString *)aCpgurl {
-    if (cpgurl != aCpgurl) {
-        [aCpgurl retain];
-        [cpgurl release];
-        cpgurl = aCpgurl;
-    }
+	if (cpgurl != aCpgurl) {
+		NSMutableString *newurl = [NSMutableString stringWithCapacity: 100];
+		// Add http:// by default if it's not there
+		if ([aCpgurl rangeOfString:@"http://" options:(NSCaseInsensitiveSearch|NSAnchoredSearch)].location == NSNotFound &&
+			[aCpgurl rangeOfString:@"https://" options:(NSCaseInsensitiveSearch|NSAnchoredSearch)].location == NSNotFound) {
+			[newurl appendString:@"http://"];
+		}
+		NSRange rng=[aCpgurl rangeOfString:@"/index.php"];
+		if (rng.location != NSNotFound)
+			[newurl appendString:[aCpgurl substringToIndex:rng.location]];
+		else
+			[newurl appendString:[NSString stringWithString:aCpgurl]];
+		if ([newurl characterAtIndex:([newurl length]-1)] != '/')
+			[newurl appendString:@"/"];
+		[newurl retain];
+		[cpgurl release];
+		cpgurl = newurl;
+		//		NSLog([@"cpgurl = " stringByAppendingString:cpgurl]);
+	}
 }
 
 // =========================================================== 
@@ -623,10 +637,10 @@
 }
 
 - (IBAction)credentialsSheetOK: (id)sender {
+	[self setPassword:[passwdField stringValue]];
 	[credentialsSheet endEditingFor: nil];
 	[NSApp endSheet: credentialsSheet];
 	[credentialsSheet orderOut: self];
-	[self setPassword:[passwdField stringValue]];
 }
 
 // Album selection
