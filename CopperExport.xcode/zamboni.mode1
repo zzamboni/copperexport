@@ -204,8 +204,6 @@
 			<key>Layout</key>
 			<array>
 				<dict>
-					<key>BecomeActive</key>
-					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -316,6 +314,8 @@
 							<string>0pt</string>
 						</dict>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -352,9 +352,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>51BACBCF07B2087A00DF3337</string>
+				<string>513212EE07B2D6F300114E4E</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>51BACBD007B2087A00DF3337</string>
+				<string>513212EF07B2D6F300114E4E</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -382,11 +382,8 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>519DF8D007A409DD00FDA8B5</string>
-		<string>514A609C07A2EE95003C7B12</string>
-		<string>1C530D57069F1CE1000CFCEE</string>
-		<string>51BACBD107B2087A00DF3337</string>
 		<string>/Users/zamboni/Devel/Cocoa/CopperExport/CopperExport.xcode</string>
+		<string>513212F007B2D6F300114E4E</string>
 	</array>
 	<key>WindowString</key>
 	<string>383 260 690 397 0 0 1280 832 </string>
@@ -418,17 +415,15 @@
 										<key>PBXProjectModuleLabel</key>
 										<string>CopperUploader.m</string>
 										<key>bookmark</key>
-										<string>51BACC0907B2CDFA00DF3337</string>
+										<string>5104700307B2D69300608226</string>
 										<key>history</key>
 										<array>
 											<string>51BACBE307B2CACF00DF3337</string>
-											<string>51BACBEA07B2CBBE00DF3337</string>
-											<string>51BACBEB07B2CBBE00DF3337</string>
+											<string>51046FAF07B2D36000608226</string>
 										</array>
 										<key>prevStack</key>
 										<array>
 											<string>51BACBE507B2CACF00DF3337</string>
-											<string>51BACBEC07B2CBBE00DF3337</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -491,7 +486,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>514A609C07A2EE95003C7B12</string>
-				<string>51BACBD307B208BE00DF3337</string>
+				<string>51046FB107B2D36000608226</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>
@@ -502,7 +497,7 @@
 			<key>WindowToolGUID</key>
 			<string>514A609C07A2EE95003C7B12</string>
 			<key>WindowToolIsVisible</key>
-			<false/>
+			<true/>
 		</dict>
 		<dict>
 			<key>Identifier</key>
@@ -625,7 +620,7 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CDD528C0622207200134675</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>CopperUploader.m</string>
+										<string>InfoPlist.strings</string>
 										<key>PBXSplitModuleInNavigatorKey</key>
 										<dict>
 											<key>Split0</key>
@@ -633,21 +628,20 @@
 												<key>PBXProjectModuleGUID</key>
 												<string>1CD0528D0623707200166675</string>
 												<key>PBXProjectModuleLabel</key>
-												<string>CopperUploader.m</string>
+												<string>InfoPlist.strings</string>
 												<key>bookmark</key>
-												<string>51BACC0A07B2CDFA00DF3337</string>
+												<string>5104700407B2D69300608226</string>
 												<key>history</key>
 												<array>
-													<string>51BACBEE07B2CBBE00DF3337</string>
 													<string>51BACBEF07B2CBBE00DF3337</string>
-													<string>51BACBF007B2CBBE00DF3337</string>
+													<string>51046FA107B2D29700608226</string>
+													<string>51046FA607B2D29700608226</string>
 												</array>
 												<key>prevStack</key>
 												<array>
-													<string>51A2D36E07B0279700022535</string>
 													<string>51A2D3E007B185A200022535</string>
-													<string>51BACBF107B2CBBE00DF3337</string>
 													<string>51BACBF207B2CBBE00DF3337</string>
+													<string>51046FA507B2D29700608226</string>
 												</array>
 											</dict>
 											<key>SplitCount</key>
@@ -708,8 +702,8 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C530D57069F1CE1000CFCEE</string>
-				<string>51BACBF407B2CBBE00DF3337</string>
-				<string>51BACBF507B2CBBE00DF3337</string>
+				<string>51046FAA07B2D29700608226</string>
+				<string>51046FAB07B2D29700608226</string>
 				<string>1CDD528C0622207200134675</string>
 				<string>1CD0528E0623707200166675</string>
 			</array>

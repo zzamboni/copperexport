@@ -107,6 +107,9 @@
 	NSString *newAlbumDesc;
 	BOOL newAlbumNameIsEmpty;
 	BOOL canCreateAlbums;
+
+	// CopperExport version
+	NSString *version;
 }
 
 - (id)initWithExportImageObj:(ExportMgr *)exportMgr;
@@ -169,5 +172,8 @@
 - (BOOL) whichAlbum;
 - (BOOL) canCreateAlbums;
 - (void) setCanCreateAlbums: (BOOL)newvalue;
+
+- (NSString *)version;
+- (void)setVersion: (NSString *)newversion;
 
 @end

@@ -214,6 +214,7 @@
 
 - (void)viewWillBeActivated {
 	prefs=[[NSUserDefaults standardUserDefaults] persistentDomainForName:[[NSBundle bundleForClass:[self class]] bundleIdentifier]];
+	[self setVersion:[[NSBundle bundleForClass:[self class]] objectForInfoDictionaryKey:@"CFBundleVersion"]];
 	
 	if(prefs) {
 		[self setUsername: [prefs objectForKey:@"username"]];
@@ -784,6 +785,19 @@
 
 - (void) setCanCreateAlbums: (BOOL)newvalue {
 	canCreateAlbums = newvalue;
+}
+
+- (NSString *)version {
+	return version;
+}
+
+- (void)setVersion: (NSString *)newversion {
+	if (newversion != version) {
+		[newversion retain];
+		[version release];
+		version = newversion;
+	}
+	
 }
 
 @end
