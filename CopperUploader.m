@@ -229,31 +229,40 @@ The idea here is that we kick off the first image upload, and set our cursor to 
 	[self setSelectedCategory:nil];
 	
 	// Get existing albums if there are any
+	areThereAlbums = NO;
 	if ([resultstr rangeOfString:@"BEGIN existing_albums"].location != NSNotFound) {
-		areThereAlbums = YES;
 		NSScanner *scan = [NSScanner scannerWithString:resultstr];
 		NSString *tmpstr;
-		[scan scanUpToString:@"<select id=\"album\"" intoString:NULL];
-		[scan scanUpToString:@"</select>" intoString:&tmpstr];
-//		NSLog([@"Albums: " stringByAppendingString:tmpstr]);
-		// Now parse the select list
-		scan = [NSScanner scannerWithString:tmpstr];
-		[scan scanUpToString:@"<option" intoString:NULL];
-		int albumid;
-		NSString *albumname;
-		while ([scan scanString:@"<option value=\"" intoString:NULL] == YES) {
-			[scan scanInt:&albumid];
-			[scan scanString:@"\">" intoString:NULL];
-			[scan scanUpToString:@"</option>" intoString:&albumname];
-			[scan scanString:@"</option>" intoString:NULL];
-			CopperAlbum *newalbum = [[CopperAlbum alloc] initWithName:[albumname copy] number:albumid];
-//			NSLog(@"Found album: %s", [[newalbum stringValue] cString]);
-			[albums addObject:newalbum];
+		if ([scan scanUpToString:@"<select id=\"album\"" intoString:NULL] &&
+			[scan scanUpToString:@"</select>" intoString:&tmpstr]) {
+			//		NSLog([@"Albums: " stringByAppendingString:tmpstr]);
+			int albumid;
+			NSString *albumname;
+			// Now parse the select list
+			scan = [NSScanner scannerWithString:tmpstr];
+			if ([scan scanUpToString:@"<option" intoString:NULL]) {
+				while ([scan scanString:@"<option value=\"" intoString:NULL] == YES) {
+					if ([scan scanInt:&albumid] &&
+						[scan scanString:@"\">" intoString:NULL] &&
+						[scan scanUpToString:@"</option>" intoString:&albumname] &&
+						[scan scanString:@"</option>" intoString:NULL]) {
+						CopperAlbum *newalbum = [[CopperAlbum alloc] initWithName:[albumname copy] number:albumid];
+						//			NSLog(@"Found album: %s", [[newalbum stringValue] cString]);
+						[albums addObject:newalbum];
+						areThereAlbums = YES;
+					}
+					else
+						NSLog(@"Error: unable to parse string: %@", tmpstr);
+				}
+			}
+			else
+				NSLog(@"Error: unable to parse string: %@", tmpstr);
 		}
+		else
+			NSLog(@"Error: unable to parse string: %@", resultstr);
 	}
 	else {
 		NSLog(@"Could not find albums in response");
-		areThereAlbums = NO;
 	}
 	// Can I create new albums?
 	if ([resultstr rangeOfString:@"BEGIN create_album"].location != NSNotFound) {
@@ -265,30 +274,39 @@ The idea here is that we kick off the first image upload, and set our cursor to 
 //		NSLog(@"User cannot create albums");
 	}
 	// Get list of categories
+	canChooseCategory = NO;
 	if ([resultstr rangeOfString:@"BEGIN select_category"].location != NSNotFound) {
-		canChooseCategory = YES;
 		NSScanner *scan = [NSScanner scannerWithString:resultstr];
 		NSString *tmpstr;
-		[scan scanUpToString:@"<select name=\"cat\"" intoString:NULL];
-		[scan scanUpToString:@"</select>" intoString:&tmpstr];
-//		NSLog([@"Categories: " stringByAppendingString:tmpstr]);
-		// Now parse the select list
-		scan = [NSScanner scannerWithString:tmpstr];
-		[scan scanUpToString:@"<option" intoString:NULL];
-		int catid;
-		NSString *catname;
-		while ([scan scanString:@"<option value=\"" intoString:NULL] == YES) {
-			[scan scanInt:&catid];
-			[scan scanString:@"\">" intoString:NULL];
-			[scan scanUpToString:@"</option>" intoString:&catname];
-			[scan scanString:@"</option>" intoString:NULL];
-			CopperAlbum *newcat = [[CopperAlbum alloc] initWithName:[catname copy] number:catid];
-//			NSLog(@"Found category: %s", [[newcat stringValue] cString]);
-			[categories addObject:newcat];
-		}		
+		if ([scan scanUpToString:@"<select name=\"cat\"" intoString:NULL] &&
+			[scan scanUpToString:@"</select>" intoString:&tmpstr]) {
+			//		NSLog([@"Categories: " stringByAppendingString:tmpstr]);
+			// Now parse the select list
+			scan = [NSScanner scannerWithString:tmpstr];
+			if ([scan scanUpToString:@"<option" intoString:NULL]) {
+				int catid;
+				NSString *catname;
+				while ([scan scanString:@"<option value=\"" intoString:NULL] == YES) {
+					if ([scan scanInt:&catid] &&
+						[scan scanString:@"\">" intoString:NULL] &&
+						[scan scanUpToString:@"</option>" intoString:&catname] &&
+						[scan scanString:@"</option>" intoString:NULL]) {
+						CopperAlbum *newcat = [[CopperAlbum alloc] initWithName:[catname copy] number:catid];
+						//			NSLog(@"Found category: %s", [[newcat stringValue] cString]);
+						[categories addObject:newcat];
+						canChooseCategory = YES;
+					}
+					else
+						NSLog(@"Error: unable to parse string: %@", tmpstr);
+				}				
+			}
+			else
+				NSLog(@"Error: unable to parse string: %@", tmpstr);
+		}
+		else
+			NSLog(@"Error: unable to parse string: %@", resultstr);
 	}
 	else {
-		canChooseCategory = NO;
 		NSLog(@"Could not find list of categories in response");
 	}
 	return TRUE;
@@ -376,15 +394,19 @@ The idea here is that we kick off the first image upload, and set our cursor to 
 	else {
 		NSScanner *scan = [NSScanner scannerWithString:resultstr];
 		int albnumber;
-		[scan scanUpToString:@"name=\"album\" value =\"" intoString:NULL];
-		[scan scanString:@"name=\"album\" value =\"" intoString:NULL];
-		[scan scanInt:&albnumber];
-		CopperAlbum *newalb = [[CopperAlbum alloc] initWithName:[albumName copy] number:albnumber];
-		NSLog(@"Created album: %s", [[newalb stringValue] cString]);
-		return newalb;
+		if ([scan scanUpToString:@"name=\"album\" value =\"" intoString:NULL] &&
+			[scan scanString:@"name=\"album\" value =\"" intoString:NULL] &&
+			[scan scanInt:&albnumber]) {
+			CopperAlbum *newalb = [[CopperAlbum alloc] initWithName:[albumName copy] number:albnumber];
+			NSLog(@"Created album: %s", [[newalb stringValue] cString]);
+			return newalb;			
+		}
+		else {
+			NSLog(@"Error: unable to parse string: %@", resultstr);
+			return nil;
+		}
 	}
 }
-
 
 - (BOOL) canCreateAlbums {
 	return canCreateAlbums;
