@@ -667,7 +667,7 @@
 	return albums;
 }
 
-- (void) setAlbums: (NSMutableArray *)newalbums {
+- (void) setAlbums: (NSArray *)newalbums {
 	if (albums != newalbums) {
 		albums = [[NSMutableArray alloc] initWithArray: newalbums];
 	}

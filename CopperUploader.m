@@ -47,6 +47,7 @@
 - (NSString *)urlplus: (NSString *)suffix;
 - (void)postError: (NSError *)error;
 - (void)postResponse: (CopperResponse *)resp;
+- (NSArray *)parseListOfOptions: (NSString *)str withFlag: (BOOL *)flag;
 @end
 
 @implementation CopperUploader
@@ -216,15 +217,11 @@ The idea here is that we kick off the first image upload, and set our cursor to 
 //	NSLog(@"Response string for publish information: %s", [resultstr cString]);
 	
 	if (albums) {
-		[albums removeAllObjects];
 		[albums release];
 	}
 	if (categories) {
-		[categories removeAllObjects];
 		[categories release];
 	}
-	albums = [NSMutableArray arrayWithCapacity:5];
-	categories = [NSMutableArray arrayWithCapacity:5];
 	[self setSelectedAlbum:nil];
 	[self setSelectedCategory:nil];
 	
@@ -235,28 +232,7 @@ The idea here is that we kick off the first image upload, and set our cursor to 
 		NSString *tmpstr;
 		if ([scan scanUpToString:@"<select id=\"album\"" intoString:NULL] &&
 			[scan scanUpToString:@"</select>" intoString:&tmpstr]) {
-			//		NSLog([@"Albums: " stringByAppendingString:tmpstr]);
-			int albumid;
-			NSString *albumname;
-			// Now parse the select list
-			scan = [NSScanner scannerWithString:tmpstr];
-			if ([scan scanUpToString:@"<option" intoString:NULL]) {
-				while ([scan scanString:@"<option value=\"" intoString:NULL] == YES) {
-					if ([scan scanInt:&albumid] &&
-						[scan scanString:@"\">" intoString:NULL] &&
-						[scan scanUpToString:@"</option>" intoString:&albumname] &&
-						[scan scanString:@"</option>" intoString:NULL]) {
-						CopperAlbum *newalbum = [[CopperAlbum alloc] initWithName:[albumname copy] number:albumid];
-						//			NSLog(@"Found album: %s", [[newalbum stringValue] cString]);
-						[albums addObject:newalbum];
-						areThereAlbums = YES;
-					}
-					else
-						NSLog(@"Error: unable to parse string: %@", tmpstr);
-				}
-			}
-			else
-				NSLog(@"Error: unable to parse string: %@", tmpstr);
+			albums = [self parseListOfOptions:tmpstr withFlag:&areThereAlbums];
 		}
 		else
 			NSLog(@"Error: unable to parse string: %@", resultstr);
@@ -280,28 +256,8 @@ The idea here is that we kick off the first image upload, and set our cursor to 
 		NSString *tmpstr;
 		if ([scan scanUpToString:@"<select name=\"cat\"" intoString:NULL] &&
 			[scan scanUpToString:@"</select>" intoString:&tmpstr]) {
-			//		NSLog([@"Categories: " stringByAppendingString:tmpstr]);
-			// Now parse the select list
-			scan = [NSScanner scannerWithString:tmpstr];
-			if ([scan scanUpToString:@"<option" intoString:NULL]) {
-				int catid;
-				NSString *catname;
-				while ([scan scanString:@"<option value=\"" intoString:NULL] == YES) {
-					if ([scan scanInt:&catid] &&
-						[scan scanString:@"\">" intoString:NULL] &&
-						[scan scanUpToString:@"</option>" intoString:&catname] &&
-						[scan scanString:@"</option>" intoString:NULL]) {
-						CopperAlbum *newcat = [[CopperAlbum alloc] initWithName:[catname copy] number:catid];
-						//			NSLog(@"Found category: %s", [[newcat stringValue] cString]);
-						[categories addObject:newcat];
-						canChooseCategory = YES;
-					}
-					else
-						NSLog(@"Error: unable to parse string: %@", tmpstr);
-				}				
-			}
-			else
-				NSLog(@"Error: unable to parse string: %@", tmpstr);
+//				NSLog([@"Categories: " stringByAppendingString:tmpstr]);
+			categories = [self parseListOfOptions:tmpstr withFlag:&canChooseCategory];
 		}
 		else
 			NSLog(@"Error: unable to parse string: %@", resultstr);
@@ -312,12 +268,7 @@ The idea here is that we kick off the first image upload, and set our cursor to 
 	return TRUE;
 }
 
-// Return the list of albums
-- (NSMutableArray *)listOfAlbums {
-	return albums;
-}
-
-- (NSMutableArray *)albums {
+- (NSArray *)albums {
 	return albums;
 }
 
@@ -626,6 +577,50 @@ The idea here is that we kick off the first image upload, and set our cursor to 
 	[(NSObject *)[self delegate] performSelectorOnMainThread: @selector(uploaderReceivedResponse:)
 												  withObject: resp
 											   waitUntilDone: YES];
+}
+
+- (NSArray *)parseListOfOptions: (NSString *)str withFlag: (BOOL *)flag {
+	int itemid;
+	NSString *itemname;
+	// Now parse the select list
+	NSScanner *scan = [NSScanner scannerWithString:str];
+	(*flag) = NO;
+	if ([scan scanUpToString:@"<option" intoString:NULL]) {
+		// We store the items in a dictionary to be able to check for repeated names
+		NSMutableDictionary *itemdict = [NSMutableDictionary dictionaryWithCapacity:10];
+		while ([scan scanString:@"<option value=\"" intoString:NULL] == YES) {
+			if ([scan scanInt:&itemid] &&
+				[scan scanString:@"\">" intoString:NULL] &&
+				[scan scanUpToString:@"</option>" intoString:&itemname] &&
+				[scan scanString:@"</option>" intoString:NULL]) {
+				int count=1;
+				NSString *tmpname = itemname;
+				while ([itemdict valueForKey:tmpname] != nil) {
+					// An item of this name already exists, so add a marker
+					// We'll display subsequent item with the same name as "name (#2)", "name (#3)", etc.
+					tmpname=[NSString stringWithFormat:@"%@ (#%d)", itemname, ++count];
+				}
+				CopperAlbum *newitem = [[CopperAlbum alloc] initWithName: [tmpname copy]
+																  number: itemid];
+				//						NSLog(@"Found item: %s", [newitem stringValue]);
+				[itemdict setValue:newitem forKey:tmpname];
+				(*flag) = YES;
+			}
+			else
+				NSLog(@"Error: unable to parse string: %@", str);
+		}
+		if ((*flag) == YES) {
+			// Now return the keys of our temporary dictionary as the list of items found
+			NSSortDescriptor *nameDescriptor=[[[NSSortDescriptor alloc] initWithKey:@"name" 					
+																		  ascending:YES] autorelease];
+			NSArray *sortDescriptors=[NSArray arrayWithObject:nameDescriptor];
+			return [NSArray arrayWithArray:[[itemdict allValues] sortedArrayUsingDescriptors:sortDescriptors]];			
+		}
+	}
+	else
+		NSLog(@"Error: unable to parse string: %@", str);
+	
+	return nil;
 }
 
 @end

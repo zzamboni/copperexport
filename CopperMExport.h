@@ -149,7 +149,7 @@
 - (IBAction)albumsSheetOK: (id) sender;
 
 - (NSMutableArray *)albums;
-- (void) setAlbums: (NSMutableArray *)newalbums;
+- (void) setAlbums: (NSArray *)newalbums;
 - (CopperAlbum *)selectedAlbum;
 - (void) setSelectedAlbum:(CopperAlbum *)newalbum;
 
