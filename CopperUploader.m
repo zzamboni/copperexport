@@ -448,9 +448,21 @@ The idea here is that we kick off the first image upload, and set our cursor to 
 	[post_dict setObject:[NSURL fileURLWithPath:tmpfile] forKey:@"userpicture"];
 	[post_dict setValue:[image title] forKey:@"title"];
 	[post_dict setValue:[image descriptionText] forKey:@"caption"];
-	[post_dict setValue:@"" forKey:@"keywords"];
-	NSError *error;
 	
+	// Process tags
+	NSEnumerator *tagEnum = [[image tags] objectEnumerator];
+	NSMutableDictionary *tag;
+	NSMutableArray *tags = [NSMutableArray array];
+	while(tag = [tagEnum nextObject]) {
+		id tagContent = [tag objectForKey:@"content"];
+		if(tagContent) { // Don't want to add nil tag
+			[tags addObject: tagContent];
+		}
+	}
+	[post_dict setValue: [tags componentsJoinedByString: @" "] forKey:@"keywords"];
+
+	// Now post the thing
+	NSError *error;
 	NSString *resultstr = [self postForm:post_dict 
 								   toURL:[self urlplus:
 									   [NSString stringWithFormat:@"xp_publish.php?cmd=add_picture&album=%d&lang=english",
