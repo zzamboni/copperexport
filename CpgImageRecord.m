@@ -50,7 +50,11 @@
 - (id)initWithImageManager: (ExportMgr *)exportManager index: (int)idx {
 	self = [super init];
 	if(self) {
-		NSDictionary *iPhotoMetadata = [exportManager imageDictionaryAtIndex: idx];
+		BOOL usingiPhoto4 = [exportManager respondsToSelector: @selector(imageDictionaryAtIndex:)];
+		NSDictionary *iPhotoMetadata = nil;
+		
+		if(usingiPhoto4)
+			iPhotoMetadata = [exportManager imageDictionaryAtIndex: idx];
 		
 		if([exportManager imagePathAtIndex: idx])
 			[self setFilePath: [exportManager imagePathAtIndex: idx]];
@@ -60,12 +64,18 @@
 
 		[self populateExif];
 		
-		if([iPhotoMetadata objectForKey:@"Annotation"])
-			[self setDescriptionText: [iPhotoMetadata objectForKey:@"Annotation"]];
-		else
-			[self setDescriptionText: @""];
+		if(usingiPhoto4) {
+			if([iPhotoMetadata objectForKey:@"Annotation"])
+				[self setDescriptionText: [iPhotoMetadata objectForKey:@"Annotation"]];
+			else
+				[self setDescriptionText: @""];
+		}
+		else {
+			// API Not present in iPhoto 4
+			[self setDescriptionText: [exportManager imageCommentsAtIndex: idx]];
+		}
 		
-		NSString *caption = [iPhotoMetadata objectForKey:@"Caption"];
+		NSString *caption = [exportManager imageCaptionAtIndex: idx];  //[iPhotoMetadata objectForKey:@"Caption"];
 		if(caption)
 			[self setTitle: caption];
 		else 
@@ -109,10 +119,28 @@
 		}
 		
 		[self setTags: [NSMutableArray array]];
-		NSArray *iPhotoKeywords = [iPhotoMetadata objectForKey: @"KeyWords"];
+
+		NSArray *iPhotoKeywords = nil;
+		
+		if(usingiPhoto4) {
+			// In iPhoto 4, the KeyWords array is an array of keyword objects, so we
+			// convert them into an array of strings;
+			NSMutableArray *arr = [NSMutableArray array];
+			NSArray *ipKeywords = [iPhotoMetadata objectForKey: @"KeyWords"];
+			int i;
+			for(i=0; i < [ipKeywords count]; i++) {
+				[arr addObject: [[ipKeywords objectAtIndex: i] stringValue]];
+			}
+			iPhotoKeywords = [NSArray arrayWithArray: arr];
+		}
+		else {
+			// In iPhoto 5, -imageKeywordsAtIndex: returns an array of strings.
+			iPhotoKeywords = [exportManager imageKeywordsAtIndex: idx];
+		}
+		
 		int i;
 		for(i = 0; i < [iPhotoKeywords count]; i++) {
-			NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObject: [[iPhotoKeywords objectAtIndex:i] stringValue] forKey: @"content"];
+			NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObject: [iPhotoKeywords objectAtIndex:i] forKey: @"content"];
 			[[self mutableArrayValueForKey: @"tags"] addObject: dict];
 		}
 	}
