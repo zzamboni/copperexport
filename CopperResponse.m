@@ -59,13 +59,16 @@
 		else if ([str rangeOfString:@"Critical error" options:NSCaseInsensitiveSearch].location != NSNotFound) {
 			[self setStatus: CpgStatusCritError];
 			[self removeStrPrefix:@"Critical error: "];
+			NSLog(@"Critical error detected: %@", str);
 		}
 		else if ([str rangeOfString:@"Error" options:NSCaseInsensitiveSearch].location != NSNotFound) {
 			[self setStatus: CpgStatusError];
 			[self removeStrPrefix:@"Error: "];
+			NSLog(@"Error detected: %@", str);
 		}
 		else {
 			[self setStatus: CpgStatusUnknown];
+			NSLog(@"Unknown response seen: %@", str);
 		}
 	}
 	return self;
