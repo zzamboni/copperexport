@@ -757,9 +757,9 @@ function process_picture()
     if (!USER_ID || !USER_CAN_UPLOAD_PICTURES) simple_die(ERROR, $lang_errors['perm_denied'], __FILE__, __LINE__);
 
     $album = (int)$HTTP_GET_VARS['album'];
-    $title = $HTTP_POST_VARS['title'];
-    $caption = $HTTP_POST_VARS['caption'];
-    $keywords = $HTTP_POST_VARS['keywords'];
+    $title = addslashes($HTTP_POST_VARS['title']);
+    $caption = addslashes($HTTP_POST_VARS['caption']);
+    $keywords = addslashes($HTTP_POST_VARS['keywords']);
     $user1 = '';
     $user2 = '';
     $user3 = '';
