@@ -80,6 +80,7 @@
 												   password: pw
 													    url: url
 											   imageRecords: imageRecords];
+		[uploader setDelegate: self];
 		
 		if (![uploader login]) {
 			NSRunAlertPanel(NSLocalizedString(@"Could not log in", @"Title of Invalid Login alert"),
@@ -90,9 +91,10 @@
 			return;
 		}
 		
-		[uploader getPublishInfo];
+		if (![uploader getPublishInfo]) {
+			return;
+		}
 		[self setAlbums:[uploader albums]];
-		[self setSelectedAlbum:nil];
 		if (albums && [albums count] > 0)
 			[self setSelectedAlbum:[albums objectAtIndex:0]];
 		else
@@ -105,7 +107,11 @@
 		if (newAlbumName) {
 			[newAlbumName release];
 		}
+		if (newAlbumDesc) {
+			[newAlbumDesc release];
+		}
 		[self setNewAlbumName: nil];
+		[self setNewAlbumDesc: nil];
 		[self setNewAlbumNameIsEmpty: YES];
 		[self setCanCreateAlbums: [uploader canCreateAlbums]];
 
@@ -144,15 +150,15 @@
 		[progBar setMinValue: 0.0];
 		[progBar setDoubleValue: 0.0];
 		
-		[uploader setDelegate: self];
-		
 		[NSApp beginSheet: progressSheet 
 		   modalForWindow: [[self settingsView] window]
 			modalDelegate: nil
 		   didEndSelector: nil
 			  contextInfo: nil];
 		
-		[self whichAlbum];
+		if (![self whichAlbum]) {
+			return;
+		}
 		
 //		NSLog(@"Selected album: %s", [[selectedAlbum stringValue] cString]);
 		[uploader setSelectedAlbum: selectedAlbum];
@@ -208,6 +214,7 @@
 
 - (void)viewWillBeActivated {
 	prefs=[[NSUserDefaults standardUserDefaults] persistentDomainForName:[[NSBundle bundleForClass:[self class]] bundleIdentifier]];
+	[self setVersion:[[NSBundle bundleForClass:[self class]] objectForInfoDictionaryKey:@"CFBundleVersion"]];
 	
 	if(prefs) {
 		[self setUsername: [prefs objectForKey:@"username"]];
@@ -232,6 +239,7 @@
 	}
 	
 	[recordController setSelectionIndexes: [NSIndexSet indexSet]];
+
 }
 
 - (id)lastView {
@@ -292,8 +300,10 @@
 		// Now open the redirection URL.
 		NSMutableString *urlString = [NSMutableString stringWithCapacity: 100];
 		[urlString appendString: [self cpgurl]];
+		if ([urlString characterAtIndex:([urlString length]-1)] != '/')
+			[urlString appendString:@"/"];
 		[[NSWorkspace sharedWorkspace] openURL: [NSURL URLWithString:
-			[NSString stringWithFormat:@"%s/thumbnails.php?album=%d", [urlString cString], [selectedAlbum number]]]];
+			[NSString stringWithFormat:@"%sthumbnails.php?album=%d", [urlString cString], [selectedAlbum number]]]];
 	}
 	
 	[NSApp endSheet: progressSheet];
@@ -320,7 +330,7 @@
 			return;
 		case CpgStatusError:  // Simple (user) error
 			NSRunAlertPanel(NSLocalizedString(@"Error", @""),
-							[NSString stringWithFormat:@"An error occurred. The server said:\n%s", [[response str] cString]],
+							[response str],
 							NSLocalizedString(@"OK", @"OK"), nil, nil);
 			break;
 		case CpgStatusCritError: // Bad (server) error
@@ -485,7 +495,7 @@
     }
 }
 
-
+	
 // ===========================================================
 // - username:
 // ===========================================================
@@ -537,11 +547,25 @@
 // - setCpgurl:
 // ===========================================================
 - (void)setCpgurl:(NSString *)aCpgurl {
-    if (cpgurl != aCpgurl) {
-        [aCpgurl retain];
-        [cpgurl release];
-        cpgurl = aCpgurl;
-    }
+	if (cpgurl != aCpgurl) {
+		NSMutableString *newurl = [NSMutableString stringWithCapacity: 100];
+		// Add http:// by default if it's not there
+		if ([aCpgurl rangeOfString:@"http://" options:(NSCaseInsensitiveSearch|NSAnchoredSearch)].location == NSNotFound &&
+			[aCpgurl rangeOfString:@"https://" options:(NSCaseInsensitiveSearch|NSAnchoredSearch)].location == NSNotFound) {
+			[newurl appendString:@"http://"];
+		}
+		NSRange rng=[aCpgurl rangeOfString:@"/index.php"];
+		if (rng.location != NSNotFound)
+			[newurl appendString:[aCpgurl substringToIndex:rng.location]];
+		else
+			[newurl appendString:[NSString stringWithString:aCpgurl]];
+		if ([newurl characterAtIndex:([newurl length]-1)] != '/')
+			[newurl appendString:@"/"];
+		[newurl retain];
+		[cpgurl release];
+		cpgurl = newurl;
+		//		NSLog([@"cpgurl = " stringByAppendingString:cpgurl]);
+	}
 }
 
 // =========================================================== 
@@ -613,14 +637,15 @@
 	// Close the sheet
 	[self credentialsSheetOK: self];
 	[self setUsername: [usernameField stringValue]];
-	[self setPassword: [passwordField stringValue]];
+	[self setPassword: [passwdField stringValue]];
 	[self setCpgurl:   [cpgurlField stringValue]];
 }
 
 - (IBAction)credentialsSheetOK: (id)sender {
+	[self setPassword:[passwdField stringValue]];
 	[credentialsSheet endEditingFor: nil];
 	[NSApp endSheet: credentialsSheet];
-	[credentialsSheet orderOut: self];	
+	[credentialsSheet orderOut: self];
 }
 
 // Album selection
@@ -643,7 +668,7 @@
 	return albums;
 }
 
-- (void) setAlbums: (NSMutableArray *)newalbums {
+- (void) setAlbums: (NSArray *)newalbums {
 	if (albums != newalbums) {
 		albums = [[NSMutableArray alloc] initWithArray: newalbums];
 	}
@@ -700,7 +725,17 @@
 	[self setNewAlbumNameIsEmpty:((newAlbumName == nil) || ([newAlbumName length] == 0))];
 }
 
-- (void) whichAlbum {
+- (NSString *)newAlbumDesc {
+	return newAlbumDesc;
+}
+
+- (void) setNewAlbumDesc: (NSString *)albumdesc {
+	if (newAlbumDesc != albumdesc) {
+		newAlbumDesc = [albumdesc copy];
+	}
+}
+
+- (BOOL) whichAlbum {
 	if (![self newAlbumNameIsEmpty]) {
 		// If the user specified a new album name, create it, otherwise just use the album
 		// that was selected in the popup list.
@@ -708,7 +743,12 @@
 		if (newAlbumName && [newAlbumName length] > 0) {
 			[progText setStringValue: [NSString stringWithFormat:@"Creating album %s", [newAlbumName cString]]];
 			[progBar incrementBy: 1.0];
-			newalbum = [uploader createNewAlbum:newAlbumName inCategory:[selectedCategory number]];
+			if (!newAlbumDesc) {
+				[self setNewAlbumDesc:@""];
+			}
+			newalbum = [uploader createNewAlbum:newAlbumName
+								withDescription:newAlbumDesc
+									 inCategory:[selectedCategory number]];
 			if (newalbum) {
 				[progBar incrementBy: 1.0];
 				[albums addObject:newalbum];
@@ -719,12 +759,14 @@
 								NSLocalizedString(@"You do not have permissions to create the album",
 												  @"Message telling the user that we could not create the album"),
 								NSLocalizedString(@"OK", @"OK"), nil, nil);
+				return FALSE;
 			}
-		}		
+		}
 	}
 	[newAlbumName release];
 	newAlbumName = nil;
 	[albumsSheet makeKeyWindow];
+	return TRUE;
 }
 
 - (BOOL) newAlbumNameIsEmpty {
@@ -743,6 +785,19 @@
 
 - (void) setCanCreateAlbums: (BOOL)newvalue {
 	canCreateAlbums = newvalue;
+}
+
+- (NSString *)version {
+	return version;
+}
+
+- (void)setVersion: (NSString *)newversion {
+	if (newversion != version) {
+		[newversion retain];
+		[version release];
+		version = newversion;
+	}
+	
 }
 
 @end

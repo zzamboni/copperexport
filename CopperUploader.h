@@ -65,12 +65,12 @@
 	NSArray *imageRecords;
 	BOOL uploadShouldCancel;
 	
-	NSMutableArray *albums;
+	NSArray *albums;
 	CopperAlbum *selectedAlbum;
 	BOOL areThereAlbums;
 	BOOL canCreateAlbums;
 	BOOL canChooseCategory;
-	NSMutableArray *categories;
+	NSArray *categories;
 	CopperAlbum *selectedCategory;
 }
 
@@ -81,10 +81,9 @@
 - (void)beginUpload;
 - (void)cancelUpload;
 	
-- (void)getPublishInfo;
-- (NSMutableArray *)listOfAlbums;
+- (BOOL)getPublishInfo;
 
-- (CopperAlbum *)createNewAlbum: (NSString *)albumName inCategory: (int)catnumber;
+- (CopperAlbum *)createNewAlbum: (NSString *)albumName withDescription: (NSString *)albumDesc inCategory: (int)catnumber;
 
 // ===========================================================
 // Accessors
@@ -101,7 +100,7 @@
 - (id <CopperUploaderDelegate>)delegate;
 - (void)setDelegate:(id <CopperUploaderDelegate>)aDelegate;
 
-- (NSMutableArray *)albums;
+- (NSArray *)albums;
 //- (void) setAlbums: (NSArray *)newalbums;
 - (CopperAlbum *)selectedAlbum;
 - (void) setSelectedAlbum:(CopperAlbum *)newalbum;

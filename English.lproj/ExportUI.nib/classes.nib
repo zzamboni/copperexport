@@ -26,7 +26,6 @@
                 imageView = NSImageView; 
                 lastView = id; 
                 passwdField = NSSecureTextField; 
-                passwordField = NSTextField; 
                 progBar = NSProgressIndicator; 
                 progText = NSTextField; 
                 progressSheet = NSWindow; 

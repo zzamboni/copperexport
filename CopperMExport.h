@@ -49,9 +49,7 @@
 
 	IBOutlet NSTextField *resizeWidth;
 	IBOutlet NSTextField *resizeHeight;
-	
-	IBOutlet NSSecureTextField *passwdField;
-	
+		
 //	IBOutlet NSMatrix *accessRadio;
 //	IBOutlet NSButton *familyChk, *friendsChk;
 		
@@ -88,7 +86,7 @@
 	NSString *password;
 	NSString *cpgurl;
 	IBOutlet NSTextField *usernameField;
-	IBOutlet NSTextField *passwordField;
+	IBOutlet NSSecureTextField *passwdField;
 	IBOutlet NSTextField *cpgurlField;
 
 	// Image View
@@ -104,10 +102,14 @@
 	// Selected category
 	CopperAlbum *selectedCategory;
 	
-	// New album name
+	// New album name and description
 	NSString *newAlbumName;
+	NSString *newAlbumDesc;
 	BOOL newAlbumNameIsEmpty;
 	BOOL canCreateAlbums;
+
+	// CopperExport version
+	NSString *version;
 }
 
 - (id)initWithExportImageObj:(ExportMgr *)exportMgr;
@@ -150,7 +152,7 @@
 - (IBAction)albumsSheetOK: (id) sender;
 
 - (NSMutableArray *)albums;
-- (void) setAlbums: (NSMutableArray *)newalbums;
+- (void) setAlbums: (NSArray *)newalbums;
 - (CopperAlbum *)selectedAlbum;
 - (void) setSelectedAlbum:(CopperAlbum *)newalbum;
 
@@ -162,11 +164,16 @@
 
 - (NSString *)newAlbumName;
 - (void) setNewAlbumName: (NSString *)albumname;
+- (NSString *)newAlbumDesc;
+- (void) setNewAlbumDesc: (NSString *)albumdesc;
 
 - (BOOL) newAlbumNameIsEmpty;
 - (void) setNewAlbumNameIsEmpty: (BOOL)newvalue;
-- (void) whichAlbum;
+- (BOOL) whichAlbum;
 - (BOOL) canCreateAlbums;
 - (void) setCanCreateAlbums: (BOOL)newvalue;
+
+- (NSString *)version;
+- (void)setVersion: (NSString *)newversion;
 
 @end

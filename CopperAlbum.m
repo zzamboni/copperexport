@@ -41,6 +41,7 @@
 	self = [super init];
 	if (self) {
 		[self setName: newname];
+//		[self setName: [NSString stringWithFormat:@"%@ (#%d)", newname, newnumber]];
 		[self setNumber: newnumber];
 	}
 	return self;

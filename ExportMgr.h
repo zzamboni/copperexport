@@ -1,6 +1,6 @@
 /*
  *  ExportMgr.h
- *  CopperExport
+ *  FlickrExport
  *
  *  Created by Fraser Speirs on 14/08/2004.
  *  Copyright 2004 __MyCompanyName__. All rights reserved.
@@ -90,4 +90,9 @@
 - (struct _NSSize)lastImageSize:(void *)fp16;
 - (struct _NSSize)lastThumbnailSize:(void *)fp16;
 
+@end
+
+@interface ExportMgr (iPhoto5Additions)
+- (id)imageKeywordsAtIndex:(unsigned int)fp8;
+- (id)imageCommentsAtIndex:(unsigned int)fp8;
 @end

@@ -60,6 +60,7 @@
 			projectDirPath = "";
 			targets = (
 				8D5B49AC048680CD000E48DA,
+				51ADB98D07B40DB4007C59A3,
 			);
 		};
 		089C166AFE841209C02AAC07 = {
@@ -310,6 +311,52 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "osascript -e 'tell application \"iPhoto\" to launch'\nosascript -e 'tell application \"iPhoto\" to activate'\n";
+		};
+		51ADB98C07B40DB4007C59A3 = {
+			buildActionMask = 2147483647;
+			comments = "Create the ZIP file for distribution.\n";
+			files = (
+			);
+			inputPaths = (
+			);
+			isa = PBXShellScriptBuildPhase;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# shell script goes here\n./makedist.sh\n";
+		};
+		51ADB98D07B40DB4007C59A3 = {
+			buildPhases = (
+				51ADB98C07B40DB4007C59A3,
+			);
+			buildSettings = {
+				OPTIMIZATION_CFLAGS = "";
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = "Make distribution files";
+				SECTORDER_FLAGS = "";
+				WARNING_CFLAGS = "-Wmost -Wno-four-char-constants -Wno-unknown-pragmas";
+			};
+			dependencies = (
+				51ADB98F07B40DC0007C59A3,
+			);
+			isa = PBXAggregateTarget;
+			name = "Make distribution files";
+			productName = "Make distribution files";
+		};
+		51ADB98E07B40DC0007C59A3 = {
+			containerPortal = 089C1669FE841209C02AAC07;
+			isa = PBXContainerItemProxy;
+			proxyType = 1;
+			remoteGlobalIDString = 8D5B49AC048680CD000E48DA;
+			remoteInfo = CopperExport;
+		};
+		51ADB98F07B40DC0007C59A3 = {
+			isa = PBXTargetDependency;
+			target = 8D5B49AC048680CD000E48DA;
+			targetProxy = 51ADB98E07B40DC0007C59A3;
 		};
 //510
 //511
