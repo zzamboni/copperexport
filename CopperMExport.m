@@ -95,7 +95,6 @@
 			return;
 		}
 		[self setAlbums:[uploader albums]];
-		[self setSelectedAlbum:nil];
 		if (albums && [albums count] > 0)
 			[self setSelectedAlbum:[albums objectAtIndex:0]];
 		else
@@ -108,7 +107,11 @@
 		if (newAlbumName) {
 			[newAlbumName release];
 		}
+		if (newAlbumDesc) {
+			[newAlbumDesc release];
+		}
 		[self setNewAlbumName: nil];
+		[self setNewAlbumDesc: nil];
 		[self setNewAlbumNameIsEmpty: YES];
 		[self setCanCreateAlbums: [uploader canCreateAlbums]];
 
@@ -235,6 +238,7 @@
 	}
 	
 	[recordController setSelectionIndexes: [NSIndexSet indexSet]];
+
 }
 
 - (id)lastView {
@@ -720,6 +724,16 @@
 	[self setNewAlbumNameIsEmpty:((newAlbumName == nil) || ([newAlbumName length] == 0))];
 }
 
+- (NSString *)newAlbumDesc {
+	return newAlbumDesc;
+}
+
+- (void) setNewAlbumDesc: (NSString *)albumdesc {
+	if (newAlbumDesc != albumdesc) {
+		newAlbumDesc = [albumdesc copy];
+	}
+}
+
 - (BOOL) whichAlbum {
 	if (![self newAlbumNameIsEmpty]) {
 		// If the user specified a new album name, create it, otherwise just use the album
@@ -728,7 +742,12 @@
 		if (newAlbumName && [newAlbumName length] > 0) {
 			[progText setStringValue: [NSString stringWithFormat:@"Creating album %s", [newAlbumName cString]]];
 			[progBar incrementBy: 1.0];
-			newalbum = [uploader createNewAlbum:newAlbumName inCategory:[selectedCategory number]];
+			if (!newAlbumDesc) {
+				[self setNewAlbumDesc:@""];
+			}
+			newalbum = [uploader createNewAlbum:newAlbumName
+								withDescription:newAlbumDesc
+									 inCategory:[selectedCategory number]];
 			if (newalbum) {
 				[progBar incrementBy: 1.0];
 				[albums addObject:newalbum];
@@ -741,7 +760,7 @@
 								NSLocalizedString(@"OK", @"OK"), nil, nil);
 				return FALSE;
 			}
-		}	
+		}
 	}
 	[newAlbumName release];
 	newAlbumName = nil;

@@ -84,7 +84,7 @@
 - (BOOL)getPublishInfo;
 - (NSMutableArray *)listOfAlbums;
 
-- (CopperAlbum *)createNewAlbum: (NSString *)albumName inCategory: (int)catnumber;
+- (CopperAlbum *)createNewAlbum: (NSString *)albumName withDescription: (NSString *)albumDesc inCategory: (int)catnumber;
 
 // ===========================================================
 // Accessors

@@ -102,8 +102,9 @@
 	// Selected category
 	CopperAlbum *selectedCategory;
 	
-	// New album name
+	// New album name and description
 	NSString *newAlbumName;
+	NSString *newAlbumDesc;
 	BOOL newAlbumNameIsEmpty;
 	BOOL canCreateAlbums;
 }
@@ -160,6 +161,8 @@
 
 - (NSString *)newAlbumName;
 - (void) setNewAlbumName: (NSString *)albumname;
+- (NSString *)newAlbumDesc;
+- (void) setNewAlbumDesc: (NSString *)albumdesc;
 
 - (BOOL) newAlbumNameIsEmpty;
 - (void) setNewAlbumNameIsEmpty: (BOOL)newvalue;

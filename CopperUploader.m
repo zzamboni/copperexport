@@ -373,10 +373,11 @@ The idea here is that we kick off the first image upload, and set our cursor to 
 	}
 }
 
-- (CopperAlbum *)createNewAlbum: (NSString *)albumName inCategory: (int)catnumber {
+- (CopperAlbum *)createNewAlbum: (NSString *)albumName withDescription: (NSString *)albumDesc inCategory: (int)catnumber {
 	NSMutableDictionary *post_dict = [[NSMutableDictionary alloc] initWithCapacity: 2];
 	NSError *error;
 	[post_dict setValue:albumName		forKey:@"new_alb_name"];
+	[post_dict setValue:albumDesc		forKey:@"new_alb_description"];
 	[post_dict setValue:[NSString stringWithFormat:@"%d", catnumber]	forKey:@"cat"];
 	
 	NSString *resultstr = [self postForm:post_dict 
