@@ -58,6 +58,30 @@
 					PBXFindDataSource_LocationID,
 				);
 			};
+			PBXConfiguration.PBXFileTableDataSource3.XCSCMDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					20,
+					226,
+					20,
+					40,
+					43,
+					43,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_SCM_ColumnID,
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+					PBXFileDataSource_Target_ColumnID,
+				);
+			};
 			PBXConfiguration.PBXTargetDataSource.PBXTargetDataSource = {
 				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
 				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
@@ -80,7 +104,7 @@
 					PBXFileDataSource_Warnings_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 128215483;
+			PBXPerProjectTemplateStateSaveDate = 128555796;
 			PBXPrepackagedSmartGroups_v2 = (
 				{
 					PBXTransientLocationAtTop = bottom;
@@ -257,7 +281,7 @@
 					};
 				},
 			);
-			PBXWorkspaceStateSaveDate = 128215483;
+			PBXWorkspaceStateSaveDate = 128555796;
 		};
 		sourceControlManager = 514A609507A2EE72003C7B12;
 		userBuildSettings = {
@@ -331,9 +355,9 @@
 	};
 	5F22633606CE2F0C0029AD4D = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1040, 10681}}";
-			sepNavSelRange = "{3922, 57}";
-			sepNavVisRect = "{{0, 1386}, {459, 183}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1040, 10709}}";
+			sepNavSelRange = "{9387, 0}";
+			sepNavVisRect = "{{0, 4038}, {711, 428}}";
 			sepNavWindowFrame = "{{15, 269}, {750, 558}}";
 		};
 	};
@@ -360,9 +384,9 @@
 	};
 	5F22635606CE5E200029AD4D = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1154, 7475}}";
-			sepNavSelRange = "{166, 0}";
-			sepNavVisRect = "{{0, 0}, {711, 428}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1154, 7573}}";
+			sepNavSelRange = "{12503, 0}";
+			sepNavVisRect = "{{0, 5220}, {711, 428}}";
 		};
 	};
 	5F2FA5100703578D00A3DFD2 = {

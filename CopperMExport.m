@@ -308,6 +308,8 @@
 	if([imageRecords count] == 1) {
 		[progBar stopAnimation: self];
 	}	
+	[NSApp endSheet: progressSheet];
+	[progressSheet orderOut: self];
 }
 
 - (void)uploaderRecievedResponse: (CopperResponse *)response {
