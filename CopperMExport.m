@@ -214,7 +214,6 @@
 
 - (void)viewWillBeActivated {
 	prefs=[[NSUserDefaults standardUserDefaults] persistentDomainForName:[[NSBundle bundleForClass:[self class]] bundleIdentifier]];
-	[self setVersion:[[NSBundle bundleForClass:[self class]] objectForInfoDictionaryKey:@"CFBundleVersion"]];
 	
 	if(prefs) {
 		[self setUsername: [prefs objectForKey:@"username"]];
@@ -335,12 +334,15 @@
 			break;
 		case CpgStatusCritError: // Bad (server) error
 			NSRunAlertPanel(NSLocalizedString(@"Critical Error", @""),
-							[NSString stringWithFormat:@"A server-side error occurred:\n%s", [[response str] cString]],
+							[NSString stringWithFormat:@"A server-side error occurred. The error has also "
+								"been printed to your console log (use the Console application to view it).\n%s", [[response str] cString]],
 							NSLocalizedString(@"OK", @"OK"), nil, nil);
 			break;
 		case CpgStatusUnknown:   // who knows
 			NSRunAlertPanel(NSLocalizedString(@"Unknown response", @""),
-							[NSString stringWithFormat:@"The server sent a response I don't understand. Please report this to copperexport@zzamboni.org:\n%s", [[response str] cString]],
+							[NSString stringWithFormat:@"The server sent a response I don't understand. The error has also "
+								"been printed to your console log (use the Console application to view it). "
+								"Please report this to copperexport@zzamboni.org.\n%s", [[response str] cString]],
 							NSLocalizedString(@"OK", @"OK"), nil, nil);
 			break;			
 	}
@@ -788,6 +790,9 @@
 }
 
 - (NSString *)version {
+	if (version == nil) {
+		[self setVersion:[[NSBundle bundleForClass:[self class]] objectForInfoDictionaryKey:@"CFBundleVersion"]];
+	}
 	return version;
 }
 
@@ -798,6 +803,10 @@
 		version = newversion;
 	}
 	
+}
+
+- (NSString *)versionString {
+	return [[NSString stringWithFormat:@"CopperExport v%@", [self version]] autorelease];
 }
 
 @end

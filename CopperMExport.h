@@ -175,5 +175,6 @@
 
 - (NSString *)version;
 - (void)setVersion: (NSString *)newversion;
+- (NSString *)versionString;
 
 @end
