@@ -1,0 +1,76 @@
+{
+    IBClasses = (
+        {
+            ACTIONS = {
+                addSelectedTagToAll = id; 
+                albumsSheetCancel = id; 
+                albumsSheetOK = id; 
+                applyCurrentAccessToAll = id; 
+                applyCurrentScalingToAll = id; 
+                applyCurrentTagsToAll = id; 
+                applyDescriptionToAll = id; 
+                applyTitleToAll = id; 
+                cancelUpload = id; 
+                credentialsSheetCancel = id; 
+                credentialsSheetOK = id; 
+                removeAllTags = id; 
+                showCredentialsSheet = id; 
+            }; 
+            CLASS = CopperMExport; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {
+                albumsSheet = NSWindow; 
+                cpgurlField = NSTextField; 
+                credentialsSheet = NSWindow; 
+                firstView = id; 
+                imageView = NSImageView; 
+                lastView = id; 
+                passwdField = NSSecureTextField; 
+                passwordField = NSTextField; 
+                progBar = NSProgressIndicator; 
+                progText = NSTextField; 
+                progressSheet = NSWindow; 
+                recordController = NSArrayController; 
+                resizeHeight = NSTextField; 
+                resizeWidth = NSTextField; 
+                settingsBox = FUCopperBox; 
+                tagController = NSArrayController; 
+                usernameField = NSTextField; 
+            }; 
+            SUPERCLASS = NSObject; 
+        }, 
+        {
+            CLASS = CopperUploader; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {delegate = id; }; 
+            SUPERCLASS = NSObject; 
+        }, 
+        {
+            ACTIONS = {search = id; }; 
+            CLASS = CpgDNDArrayController; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {tableView = NSTableView; }; 
+            SUPERCLASS = NSArrayController; 
+        }, 
+        {CLASS = CpgImageDragTableview; LANGUAGE = ObjC; SUPERCLASS = NSTableView; }, 
+        {
+            CLASS = CpgTagEditArrayController; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {table = NSTableView; }; 
+            SUPERCLASS = NSArrayController; 
+        }, 
+        {
+            CLASS = FUCopperBox; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {mPlugin = id; searchField = NSSearchField; }; 
+            SUPERCLASS = NSBox; 
+        }, 
+        {
+            ACTIONS = {addSelectedTagToAll = id; }; 
+            CLASS = FirstResponder; 
+            LANGUAGE = ObjC; 
+            SUPERCLASS = NSObject; 
+        }
+    ); 
+    IBVersion = 1; 
+}

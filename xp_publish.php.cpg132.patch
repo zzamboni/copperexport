@@ -1,0 +1,15 @@
+--- xp_publish.php~	Sat Jul 24 17:03:54 2004
++++ xp_publish.php	Sun Jan 16 16:47:27 2005
+@@ -757,9 +757,9 @@
+     if (!USER_ID || !USER_CAN_UPLOAD_PICTURES) simple_die(ERROR, $lang_errors['perm_denied'], __FILE__, __LINE__);
+ 
+     $album = (int)$HTTP_GET_VARS['album'];
+-    $title = '';
+-    $caption = '';
+-    $keywords = '';
++    $title = $HTTP_POST_VARS['title'];
++    $caption = $HTTP_POST_VARS['caption'];
++    $keywords = $HTTP_POST_VARS['keywords'];
+     $user1 = '';
+     $user2 = '';
+     $user3 = '';

@@ -1,0 +1,925 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 39;
+	objects = {
+		014CEA420018CDE011CA2923 = {
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				PREBINDING = NO;
+				ZERO_LINK = YES;
+			};
+			isa = PBXBuildStyle;
+			name = Development;
+		};
+		014CEA430018CDE011CA2923 = {
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				DEPLOYMENT_LOCATION = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
+				PREBINDING = NO;
+				ZERO_LINK = NO;
+			};
+			isa = PBXBuildStyle;
+			name = Deployment;
+		};
+//010
+//011
+//012
+//013
+//014
+//080
+//081
+//082
+//083
+//084
+		089C1669FE841209C02AAC07 = {
+			buildSettings = {
+			};
+			buildStyles = (
+				014CEA420018CDE011CA2923,
+				014CEA430018CDE011CA2923,
+			);
+			hasScannedForEncodings = 1;
+			isa = PBXProject;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+				Italian,
+			);
+			mainGroup = 089C166AFE841209C02AAC07;
+			projectDirPath = "";
+			targets = (
+				8D5B49AC048680CD000E48DA,
+			);
+		};
+		089C166AFE841209C02AAC07 = {
+			children = (
+				08FB77AFFE84173DC02AAC07,
+				5FEF1FF8074A3B06000AC5B8,
+				32C88E010371C26100C91783,
+				089C167CFE841241C02AAC07,
+				089C1671FE841209C02AAC07,
+				19C28FB8FE9D52D311CA2CBB,
+			);
+			isa = PBXGroup;
+			name = CopperExport;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		089C1671FE841209C02AAC07 = {
+			children = (
+				5FEF2005074A3BB2000AC5B8,
+				1058C7ACFEA557BF11CA2CBB,
+				1058C7AEFEA557BF11CA2CBB,
+			);
+			isa = PBXGroup;
+			name = "Frameworks and Libraries";
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		089C1672FE841209C02AAC07 = {
+			isa = PBXFileReference;
+			lastKnownFileType = wrapper.framework;
+			name = Foundation.framework;
+			path = /System/Library/Frameworks/Foundation.framework;
+			refType = 0;
+			sourceTree = "<absolute>";
+		};
+		089C167CFE841241C02AAC07 = {
+			children = (
+				5FBB241C06D36F3200AE08E9,
+				5FBB241D06D36F3300AE08E9,
+				5FBB241E06D36F3300AE08E9,
+				5FBB241F06D36F3300AE08E9,
+				5F22633B06CE31040029AD4D,
+				8D5B49B7048680CD000E48DA,
+				089C167DFE841241C02AAC07,
+			);
+			isa = PBXGroup;
+			name = Resources;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		089C167DFE841241C02AAC07 = {
+			children = (
+				089C167EFE841241C02AAC07,
+			);
+			isa = PBXVariantGroup;
+			name = InfoPlist.strings;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		089C167EFE841241C02AAC07 = {
+			fileEncoding = 10;
+			isa = PBXFileReference;
+			lastKnownFileType = text.plist.strings;
+			name = English;
+			path = English.lproj/InfoPlist.strings;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		089C167FFE841241C02AAC07 = {
+			isa = PBXFileReference;
+			lastKnownFileType = wrapper.framework;
+			name = AppKit.framework;
+			path = /System/Library/Frameworks/AppKit.framework;
+			refType = 0;
+			sourceTree = "<absolute>";
+		};
+		08FB77AFFE84173DC02AAC07 = {
+			children = (
+				5F76160F071139A0003437C3,
+				5F761612071139A7003437C3,
+				5F76160C07113994003437C3,
+				5F76160907113984003437C3,
+				5F76160607113974003437C3,
+				5F7615FA07113963003437C3,
+			);
+			isa = PBXGroup;
+			name = Classes;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		08FB77B6FE84183AC02AAC07 = {
+			fileEncoding = 4;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
+			path = main.m;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+//080
+//081
+//082
+//083
+//084
+//100
+//101
+//102
+//103
+//104
+		1058C7ACFEA557BF11CA2CBB = {
+			children = (
+				5F72F21006E879DD00757FFA,
+				1058C7ADFEA557BF11CA2CBB,
+			);
+			isa = PBXGroup;
+			name = "Linked Frameworks";
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		1058C7ADFEA557BF11CA2CBB = {
+			isa = PBXFileReference;
+			lastKnownFileType = wrapper.framework;
+			name = Cocoa.framework;
+			path = /System/Library/Frameworks/Cocoa.framework;
+			refType = 0;
+			sourceTree = "<absolute>";
+		};
+		1058C7AEFEA557BF11CA2CBB = {
+			children = (
+				089C1672FE841209C02AAC07,
+				089C167FFE841241C02AAC07,
+			);
+			isa = PBXGroup;
+			name = "Other Frameworks";
+			refType = 4;
+			sourceTree = "<group>";
+		};
+//100
+//101
+//102
+//103
+//104
+//190
+//191
+//192
+//193
+//194
+		19C28FB8FE9D52D311CA2CBB = {
+			children = (
+				8D5B49B6048680CD000E48DA,
+			);
+			isa = PBXGroup;
+			name = Products;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+//190
+//191
+//192
+//193
+//194
+//320
+//321
+//322
+//323
+//324
+		32C88E010371C26100C91783 = {
+			children = (
+				32DBCF630370AF2F00C91783,
+				08FB77B6FE84183AC02AAC07,
+			);
+			isa = PBXGroup;
+			name = "Other Sources";
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		32DBCF630370AF2F00C91783 = {
+			fileEncoding = 4;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			path = CopperExport_Prefix.pch;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+//320
+//321
+//322
+//323
+//324
+//510
+//511
+//512
+//513
+//514
+		512EE2CC07A2EF6800AF54A5 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			path = CopperAlbum.h;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		512EE2CD07A2EF6800AF54A5 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
+			path = CopperAlbum.m;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		512EE2CE07A2EF6800AF54A5 = {
+			fileRef = 512EE2CC07A2EF6800AF54A5;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		512EE2CF07A2EF6800AF54A5 = {
+			fileRef = 512EE2CD07A2EF6800AF54A5;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		512EE32B07A2F18900AF54A5 = {
+			buildActionMask = 2147483647;
+			comments = "Copy the compiled plugin to the iPhoto plugins directory.";
+			dstPath = /Applications/iPhoto.app/Contents/PlugIns/;
+			dstSubfolderSpec = 0;
+			files = (
+				512EE32F07A2F1F800AF54A5,
+			);
+			isa = PBXCopyFilesBuildPhase;
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		512EE32F07A2F1F800AF54A5 = {
+			fileRef = 8D5B49B6048680CD000E48DA;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		512EE35107A2F2AD00AF54A5 = {
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			isa = PBXShellScriptBuildPhase;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "osascript -e 'tell application \"iPhoto\" to launch'\nosascript -e 'tell application \"iPhoto\" to activate'\n";
+		};
+//510
+//511
+//512
+//513
+//514
+//5F0
+//5F1
+//5F2
+//5F3
+//5F4
+		5F22632906CE2B260029AD4D = {
+			fileEncoding = 4;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			path = ExportPluginProtocol.h;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		5F22632A06CE2B260029AD4D = {
+			fileRef = 5F22632906CE2B260029AD4D;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		5F22633506CE2F0C0029AD4D = {
+			fileEncoding = 4;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			path = CopperMExport.h;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		5F22633606CE2F0C0029AD4D = {
+			fileEncoding = 4;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
+			path = CopperMExport.m;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		5F22633706CE2F0C0029AD4D = {
+			fileRef = 5F22633506CE2F0C0029AD4D;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		5F22633806CE2F0C0029AD4D = {
+			fileRef = 5F22633606CE2F0C0029AD4D;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		5F22633B06CE31040029AD4D = {
+			children = (
+				5F22633C06CE31040029AD4D,
+			);
+			isa = PBXVariantGroup;
+			name = ExportUI.nib;
+			path = "";
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		5F22633C06CE31040029AD4D = {
+			isa = PBXFileReference;
+			lastKnownFileType = wrapper.nib;
+			name = English;
+			path = English.lproj/ExportUI.nib;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		5F22633D06CE31040029AD4D = {
+			fileRef = 5F22633B06CE31040029AD4D;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		5F22634006CE3E4A0029AD4D = {
+			fileEncoding = 4;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			path = ExportMgr.h;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		5F22634106CE3E4A0029AD4D = {
+			fileRef = 5F22634006CE3E4A0029AD4D;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		5F22634406CE3E820029AD4D = {
+			fileEncoding = 4;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			path = ExportImageProtocol.h;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		5F22634506CE3E820029AD4D = {
+			fileRef = 5F22634406CE3E820029AD4D;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		5F22635506CE5E200029AD4D = {
+			fileEncoding = 4;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			path = CopperUploader.h;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		5F22635606CE5E200029AD4D = {
+			fileEncoding = 4;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
+			path = CopperUploader.m;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		5F22635706CE5E200029AD4D = {
+			fileRef = 5F22635506CE5E200029AD4D;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		5F22635806CE5E200029AD4D = {
+			fileRef = 5F22635606CE5E200029AD4D;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		5F2FA5100703578D00A3DFD2 = {
+			fileEncoding = 4;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			path = CpgTagEditArrayController.h;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		5F2FA5110703578D00A3DFD2 = {
+			fileEncoding = 4;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
+			path = CpgTagEditArrayController.m;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		5F2FA5120703578D00A3DFD2 = {
+			fileRef = 5F2FA5100703578D00A3DFD2;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		5F2FA5130703578D00A3DFD2 = {
+			fileRef = 5F2FA5110703578D00A3DFD2;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		5F4E883506D48CD9003090DC = {
+			fileEncoding = 4;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			path = CopperResponse.h;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		5F4E883606D48CD9003090DC = {
+			fileEncoding = 4;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
+			path = CopperResponse.m;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		5F4E883706D48CD9003090DC = {
+			fileRef = 5F4E883506D48CD9003090DC;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		5F4E883806D48CD9003090DC = {
+			fileRef = 5F4E883606D48CD9003090DC;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		5F72F20C06E879C400757FFA = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			path = CpgKeyChain.h;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		5F72F20D06E879C400757FFA = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
+			path = CpgKeyChain.m;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		5F72F20E06E879C400757FFA = {
+			fileRef = 5F72F20C06E879C400757FFA;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		5F72F20F06E879C400757FFA = {
+			fileRef = 5F72F20D06E879C400757FFA;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		5F72F21006E879DD00757FFA = {
+			isa = PBXFileReference;
+			lastKnownFileType = wrapper.framework;
+			name = Carbon.framework;
+			path = /System/Library/Frameworks/Carbon.framework;
+			refType = 0;
+			sourceTree = "<absolute>";
+		};
+		5F72F21106E879DD00757FFA = {
+			fileRef = 5F72F21006E879DD00757FFA;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		5F7615E607113438003437C3 = {
+			fileEncoding = 4;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			path = CpgImageDragTableview.h;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		5F7615E707113438003437C3 = {
+			fileEncoding = 4;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
+			path = CpgImageDragTableview.m;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		5F7615E807113438003437C3 = {
+			fileRef = 5F7615E607113438003437C3;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		5F7615E907113438003437C3 = {
+			fileRef = 5F7615E707113438003437C3;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		5F7615FA07113963003437C3 = {
+			children = (
+				5F2FA5100703578D00A3DFD2,
+				5F2FA5110703578D00A3DFD2,
+				5FE02A1C0710075600CDF3C6,
+				5FE02A1B0710075600CDF3C6,
+			);
+			isa = PBXGroup;
+			name = "Array Controllers";
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		5F76160607113974003437C3 = {
+			children = (
+				5F7615E607113438003437C3,
+				5F7615E707113438003437C3,
+				5FE0C30E07521BC5005DE0CE,
+				5FE0C30F07521BC5005DE0CE,
+			);
+			isa = PBXGroup;
+			name = "Widget Subclasses";
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		5F76160907113984003437C3 = {
+			children = (
+				5F22634006CE3E4A0029AD4D,
+				5F22634406CE3E820029AD4D,
+				5F22632906CE2B260029AD4D,
+			);
+			isa = PBXGroup;
+			name = "iPhoto Protocol";
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		5F76160C07113994003437C3 = {
+			children = (
+				5F72F20C06E879C400757FFA,
+				5F72F20D06E879C400757FFA,
+			);
+			isa = PBXGroup;
+			name = Keychain;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		5F76160F071139A0003437C3 = {
+			children = (
+				5F4E883506D48CD9003090DC,
+				5F4E883606D48CD9003090DC,
+				5FBB240906D369FE00AE08E9,
+				5FBB240A06D369FE00AE08E9,
+			);
+			isa = PBXGroup;
+			name = Models;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		5F761612071139A7003437C3 = {
+			children = (
+				512EE2CC07A2EF6800AF54A5,
+				512EE2CD07A2EF6800AF54A5,
+				5F22635506CE5E200029AD4D,
+				5F22635606CE5E200029AD4D,
+				5F22633506CE2F0C0029AD4D,
+				5F22633606CE2F0C0029AD4D,
+			);
+			isa = PBXGroup;
+			name = Controllers;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		5FBB240906D369FE00AE08E9 = {
+			fileEncoding = 4;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			path = CpgImageRecord.h;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		5FBB240A06D369FE00AE08E9 = {
+			fileEncoding = 4;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
+			path = CpgImageRecord.m;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		5FBB240B06D369FE00AE08E9 = {
+			fileRef = 5FBB240906D369FE00AE08E9;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		5FBB240C06D369FE00AE08E9 = {
+			fileRef = 5FBB240A06D369FE00AE08E9;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		5FBB241C06D36F3200AE08E9 = {
+			isa = PBXFileReference;
+			lastKnownFileType = image.tiff;
+			path = Add_Pressed.tiff;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		5FBB241D06D36F3300AE08E9 = {
+			isa = PBXFileReference;
+			lastKnownFileType = image.tiff;
+			path = Add.tiff;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		5FBB241E06D36F3300AE08E9 = {
+			isa = PBXFileReference;
+			lastKnownFileType = image.tiff;
+			path = Remove_Pressed.tiff;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		5FBB241F06D36F3300AE08E9 = {
+			isa = PBXFileReference;
+			lastKnownFileType = image.tiff;
+			path = Remove.tiff;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		5FBB242006D36F3300AE08E9 = {
+			fileRef = 5FBB241C06D36F3200AE08E9;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		5FBB242106D36F3300AE08E9 = {
+			fileRef = 5FBB241D06D36F3300AE08E9;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		5FBB242206D36F3300AE08E9 = {
+			fileRef = 5FBB241E06D36F3300AE08E9;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		5FBB242306D36F3300AE08E9 = {
+			fileRef = 5FBB241F06D36F3300AE08E9;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		5FE02A1B0710075600CDF3C6 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
+			path = CpgDNDArrayController.m;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		5FE02A1C0710075600CDF3C6 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			path = CpgDNDArrayController.h;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		5FE02A1D0710075600CDF3C6 = {
+			fileRef = 5FE02A1B0710075600CDF3C6;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		5FE02A1E0710075600CDF3C6 = {
+			fileRef = 5FE02A1C0710075600CDF3C6;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		5FE0C30E07521BC5005DE0CE = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			path = FUCopperBox.h;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		5FE0C30F07521BC5005DE0CE = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
+			path = FUCopperBox.m;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		5FE0C31007521BC5005DE0CE = {
+			fileRef = 5FE0C30E07521BC5005DE0CE;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		5FE0C31107521BC5005DE0CE = {
+			fileRef = 5FE0C30F07521BC5005DE0CE;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		5FEF1FF8074A3B06000AC5B8 = {
+			children = (
+			);
+			isa = PBXGroup;
+			name = "Unit Tests";
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		5FEF2005074A3BB2000AC5B8 = {
+			isa = PBXFileReference;
+			lastKnownFileType = wrapper.framework;
+			name = UnitKit.framework;
+			path = /Library/Frameworks/UnitKit.framework;
+			refType = 0;
+			sourceTree = "<absolute>";
+		};
+//5F0
+//5F1
+//5F2
+//5F3
+//5F4
+//8D0
+//8D1
+//8D2
+//8D3
+//8D4
+		8D5B49AC048680CD000E48DA = {
+			buildPhases = (
+				8D5B49AF048680CD000E48DA,
+				8D5B49B1048680CD000E48DA,
+				8D5B49B3048680CD000E48DA,
+				512EE32B07A2F18900AF54A5,
+				512EE35107A2F2AD00AF54A5,
+			);
+			buildRules = (
+			);
+			buildSettings = {
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = CopperExport_Prefix.pch;
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "$(HOME)/Library/Bundles";
+				PREBINDING = NO;
+				PRODUCT_NAME = CopperExport;
+				WRAPPER_EXTENSION = iPhotoExporter;
+			};
+			dependencies = (
+			);
+			isa = PBXNativeTarget;
+			name = CopperExport;
+			productInstallPath = "$(HOME)/Library/Bundles";
+			productName = CopperExport;
+			productReference = 8D5B49B6048680CD000E48DA;
+			productType = "com.apple.product-type.bundle";
+		};
+		8D5B49AF048680CD000E48DA = {
+			buildActionMask = 2147483647;
+			files = (
+				8D5B49B0048680CD000E48DA,
+				5F22632A06CE2B260029AD4D,
+				5F22633706CE2F0C0029AD4D,
+				5F22633D06CE31040029AD4D,
+				5F22634106CE3E4A0029AD4D,
+				5F22634506CE3E820029AD4D,
+				5F22635706CE5E200029AD4D,
+				5FBB240B06D369FE00AE08E9,
+				5FBB242006D36F3300AE08E9,
+				5FBB242106D36F3300AE08E9,
+				5FBB242206D36F3300AE08E9,
+				5FBB242306D36F3300AE08E9,
+				5F4E883706D48CD9003090DC,
+				5F72F20E06E879C400757FFA,
+				5F2FA5120703578D00A3DFD2,
+				5FE02A1E0710075600CDF3C6,
+				5F7615E807113438003437C3,
+				5FE0C31007521BC5005DE0CE,
+				512EE2CE07A2EF6800AF54A5,
+			);
+			isa = PBXResourcesBuildPhase;
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8D5B49B0048680CD000E48DA = {
+			fileRef = 089C167DFE841241C02AAC07;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		8D5B49B1048680CD000E48DA = {
+			buildActionMask = 2147483647;
+			files = (
+				8D5B49B2048680CD000E48DA,
+				5F22633806CE2F0C0029AD4D,
+				5F22635806CE5E200029AD4D,
+				5FBB240C06D369FE00AE08E9,
+				5F4E883806D48CD9003090DC,
+				5F72F20F06E879C400757FFA,
+				5F2FA5130703578D00A3DFD2,
+				5FE02A1D0710075600CDF3C6,
+				5F7615E907113438003437C3,
+				5FE0C31107521BC5005DE0CE,
+				512EE2CF07A2EF6800AF54A5,
+			);
+			isa = PBXSourcesBuildPhase;
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8D5B49B2048680CD000E48DA = {
+			fileRef = 08FB77B6FE84183AC02AAC07;
+			isa = PBXBuildFile;
+			settings = {
+				ATTRIBUTES = (
+				);
+			};
+		};
+		8D5B49B3048680CD000E48DA = {
+			buildActionMask = 2147483647;
+			files = (
+				8D5B49B4048680CD000E48DA,
+				5F72F21106E879DD00757FFA,
+			);
+			isa = PBXFrameworksBuildPhase;
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8D5B49B4048680CD000E48DA = {
+			fileRef = 1058C7ADFEA557BF11CA2CBB;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		8D5B49B6048680CD000E48DA = {
+			explicitFileType = wrapper.cfbundle;
+			includeInIndex = 0;
+			isa = PBXFileReference;
+			path = CopperExport.iPhotoExporter;
+			refType = 3;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		8D5B49B7048680CD000E48DA = {
+			fileEncoding = 4;
+			isa = PBXFileReference;
+			lastKnownFileType = text.xml;
+			path = Info.plist;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+	};
+	rootObject = 089C1669FE841209C02AAC07;
+}
