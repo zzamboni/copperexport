@@ -80,6 +80,7 @@
 												   password: pw
 													    url: url
 											   imageRecords: imageRecords];
+		[uploader setDelegate: self];
 		
 		if (![uploader login]) {
 			NSRunAlertPanel(NSLocalizedString(@"Could not log in", @"Title of Invalid Login alert"),
@@ -90,7 +91,9 @@
 			return;
 		}
 		
-		[uploader getPublishInfo];
+		if (![uploader getPublishInfo]) {
+			return;
+		}
 		[self setAlbums:[uploader albums]];
 		[self setSelectedAlbum:nil];
 		if (albums && [albums count] > 0)
@@ -144,15 +147,15 @@
 		[progBar setMinValue: 0.0];
 		[progBar setDoubleValue: 0.0];
 		
-		[uploader setDelegate: self];
-		
 		[NSApp beginSheet: progressSheet 
 		   modalForWindow: [[self settingsView] window]
 			modalDelegate: nil
 		   didEndSelector: nil
 			  contextInfo: nil];
 		
-		[self whichAlbum];
+		if (![self whichAlbum]) {
+			return;
+		}
 		
 //		NSLog(@"Selected album: %s", [[selectedAlbum stringValue] cString]);
 		[uploader setSelectedAlbum: selectedAlbum];
@@ -292,8 +295,10 @@
 		// Now open the redirection URL.
 		NSMutableString *urlString = [NSMutableString stringWithCapacity: 100];
 		[urlString appendString: [self cpgurl]];
+		if ([urlString characterAtIndex:([urlString length]-1)] != '/')
+			[urlString appendString:@"/"];
 		[[NSWorkspace sharedWorkspace] openURL: [NSURL URLWithString:
-			[NSString stringWithFormat:@"%s/thumbnails.php?album=%d", [urlString cString], [selectedAlbum number]]]];
+			[NSString stringWithFormat:@"%sthumbnails.php?album=%d", [urlString cString], [selectedAlbum number]]]];
 	}
 	
 	[NSApp endSheet: progressSheet];
@@ -320,7 +325,7 @@
 			return;
 		case CpgStatusError:  // Simple (user) error
 			NSRunAlertPanel(NSLocalizedString(@"Error", @""),
-							[NSString stringWithFormat:@"An error occurred. The server said:\n%s", [[response str] cString]],
+							[response str],
 							NSLocalizedString(@"OK", @"OK"), nil, nil);
 			break;
 		case CpgStatusCritError: // Bad (server) error
@@ -485,7 +490,7 @@
     }
 }
 
-
+	
 // ===========================================================
 // - username:
 // ===========================================================
@@ -613,14 +618,15 @@
 	// Close the sheet
 	[self credentialsSheetOK: self];
 	[self setUsername: [usernameField stringValue]];
-	[self setPassword: [passwordField stringValue]];
+	[self setPassword: [passwdField stringValue]];
 	[self setCpgurl:   [cpgurlField stringValue]];
 }
 
 - (IBAction)credentialsSheetOK: (id)sender {
 	[credentialsSheet endEditingFor: nil];
 	[NSApp endSheet: credentialsSheet];
-	[credentialsSheet orderOut: self];	
+	[credentialsSheet orderOut: self];
+	[self setPassword:[passwdField stringValue]];
 }
 
 // Album selection
@@ -700,7 +706,7 @@
 	[self setNewAlbumNameIsEmpty:((newAlbumName == nil) || ([newAlbumName length] == 0))];
 }
 
-- (void) whichAlbum {
+- (BOOL) whichAlbum {
 	if (![self newAlbumNameIsEmpty]) {
 		// If the user specified a new album name, create it, otherwise just use the album
 		// that was selected in the popup list.
@@ -719,12 +725,14 @@
 								NSLocalizedString(@"You do not have permissions to create the album",
 												  @"Message telling the user that we could not create the album"),
 								NSLocalizedString(@"OK", @"OK"), nil, nil);
+				return FALSE;
 			}
-		}		
+		}	
 	}
 	[newAlbumName release];
 	newAlbumName = nil;
 	[albumsSheet makeKeyWindow];
+	return TRUE;
 }
 
 - (BOOL) newAlbumNameIsEmpty {

@@ -104,7 +104,7 @@
 					PBXFileDataSource_Warnings_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 128723314;
+			PBXPerProjectTemplateStateSaveDate = 128820167;
 			PBXPrepackagedSmartGroups_v2 = (
 				{
 					PBXTransientLocationAtTop = bottom;
@@ -281,21 +281,27 @@
 					};
 				},
 			);
-			PBXWorkspaceStateSaveDate = 128723314;
+			PBXWorkspaceStateSaveDate = 128820167;
 		};
 		perUserProjectItems = {
-			513A657E07AC27BC0075B3C2 = 513A657E07AC27BC0075B3C2;
-			513A658007AC27BC0075B3C2 = 513A658007AC27BC0075B3C2;
-			513A659507AC29600075B3C2 = 513A659507AC29600075B3C2;
+			5110BB5F07ADA56500D5BE63 = 5110BB5F07ADA56500D5BE63;
+			5110BB6007ADA56500D5BE63 = 5110BB6007ADA56500D5BE63;
+			5110BB6107ADA56500D5BE63 = 5110BB6107ADA56500D5BE63;
+			5110BB6207ADA56500D5BE63 = 5110BB6207ADA56500D5BE63;
+			5110BB6307ADA56500D5BE63 = 5110BB6307ADA56500D5BE63;
+			5110BB6407ADA56500D5BE63 = 5110BB6407ADA56500D5BE63;
+			5110BB6507ADA56500D5BE63 = 5110BB6507ADA56500D5BE63;
+			5110BB6607ADA56500D5BE63 = 5110BB6607ADA56500D5BE63;
+			5110BB6C07ADA5A300D5BE63 = 5110BB6C07ADA5A300D5BE63;
+			5127011107ACDA67008BFCBF = 5127011107ACDA67008BFCBF;
+			5127017F07ADA294008BFCBF = 5127017F07ADA294008BFCBF;
+			5127018207ADA294008BFCBF = 5127018207ADA294008BFCBF;
 			5152A34F07AC4A48002F12ED = 5152A34F07AC4A48002F12ED;
-			5152A35007AC4A48002F12ED = 5152A35007AC4A48002F12ED;
-			5152A35107AC4A48002F12ED = 5152A35107AC4A48002F12ED;
 			5152A35207AC4A48002F12ED = 5152A35207AC4A48002F12ED;
 			5152A35307AC4A48002F12ED = 5152A35307AC4A48002F12ED;
-			5152A35807AC4A48002F12ED = 5152A35807AC4A48002F12ED;
-			5152A35907AC4A48002F12ED = 5152A35907AC4A48002F12ED;
 		};
 		sourceControlManager = 514A609507A2EE72003C7B12;
+		userBookmarkGroup = 512700FB07AC4B32008BFCBF;
 		userBuildSettings = {
 		};
 	};
@@ -314,6 +320,140 @@
 			sepNavVisRect = "{{0, 0}, {711, 428}}";
 		};
 	};
+	5110BB5F07ADA56500D5BE63 = {
+		fRef = 5F22635606CE5E200029AD4D;
+		isa = PBXTextBookmark;
+		name = "CopperUploader.m: 375";
+		rLen = 0;
+		rLoc = 12009;
+		rType = 0;
+		vrLen = 612;
+		vrLoc = 11757;
+	};
+	5110BB6007ADA56500D5BE63 = {
+		fRef = 5F22633606CE2F0C0029AD4D;
+		isa = PBXTextBookmark;
+		rLen = 22;
+		rLoc = 22004;
+		rType = 0;
+	};
+	5110BB6107ADA56500D5BE63 = {
+		fRef = 5F22633606CE2F0C0029AD4D;
+		isa = PBXTextBookmark;
+		name = "CopperMExport.m: 629";
+		rLen = 0;
+		rLoc = 19682;
+		rType = 0;
+		vrLen = 458;
+		vrLoc = 19379;
+	};
+	5110BB6207ADA56500D5BE63 = {
+		fRef = 5F22635606CE5E200029AD4D;
+		isa = PBXTextBookmark;
+		name = "could not create album";
+		rLen = 22;
+		rLoc = 11937;
+		rType = 0;
+		vrLen = 539;
+		vrLoc = 11757;
+	};
+	5110BB6307ADA56500D5BE63 = {
+		fRef = 5F22633606CE2F0C0029AD4D;
+		isa = PBXTextBookmark;
+		name = "Could not create album";
+		rLen = 22;
+		rLoc = 22004;
+		rType = 0;
+		vrLen = 760;
+		vrLoc = 21549;
+	};
+	5110BB6407ADA56500D5BE63 = {
+		fRef = 5F22635606CE5E200029AD4D;
+		isa = PBXTextBookmark;
+		name = "Could not create album";
+		rLen = 22;
+		rLoc = 11937;
+		rType = 0;
+		vrLen = 539;
+		vrLoc = 11757;
+	};
+	5110BB6507ADA56500D5BE63 = {
+		fRef = 5F22633606CE2F0C0029AD4D;
+		isa = PBXTextBookmark;
+		name = "\t\t\t\tNSRunAlertPanel(NSLocalizedString(@\"Could not create album\", @\"Title of could not create album alert\"),\n\t\t\t\t\t\t\t\tNSLocalizedString(@\"You do not have permissions to create the album\",\n\t\t\t\t\t\t\t\t\t\t\t\t  @\"Message telling the user that we could not create the album\"),\n\t\t\t\t\t\t\t\tNSLocalizedString(@\"OK\", @\"OK\"), nil, nil);\n";
+		rLen = 317;
+		rLoc = 21964;
+		rType = 0;
+		vrLen = 633;
+		vrLoc = 21704;
+	};
+	5110BB6607ADA56500D5BE63 = {
+		fRef = 5F22635606CE5E200029AD4D;
+		isa = PBXTextBookmark;
+		name = "CopperUploader.m: 375";
+		rLen = 0;
+		rLoc = 12009;
+		rType = 0;
+		vrLen = 612;
+		vrLoc = 11757;
+	};
+	5110BB6C07ADA5A300D5BE63 = {
+		fRef = 5F22633606CE2F0C0029AD4D;
+		isa = PBXTextBookmark;
+		name = "Could not create album";
+		rLen = 22;
+		rLoc = 22004;
+		rType = 0;
+		vrLen = 653;
+		vrLoc = 21735;
+	};
+	512700FB07AC4B32008BFCBF = {
+		children = (
+			5127010E07AC5BBB008BFCBF,
+		);
+		isa = PBXBookmarkGroup;
+		name = Root;
+	};
+	5127010E07AC5BBB008BFCBF = {
+		fRef = 5F22635606CE5E200029AD4D;
+		isa = PBXTextBookmark;
+		name = "Add proper error handling for album not created";
+		rLen = 0;
+		rLoc = 11847;
+		rType = 0;
+		vrLen = 957;
+		vrLoc = 11043;
+	};
+	5127011107ACDA67008BFCBF = {
+		fRef = 5F22635606CE5E200029AD4D;
+		isa = PBXTextBookmark;
+		name = "CopperUploader.m: 520";
+		rLen = 0;
+		rLoc = 17599;
+		rType = 0;
+		vrLen = 629;
+		vrLoc = 17007;
+	};
+	5127017F07ADA294008BFCBF = {
+		fRef = 5F22633506CE2F0C0029AD4D;
+		isa = PBXTextBookmark;
+		name = "CopperMExport.h: 52";
+		rLen = 0;
+		rLoc = 2102;
+		rType = 0;
+		vrLen = 359;
+		vrLoc = 2627;
+	};
+	5127018207ADA294008BFCBF = {
+		fRef = 5F22633506CE2F0C0029AD4D;
+		isa = PBXTextBookmark;
+		name = passwdField;
+		rLen = 0;
+		rLoc = 2102;
+		rType = 0;
+		vrLen = 428;
+		vrLoc = 1894;
+	};
 	512EE2CC07A2EF6800AF54A5 = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {711, 741}}";
@@ -328,36 +468,6 @@
 			sepNavSelRange = "{31, 0}";
 			sepNavVisRect = "{{0, 607}, {711, 428}}";
 		};
-	};
-	513A657E07AC27BC0075B3C2 = {
-		fRef = 5F4E883606D48CD9003090DC;
-		isa = PBXTextBookmark;
-		name = "CopperResponse.m: 71";
-		rLen = 0;
-		rLoc = 2646;
-		rType = 0;
-		vrLen = 308;
-		vrLoc = 2789;
-	};
-	513A658007AC27BC0075B3C2 = {
-		fRef = 5F4E883606D48CD9003090DC;
-		isa = PBXTextBookmark;
-		name = "CopperResponse.m: 71";
-		rLen = 0;
-		rLoc = 2646;
-		rType = 0;
-		vrLen = 308;
-		vrLoc = 2789;
-	};
-	513A659507AC29600075B3C2 = {
-		fRef = 5F22635606CE5E200029AD4D;
-		isa = PBXTextBookmark;
-		name = "CopperUploader.m: 440";
-		rLen = 0;
-		rLoc = 14439;
-		rType = 0;
-		vrLen = 423;
-		vrLoc = 14240;
 	};
 	514A609507A2EE72003C7B12 = {
 		fallbackIsa = XCSourceControlManager;
@@ -391,23 +501,6 @@
 		vrLen = 530;
 		vrLoc = 1837;
 	};
-	5152A35007AC4A48002F12ED = {
-		fRef = 5F22633606CE2F0C0029AD4D;
-		isa = PBXTextBookmark;
-		name = "CopperMExport.m: 317";
-		rLen = 0;
-		rLoc = 9789;
-		rType = 0;
-		vrLen = 652;
-		vrLoc = 9584;
-	};
-	5152A35107AC4A48002F12ED = {
-		fRef = 5F22635606CE5E200029AD4D;
-		isa = PBXTextBookmark;
-		rLen = 5;
-		rLoc = 17675;
-		rType = 0;
-	};
 	5152A35207AC4A48002F12ED = {
 		fRef = 5F22635506CE5E200029AD4D;
 		isa = PBXTextBookmark;
@@ -423,30 +516,10 @@
 		isa = PBXTextBookmark;
 		name = "CopperMExport.m: 317";
 		rLen = 0;
-		rLoc = 9789;
+		rLoc = 9818;
 		rType = 0;
 		vrLen = 652;
 		vrLoc = 9584;
-	};
-	5152A35807AC4A48002F12ED = {
-		fRef = 5F22635606CE5E200029AD4D;
-		isa = PBXTextBookmark;
-		name = "CopperUploader.m: 440";
-		rLen = 0;
-		rLoc = 14439;
-		rType = 0;
-		vrLen = 423;
-		vrLoc = 14242;
-	};
-	5152A35907AC4A48002F12ED = {
-		fRef = 5F22635606CE5E200029AD4D;
-		isa = PBXTextBookmark;
-		name = "CopperUploader.m: 515";
-		rLen = 0;
-		rLoc = 17235;
-		rType = 0;
-		vrLen = 597;
-		vrLoc = 16905;
 	};
 	5F22632906CE2B260029AD4D = {
 		uiCtxt = {
@@ -457,16 +530,16 @@
 	};
 	5F22633506CE2F0C0029AD4D = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {741, 2421}}";
-			sepNavSelRange = "{23, 144}";
-			sepNavVisRect = "{{0, 238}, {741, 642}}";
+			sepNavIntBoundsRect = "{{0, 0}, {943, 2393}}";
+			sepNavSelRange = "{4960, 0}";
+			sepNavVisRect = "{{0, 0}, {943, 561}}";
 		};
 	};
 	5F22633606CE2F0C0029AD4D = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1130, 10485}}";
-			sepNavSelRange = "{9789, 0}";
-			sepNavVisRect = "{{0, 4316}, {744, 230}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1130, 10597}}";
+			sepNavSelRange = "{22303, 0}";
+			sepNavVisRect = "{{0, 9912}, {711, 428}}";
 			sepNavWindowFrame = "{{15, 269}, {750, 558}}";
 		};
 	};
@@ -487,15 +560,15 @@
 	5F22635506CE5E200029AD4D = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {746, 1679}}";
-			sepNavSelRange = "{2133, 14}";
-			sepNavVisRect = "{{0, 560}, {744, 230}}";
+			sepNavSelRange = "{2902, 0}";
+			sepNavVisRect = "{{0, 927}, {711, 428}}";
 		};
 	};
 	5F22635606CE5E200029AD4D = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1154, 7601}}";
-			sepNavSelRange = "{14187, 0}";
-			sepNavVisRect = "{{0, 5953}, {711, 428}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1154, 8343}}";
+			sepNavSelRange = "{12009, 0}";
+			sepNavVisRect = "{{0, 5128}, {744, 230}}";
 			sepNavWindowFrame = "{{38, 248}, {750, 558}}";
 		};
 	};
@@ -522,9 +595,9 @@
 	};
 	5F4E883606D48CD9003090DC = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {518, 2071}}";
-			sepNavSelRange = "{2646, 0}";
-			sepNavVisRect = "{{0, 1064}, {459, 183}}";
+			sepNavIntBoundsRect = "{{0, 0}, {943, 2296}}";
+			sepNavSelRange = "{5005, 0}";
+			sepNavVisRect = "{{0, 1735}, {943, 561}}";
 		};
 	};
 	5F72F20C06E879C400757FFA = {
@@ -579,7 +652,7 @@
 	5FE02A1C0710075600CDF3C6 = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {962, 1007}}";
-			sepNavSelRange = "{0, 44}";
+			sepNavSelRange = "{1465, 0}";
 			sepNavVisRect = "{{0, 0}, {711, 428}}";
 		};
 	};

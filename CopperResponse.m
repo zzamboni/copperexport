@@ -36,6 +36,11 @@
 
 #import "CopperResponse.h"
 
+@interface CopperResponse (PrivateAPI)
+
+- (void)removeStrPrefix:(NSString *)substr;
+
+@end
 
 @implementation CopperResponse
 + (id)responseWithString: (NSString *)responseString {
@@ -48,14 +53,16 @@
 		[self setStr: responseString];
 		
 		// Scan string
-		if ([str rangeOfString:@"SUCCESS"].location != NSNotFound) {
+		if ([str rangeOfString:@"SUCCESS" options:NSCaseInsensitiveSearch].location != NSNotFound) {
 			[self setStatus: CpgStatusOK];
 		}
-		else if ([str rangeOfString:@"Critical error"].location != NSNotFound) {
+		else if ([str rangeOfString:@"Critical error" options:NSCaseInsensitiveSearch].location != NSNotFound) {
 			[self setStatus: CpgStatusCritError];
+			[self removeStrPrefix:@"Critical error: "];
 		}
-		else if ([str rangeOfString:@"Error"].location != NSNotFound) {
+		else if ([str rangeOfString:@"Error" options:NSCaseInsensitiveSearch].location != NSNotFound) {
 			[self setStatus: CpgStatusError];
+			[self removeStrPrefix:@"Error: "];
 		}
 		else {
 			[self setStatus: CpgStatusUnknown];
@@ -143,5 +150,15 @@
 	error = anError;
 }
 */
+
+@end
+
+@implementation CopperResponse (PrivateAPI)
+
+- (void)removeStrPrefix:(NSString *)substr {
+	if ([str rangeOfString:substr options:(NSCaseInsensitiveSearch|NSAnchoredSearch)].location == 0) {
+		[self setStr:[str substringFromIndex:[substr length]]];
+	}
+}
 
 @end

@@ -43,8 +43,10 @@
 - (NSData *)generateFormData: (NSDictionary *)dict;
 
 - (void)scaleFile: (NSString *)file toMaxSize: (int)maxLength;
-- (NSString *)postForm: (NSMutableDictionary *)post_dict toURL: (NSString *)urlstr;
+- (NSString *)postForm: (NSMutableDictionary *)post_dict toURL: (NSString *)urlstr error: (NSError **)error;
 - (NSString *)urlplus: (NSString *)suffix;
+- (void)postError: (NSError *)error;
+- (void)postResponse: (CopperResponse *)resp;
 @end
 
 @implementation CopperUploader
@@ -178,10 +180,17 @@ The idea here is that we kick off the first image upload, and set our cursor to 
 // ===========================================================
 - (BOOL)login {
 	NSMutableDictionary *post_dict = [[NSMutableDictionary alloc] initWithCapacity: 2];
+	NSError *error;
 	[post_dict setValue:username		forKey:@"username"];
 	[post_dict setValue:password		forKey:@"password"];
 	
-	NSString *resultstr = [self postForm:post_dict toURL:[self urlplus:@"xp_publish.php?cmd=login&lang=english"]];
+	NSString *resultstr = [self postForm:post_dict 
+								   toURL:[self urlplus:@"xp_publish.php?cmd=login&lang=english"]
+								   error:&error];
+	if (!resultstr) {
+		[self postError: error];
+		return FALSE;
+	}
 	
 	if ([resultstr rangeOfString:@"Couldn't log in"].location != NSNotFound) {
 		NSLog(@"Could not log in.\n");
@@ -193,13 +202,19 @@ The idea here is that we kick off the first image upload, and set our cursor to 
 }
 
 // Get the list of albums and categories to which I can upload from the server.
-- (void)getPublishInfo {
+- (BOOL)getPublishInfo {
 	NSMutableDictionary *post_dict = [[NSMutableDictionary alloc] initWithCapacity:2];
+	NSError *error;
 	
 	// Get the "publish" form, which includes the possible albums.
-	NSString *resultstr = [self postForm:post_dict toURL:[self urlplus:@"xp_publish.php?cmd=publish&lang=english"]];
-	
-	//NSLog(@"Response string for publish information: %s", [resultstr cString]);
+	NSString *resultstr = [self postForm:post_dict 
+								   toURL:[self urlplus:@"xp_publish.php?cmd=publish&lang=english"]
+								   error:&error];
+	if (!resultstr) {
+		[self postError: error];
+		return FALSE;
+	}
+//	NSLog(@"Response string for publish information: %s", [resultstr cString]);
 	
 	if (albums) {
 		[albums removeAllObjects];
@@ -277,6 +292,7 @@ The idea here is that we kick off the first image upload, and set our cursor to 
 		canChooseCategory = NO;
 		NSLog(@"Could not find list of categories in response");
 	}
+	return TRUE;
 }
 
 // Return the list of albums
@@ -342,13 +358,20 @@ The idea here is that we kick off the first image upload, and set our cursor to 
 
 - (CopperAlbum *)createNewAlbum: (NSString *)albumName inCategory: (int)catnumber {
 	NSMutableDictionary *post_dict = [[NSMutableDictionary alloc] initWithCapacity: 2];
+	NSError *error;
 	[post_dict setValue:albumName		forKey:@"new_alb_name"];
 	[post_dict setValue:[NSString stringWithFormat:@"%d", catnumber]	forKey:@"cat"];
 	
-	NSString *resultstr = [self postForm:post_dict toURL:[self urlplus:@"/xp_publish.php?cmd=create_album&lang=english"]];
+	NSString *resultstr = [self postForm:post_dict 
+								   toURL:[self urlplus:@"xp_publish.php?cmd=create_album&lang=english"]
+								   error:&error];
+	if (!resultstr) {
+		[self postError: error];
+		return nil;
+	}
 	
 	if ([resultstr rangeOfString:@"was created"].location == NSNotFound) {
-		NSLog(@"Could not create album %s - permission denied", [albumName cString]);
+		NSLog(@"Error: Could not create album '%s' - permission denied", [albumName cString]);
 		return nil;
 	}
 	else {
@@ -427,30 +450,24 @@ The idea here is that we kick off the first image upload, and set our cursor to 
 	[post_dict setValue:[image title] forKey:@"title"];
 	[post_dict setValue:[image descriptionText] forKey:@"caption"];
 	[post_dict setValue:@"" forKey:@"keywords"];
+	NSError *error;
 	
 	NSString *resultstr = [self postForm:post_dict 
 								   toURL:[self urlplus:
 									   [NSString stringWithFormat:@"xp_publish.php?cmd=add_picture&album=%d&lang=english",
-										   [selectedAlbum number]]]];
-	
-//	NSLog(@"Result from post: %s", [resultstr cString]);
-
-	CopperResponse *resp = [CopperResponse responseWithString:resultstr];
-	[(NSObject *)[self delegate] performSelectorOnMainThread: @selector(uploaderReceivedResponse:)
-												  withObject: resp
-											   waitUntilDone: YES];
-
-	/*
-	if ([resultstr rangeOfString:@"Error"].location != NSNotFound) {
-		NSLog(@"Error uploading files - aborting\n");
-		[self cancelUpload];
-		return;
+										   [selectedAlbum number]]]
+								   error:&error];
+	if (!resultstr) {
+		[self postError: error];
 	}
 	else {
-//		NSLog(@"Success!");
+		//	NSLog(@"Result from post: %s", [resultstr cString]);
+		
+		CopperResponse *resp = [CopperResponse responseWithString:resultstr];
+		[(NSObject *)[self delegate] performSelectorOnMainThread: @selector(uploaderReceivedResponse:)
+													  withObject: resp
+												   waitUntilDone: YES];		
 	}
-	 */
-
 	
 	[(NSObject *)[self delegate] performSelectorOnMainThread: @selector(uploaderDidUploadImageAtIndex:)
 												  withObject: [NSNumber numberWithInt: cursor]
@@ -505,11 +522,11 @@ The idea here is that we kick off the first image upload, and set our cursor to 
 	[sips release];
 }
 
-- (NSString *)postForm: (NSMutableDictionary *)post_dict toURL: (NSString *)urlstr {
+- (NSString *)postForm: (NSMutableDictionary *)post_dict toURL: (NSString *)urlstr error: (NSError **)err {
 	NSData *regData = [self generateFormData:post_dict];
 	NSURL* url = [NSURL URLWithString:urlstr];
 	
-//	NSLog(@"Posting to URL: %s", [urlstr cString]);
+	NSLog(@"Posting to URL: %s", [urlstr cString]);
 	
 	NSMutableURLRequest* post = [NSMutableURLRequest requestWithURL:url];
 	
@@ -518,25 +535,61 @@ The idea here is that we kick off the first image upload, and set our cursor to 
 	[post setHTTPMethod:@"POST"];
 	[post setHTTPBody:regData];
 	
-	NSURLResponse *response;
-	NSError *error;
+	NSHTTPURLResponse *response;
 	NSData *result = [NSURLConnection sendSynchronousRequest: post
 										   returningResponse: &response
-													   error: &error];
+													   error: err];
 	
-	if (error) {
-		NSLog(@"###### Error:\n");
-		NSLog([error localizedDescription]);
+	if (*err) {
+		NSLog(@"###### Error: code=%d, domain=%s, localizedDesc=%s", [*err code], [[*err domain] cString], [[*err localizedDescription] cString]);
+		return nil;
 	}
-	
+	if ([response statusCode] < 200 || [response statusCode] >= 300) {
+		NSDictionary *errdict;
+		
+		NSLog(@"HTTP status code: %d, response string: %s", [response statusCode], [[NSHTTPURLResponse localizedStringForStatusCode: [response statusCode]] cString]);
+
+		if ([response statusCode] == 404) {
+			errdict = [NSDictionary dictionaryWithObject:@"The URL you specified could not be found. Please double-check your settings."
+												  forKey:NSLocalizedDescriptionKey];
+		}
+		else {
+			errdict = [NSDictionary dictionaryWithObject:[NSString stringWithFormat:@"HTTP Error %d: %s",
+																[response statusCode],
+																[[NSHTTPURLResponse localizedStringForStatusCode: [response statusCode]] cString]]
+												  forKey:NSLocalizedDescriptionKey];
+		}
+		*err = [NSError errorWithDomain:NSURLErrorDomain code:[response statusCode] userInfo:errdict];
+		return nil;
+	}
+		
 	return [[[NSString alloc] initWithData:result encoding:NSISOLatin1StringEncoding] autorelease];
 }
 
 - (NSString *)urlplus: (NSString *)suffix {
 	NSMutableString *urlString = [NSMutableString stringWithCapacity: 100];
 	[urlString appendString: [self cpgurl]];
+	if ([urlString characterAtIndex:([urlString length]-1)] != '/')
+		[urlString appendString:@"/"];
 	[urlString appendString: suffix];
 	return urlString;
+}
+
+- (void)postError: (NSError *)error {
+	CopperResponse *resp;
+	if ([error code] == -1003)
+		resp = [CopperResponse responseWithString:NSLocalizedString(@"Error: Host not found. Please make sure the hostname you entered is correct.",
+																	@"Host not found error. Start this string with 'Error: '")];
+	else
+		resp = [CopperResponse responseWithString:[NSString stringWithFormat:@"Error: %s (code %d)", [[error localizedDescription] cString], [error code]]];
+	[self postResponse: resp];
+	[self cancelUpload];
+}
+
+- (void)postResponse: (CopperResponse *)resp {
+	[(NSObject *)[self delegate] performSelectorOnMainThread: @selector(uploaderReceivedResponse:)
+												  withObject: resp
+											   waitUntilDone: YES];
 }
 
 @end

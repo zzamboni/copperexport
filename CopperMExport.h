@@ -49,9 +49,7 @@
 
 	IBOutlet NSTextField *resizeWidth;
 	IBOutlet NSTextField *resizeHeight;
-	
-	IBOutlet NSSecureTextField *passwdField;
-	
+		
 //	IBOutlet NSMatrix *accessRadio;
 //	IBOutlet NSButton *familyChk, *friendsChk;
 		
@@ -88,7 +86,7 @@
 	NSString *password;
 	NSString *cpgurl;
 	IBOutlet NSTextField *usernameField;
-	IBOutlet NSTextField *passwordField;
+	IBOutlet NSSecureTextField *passwdField;
 	IBOutlet NSTextField *cpgurlField;
 
 	// Image View
@@ -165,7 +163,7 @@
 
 - (BOOL) newAlbumNameIsEmpty;
 - (void) setNewAlbumNameIsEmpty: (BOOL)newvalue;
-- (void) whichAlbum;
+- (BOOL) whichAlbum;
 - (BOOL) canCreateAlbums;
 - (void) setCanCreateAlbums: (BOOL)newvalue;
 

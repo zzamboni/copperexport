@@ -81,7 +81,7 @@
 - (void)beginUpload;
 - (void)cancelUpload;
 	
-- (void)getPublishInfo;
+- (BOOL)getPublishInfo;
 - (NSMutableArray *)listOfAlbums;
 
 - (CopperAlbum *)createNewAlbum: (NSString *)albumName inCategory: (int)catnumber;

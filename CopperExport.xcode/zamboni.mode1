@@ -352,9 +352,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>5152A33D07AC2987002F12ED</string>
+				<string>5110BB5B07ADA40700D5BE63</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>5152A33E07AC2987002F12ED</string>
+				<string>5110BB5C07ADA40700D5BE63</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -382,11 +382,9 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>514A609C07A2EE95003C7B12</string>
-		<string>519DF8D007A409DD00FDA8B5</string>
 		<string>/Users/zamboni/Devel/Cocoa/CopperExport/CopperExport.xcode</string>
-		<string>5152A35707AC4A48002F12ED</string>
 		<string>1C530D57069F1CE1000CFCEE</string>
+		<string>5110BB5D07ADA40700D5BE63</string>
 	</array>
 	<key>WindowString</key>
 	<string>282 265 690 397 0 0 1280 832 </string>
@@ -418,11 +416,11 @@
 										<key>PBXProjectModuleLabel</key>
 										<string>CopperUploader.m</string>
 										<key>bookmark</key>
-										<string>5152A35807AC4A48002F12ED</string>
+										<string>5127018E07ADA37B008BFCBF</string>
 										<key>history</key>
 										<array>
 											<string>513A657E07AC27BC0075B3C2</string>
-											<string>513A659507AC29600075B3C2</string>
+											<string>5127012007AD15D6008BFCBF</string>
 										</array>
 										<key>prevStack</key>
 										<array>
@@ -440,7 +438,7 @@
 								<key>Frame</key>
 								<string>{{0, 0}, {500, 215}}</string>
 								<key>RubberWindowFrame</key>
-								<string>292 258 500 500 0 0 1280 832 </string>
+								<string>699 168 500 500 0 0 1280 832 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
@@ -466,7 +464,7 @@
 								<key>Frame</key>
 								<string>{{0, 222}, {500, 236}}</string>
 								<key>RubberWindowFrame</key>
-								<string>292 258 500 500 0 0 1280 832 </string>
+								<string>699 168 500 500 0 0 1280 832 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXBuildResultsModule</string>
@@ -489,14 +487,14 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>514A609C07A2EE95003C7B12</string>
-				<string>5152A34307AC2A16002F12ED</string>
+				<string>5127012207AD15D6008BFCBF</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.build</string>
 			<key>WindowString</key>
-			<string>292 258 500 500 0 0 1280 832 </string>
+			<string>699 168 500 500 0 0 1280 832 </string>
 			<key>WindowToolGUID</key>
 			<string>514A609C07A2EE95003C7B12</string>
 			<key>WindowToolIsVisible</key>
@@ -623,7 +621,7 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CDD528C0622207200134675</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>CopperUploader.m</string>
+										<string>CopperMExport.m</string>
 										<key>PBXSplitModuleInNavigatorKey</key>
 										<dict>
 											<key>Split0</key>
@@ -631,19 +629,28 @@
 												<key>PBXProjectModuleGUID</key>
 												<string>1CD0528D0623707200166675</string>
 												<key>PBXProjectModuleLabel</key>
-												<string>CopperUploader.m</string>
+												<string>CopperMExport.m</string>
 												<key>bookmark</key>
-												<string>5152A35907AC4A48002F12ED</string>
+												<string>5110BB6C07ADA5A300D5BE63</string>
 												<key>history</key>
 												<array>
 													<string>5152A34F07AC4A48002F12ED</string>
-													<string>5152A35007AC4A48002F12ED</string>
-													<string>5152A35107AC4A48002F12ED</string>
+													<string>5127017F07ADA294008BFCBF</string>
+													<string>5110BB5F07ADA56500D5BE63</string>
+													<string>5110BB6007ADA56500D5BE63</string>
 												</array>
 												<key>prevStack</key>
 												<array>
 													<string>5152A35207AC4A48002F12ED</string>
 													<string>5152A35307AC4A48002F12ED</string>
+													<string>5127011107ACDA67008BFCBF</string>
+													<string>5127018207ADA294008BFCBF</string>
+													<string>5110BB6107ADA56500D5BE63</string>
+													<string>5110BB6207ADA56500D5BE63</string>
+													<string>5110BB6307ADA56500D5BE63</string>
+													<string>5110BB6407ADA56500D5BE63</string>
+													<string>5110BB6507ADA56500D5BE63</string>
+													<string>5110BB6607ADA56500D5BE63</string>
 												</array>
 											</dict>
 											<key>SplitCount</key>
@@ -704,8 +711,8 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C530D57069F1CE1000CFCEE</string>
-				<string>5152A35507AC4A48002F12ED</string>
-				<string>5152A35607AC4A48002F12ED</string>
+				<string>5110BB6807ADA56500D5BE63</string>
+				<string>5110BB6907ADA56500D5BE63</string>
 				<string>1CDD528C0622207200134675</string>
 				<string>1CD0528E0623707200166675</string>
 			</array>
@@ -1044,8 +1051,6 @@
 					<key>Dock</key>
 					<array>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -1081,7 +1086,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>513A651107AC0DF80075B3C2</string>
-				<string>513A651207AC0DF80075B3C2</string>
+				<string>5127011507ACDA67008BFCBF</string>
 				<string>513A651007AC0DF80075B3C2</string>
 			</array>
 			<key>WindowString</key>
