@@ -731,7 +731,7 @@ function create_album()
         $category = FIRST_USER_CAT + USER_ID;
     }
 
-    $query = "INSERT INTO {$CONFIG['TABLE_ALBUMS']} (category, title, uploads, pos) VALUES ('$category', '" . addslashes($HTTP_POST_VARS['new_alb_name']) . "', 'NO',  '0')";
+    $query = "INSERT INTO {$CONFIG['TABLE_ALBUMS']} (category, title, uploads, pos, description) VALUES ('$category', '" . addslashes($HTTP_POST_VARS['new_alb_name']) . "', 'NO',  '0', '" . addslashes($HTTP_POST_VARS['new_alb_description']) . "')";
     db_query($query);
 
     $params = array('{NEW_ALB_CREATED}' => sprintf($lang_xp_publish_php['new_alb_created'], $HTTP_POST_VARS['new_alb_name']),
@@ -757,9 +757,6 @@ function process_picture()
     if (!USER_ID || !USER_CAN_UPLOAD_PICTURES) simple_die(ERROR, $lang_errors['perm_denied'], __FILE__, __LINE__);
 
     $album = (int)$HTTP_GET_VARS['album'];
-//    $title = '';
-//    $caption = '';
-//    $keywords = '';
     $title = $HTTP_POST_VARS['title'];
     $caption = $HTTP_POST_VARS['caption'];
     $keywords = $HTTP_POST_VARS['keywords'];
