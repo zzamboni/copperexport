@@ -7,16 +7,16 @@
 	* Allow setting the description for new albums (requires an
 	  additional server-side patch to the xp_publish.php file, see the
 	  ReadMe).
-	* More intelligent handling of URLs (you can omit the http:// at
-  	  the beginning, and properly handles a slash or "/index.php" at the
-	  end).
+	* Improved checking and cleanup of URLs (you can omit the http://
+	  at the beginning, and properly handles a slash or "/index.php"
+	  at the end).
 	* Improved error checking and reporting.
 	* Conversion to Latin1 encoding for proper interpretation by
 	  Coppermine.
 	* Populate keywords correctly (they were always set to empty).
 	* Made changes to support iPhoto 5 (code by Fraser Speirs).
 	* Fixed bugs in handling of repeated album and category names.
-	* Other miscellaneous bug fixes.
+	* Other miscellaneous bug fixes and improvements.
 
 2005-01-24  Diego Zamboni  <copperexport@zzamboni.org>
 
