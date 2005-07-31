@@ -1,6 +1,6 @@
 //
 //  CpgImageRecord.m
-//  FlickrExport
+//  Borrowed from ImageRecord.m in FlickrExport
 //
 // Copyright (c) 2004, Fraser Speirs
 // All rights reserved.
