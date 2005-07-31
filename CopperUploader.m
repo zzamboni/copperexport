@@ -43,6 +43,7 @@
 - (NSData *)generateFormData: (NSDictionary *)dict;
 
 - (void)scaleFile: (NSString *)file toMaxSize: (int)maxLength;
+- (void)convertFile: (NSString *)file;
 - (NSString *)postForm: (NSMutableDictionary *)post_dict toURL: (NSString *)urlstr error: (NSError **)error;
 - (NSString *)urlplus: (NSString *)suffix;
 - (void)postError: (NSError *)error;
@@ -187,6 +188,7 @@ The idea here is that we kick off the first image upload, and set our cursor to 
 	NSString *resultstr = [self postForm:post_dict 
 								   toURL:[self urlplus:@"xp_publish.php?cmd=login&lang=english"]
 								   error:&error];
+//	NSLog(@"Response string for login: %s", [resultstr cString]);
 	if (!resultstr) {
 		[self postError: error];
 		return FALSE;
@@ -383,11 +385,26 @@ The idea here is that we kick off the first image upload, and set our cursor to 
 
 	CpgImageRecord *image = [imageRecords objectAtIndex: cursor];
 	NSLog([@"Uploading image " stringByAppendingString:[image filePath]]);
-	NSString *tmpfile = [@"/tmp/" stringByAppendingPathComponent:[[image filePath] lastPathComponent]];
+	CFUUIDRef cfUUID = CFUUIDCreate(kCFAllocatorDefault);
+	
+	NSString *tmpfile = [NSString stringWithFormat: @"/tmp/%@.jpg", (NSString *)CFUUIDCreateString(kCFAllocatorDefault, cfUUID)];
+//	NSString *tmpfile = [@"/tmp/" stringByAppendingPathComponent:[[image filePath] lastPathComponent]];
 	
 	NS_DURING
 		NSFileManager *man = [NSFileManager defaultManager];
 		[man copyPath: [image filePath] toPath: tmpfile handler: nil];
+		
+		if(![image isJpeg]) {
+			[(NSObject *)[self delegate] performSelectorOnMainThread: @selector(uploaderWillConvertImageAtIndex:)
+														  withObject: [NSNumber numberWithInt: cursor]
+													   waitUntilDone: YES];
+			
+			[self convertFile: tmpfile];
+			
+			[(NSObject *)[self delegate] performSelectorOnMainThread: @selector(uploaderDidConvertImageAtIndex:)
+														  withObject: [NSNumber numberWithInt: cursor]
+													   waitUntilDone: YES];
+		}
 		
 		if([image needsResize]) {
 			[(NSObject *)[self delegate] performSelectorOnMainThread: @selector(uploaderWillResizeImageAtIndex:)
@@ -507,6 +524,18 @@ The idea here is that we kick off the first image upload, and set our cursor to 
 	[sips release];
 }
 
+
+- (void)convertFile: (NSString *)file {
+	NSTask *sips = [[NSTask alloc] init];
+	[sips setLaunchPath: @"/usr/bin/sips"];
+	
+	NSArray *args = [NSArray arrayWithObjects: file, @"--setProperty", @"format", @"jpeg", nil];
+	[sips setArguments: args];
+	[sips launch];
+	[sips waitUntilExit];
+	[sips release];
+}
+
 - (NSString *)postForm: (NSMutableDictionary *)post_dict toURL: (NSString *)urlstr error: (NSError **)err {
 	NSData *regData = [self generateFormData:post_dict];
 	NSURL* url = [NSURL URLWithString:urlstr];
@@ -514,6 +543,9 @@ The idea here is that we kick off the first image upload, and set our cursor to 
 	NSLog(@"Posting to URL: %s", [urlstr cString]);
 	
 	NSMutableURLRequest* post = [NSMutableURLRequest requestWithURL:url];
+	// Fix Accept- headers
+//	[post setValue:@"*" forHTTPHeaderField:@"Accept-Language"];
+//	[post setValue:@"*" forHTTPHeaderField:@"Accept-Encoding"];
 	
 	NSString *boundaryString = [NSString stringWithFormat: @"multipart/form-data; boundary=%@", formBoundary];
 	[post addValue: boundaryString forHTTPHeaderField: @"Content-Type"];
@@ -529,6 +561,8 @@ The idea here is that we kick off the first image upload, and set our cursor to 
 		NSLog(@"###### Error: code=%d, domain=%s, localizedDesc=%s", [*err code], [[*err domain] cString], [[*err localizedDescription] cString]);
 		return nil;
 	}
+//	NSLog(@"HTTP response headers: %@\n", [response allHeaderFields]);
+	
 	if ([response statusCode] < 200 || [response statusCode] >= 300) {
 		NSDictionary *errdict;
 		

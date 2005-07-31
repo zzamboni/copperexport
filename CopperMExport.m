@@ -141,6 +141,9 @@
 			if([anImage needsResize]) {
 				progressSteps += 2.0;
 			}
+			if(![anImage isJpeg]) {
+				progressSteps += 2.0;
+			}			
 		}
 		if (![self newAlbumNameIsEmpty]) {
 			progressSteps += 2.0;
@@ -284,6 +287,15 @@
 }
 
 - (void)uploaderDidResizeImageAtIndex: (NSNumber *)idx {
+	[progBar incrementBy: 1.0];	
+}
+
+- (void)uploaderWillConvertImageAtIndex: (NSNumber *)idx {
+	[progBar incrementBy: 1.0];
+	[progText setStringValue: [NSString stringWithFormat:@"Converting %d of %d to JPEG", [idx intValue]+1, [exportManager imageCount]]];
+}
+
+- (void)uploaderDidConvertImageAtIndex: (NSNumber *)idx {
 	[progBar incrementBy: 1.0];	
 }
 

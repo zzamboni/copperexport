@@ -48,6 +48,8 @@
 - (void)uploaderWillUploadImageAtIndex: (NSNumber *)idx;
 - (void)uploaderReceivedResponse: (CopperResponse *)response;
 - (void)uploaderDidUploadImageAtIndex: (NSNumber *)idx;
+- (void)uploaderWillConvertImageAtIndex: (NSNumber *)idx;
+- (void)uploaderDidConvertImageAtIndex: (NSNumber *)idx;
 - (void)uploaderDidEndProcess;
 - (void)uploaderDidCancelProcess;
 @end

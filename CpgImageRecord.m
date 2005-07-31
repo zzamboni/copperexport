@@ -1,7 +1,6 @@
-// Originally called ImageRecord.m
 //
 //  CpgImageRecord.m
-//  CopperExport
+//  FlickrExport
 //
 // Copyright (c) 2004, Fraser Speirs
 // All rights reserved.
@@ -39,7 +38,12 @@
 - (void)populateExif;
 @end
 
+static NSLock *nsimageLock;
+
 @implementation CpgImageRecord
++ (void)initialize {
+	nsimageLock = [[NSLock alloc] init];
+}
 
 + (id)recordFromExporter: (ExportMgr *)exportManager atIndex: (int)idx {
 	CpgImageRecord *rec = [[CpgImageRecord alloc] initWithImageManager: exportManager index: idx];
@@ -61,9 +65,11 @@
 		else {
 			NSLog(@"No image path for image %d", idx);
 		}
-
-		[self populateExif];
 		
+		// Image format
+		[self setImageFormat: [exportManager getExtensionForImageFormat: [exportManager imageFormatAtIndex: idx]]];
+
+
 		if(usingiPhoto4) {
 			if([iPhotoMetadata objectForKey:@"Annotation"])
 				[self setDescriptionText: [iPhotoMetadata objectForKey:@"Annotation"]];
@@ -93,30 +99,10 @@
 		[self setNewWidth: imageSize.width];
 		[self setNewHeight: imageSize.height];
 		
+		
 	// Thumbnail Data
-		NSString *thumbPath = [exportManager thumbnailPathAtIndex: idx];
-		if(thumbPath) {
-			NSData *data = [NSData dataWithContentsOfFile: thumbPath];
-			NSSize thumbSize = [self landscape] ? NSMakeSize(200.0,150.0) : NSMakeSize(112.5, 150.0);
-				// Do some jiggery-pokery
-			NSImage *thumb = [[NSImage alloc] initWithData: data];
-			[thumb setScalesWhenResized: YES];
-			NSImage *sizedThumb = [[NSImage alloc] initWithSize: thumbSize];
-			
-			[sizedThumb lockFocus];
-			[[NSGraphicsContext currentContext] setImageInterpolation:NSImageInterpolationHigh];
-			[thumb setSize: thumbSize];
-			[thumb compositeToPoint: NSZeroPoint operation: NSCompositeCopy];
-			[sizedThumb unlockFocus];
-			
-			[self setThumbnailData: [sizedThumb TIFFRepresentation]];
-			
-			[thumb release];
-			[sizedThumb release];
-			
-		} else {
-			[self setThumbnailData: nil];
-		}
+		thumbnailPath = [exportManager thumbnailPathAtIndex: idx];
+		[self setThumbnailData: [NSData dataWithContentsOfFile: thumbnailPath]];
 		
 		[self setTags: [NSMutableArray array]];
 
@@ -146,6 +132,7 @@
 	}
 	return self;
 }
+
 
 - (void)clearAllTags {
 	[self setTags: [NSMutableArray array]];
@@ -409,6 +396,29 @@
     [exif release];
     exif = anExif;
 }
+
+// ===========================================================
+// - imageFormat:
+// ===========================================================
+- (NSString *)imageFormat {
+    return imageFormat; 
+}
+
+// ===========================================================
+// - setImageFormat:
+// ===========================================================
+- (void)setImageFormat:(NSString *)anImageFormat {
+    if (imageFormat != anImageFormat) {
+        [anImageFormat retain];
+        [imageFormat release];
+        imageFormat = anImageFormat;
+    }
+}
+
+- (BOOL)isJpeg {
+	return [[self imageFormat] isEqualToString: @"jpg"];
+}
+
 @end
 
 @implementation CpgImageRecord (Private)

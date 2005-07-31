@@ -1,7 +1,6 @@
-// Originally called ImageRecord.h
 //
 //  CpgImageRecord.h
-//  CopperExport
+//  FlickrExport
 //
 // Copyright (c) 2004, Fraser Speirs
 // All rights reserved.
@@ -33,7 +32,6 @@
 //
 
 #import <Cocoa/Cocoa.h>
-
 @class ExportMgr;
 
 @interface CpgImageRecord : NSObject {
@@ -48,8 +46,10 @@
 	int newWidth;
 	int newHeight;
 	NSData *thumbnailData;
+	NSString *thumbnailPath;
 	NSSize originalSize;
 	NSDictionary *exif;
+	NSString *imageFormat;
 }
 
 + (id)recordFromExporter: (ExportMgr *)exportManager atIndex: (int)idx;
@@ -99,4 +99,9 @@
 
 - (NSDictionary *)exif;
 - (void)setExif:(NSDictionary *)anExif;
+
+- (NSString *)imageFormat;
+- (void)setImageFormat:(NSString *)anImageFormat;
+
+- (BOOL)isJpeg;
 @end
