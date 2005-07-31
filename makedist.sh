@@ -6,7 +6,7 @@ DSTDIR=..
 
 # First the standard distribution
 
-DISTFILES="build/CopperExport.iPhotoExporter ReadMe.rtf ChangeLog xp_publish.php xp_publish.php.cpg132.patch"
+DISTFILES="build/CopperExport.iPhotoExporter ReadMe.rtf ChangeLog cpg-patches"
 
 VERSION=`perl -ne '/CFBundleVersion/ && do { $_ = <> ; /<string>(.+)<\/string>/ && print "$1\n" }' Info.plist`
 if [ -z "$VERSION" ]; then
@@ -24,9 +24,9 @@ rm -rf "$DIR"
 
 # And then the source zip
 
-DIR="$TMPDIR/CopperExportSrc-$VERSION"
-
-svn export . "$DIR" || exit 6
-(cd "$TMPDIR"; zip -r "CopperExportSrc-$VERSION.zip" "CopperExportSrc-$VERSION" || exit 7)
-mv "$TMPDIR/CopperExportSrc-$VERSION.zip" "$DSTDIR" || exit 8
-rm -rf "$DIR"
+#DIR="$TMPDIR/CopperExportSrc-$VERSION"
+#
+#svn export . "$DIR" || exit 6
+#(cd "$TMPDIR"; zip -r "CopperExportSrc-$VERSION.zip" "CopperExportSrc-$VERSION" || exit 7)
+#mv "$TMPDIR/CopperExportSrc-$VERSION.zip" "$DSTDIR" || exit 8
+#rm -rf "$DIR"
