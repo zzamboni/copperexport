@@ -1,0 +1,24 @@
+--- xp_publish.php.141	Sun Jul 24 22:27:42 2005
++++ xp_publish.php	Sun Jul 24 22:32:52 2005
+@@ -676,7 +676,7 @@
+         $category = FIRST_USER_CAT + USER_ID;
+     }
+ 
+-    $query = "INSERT INTO {$CONFIG['TABLE_ALBUMS']} (category, title, uploads, pos) VALUES ('$category', '" . addslashes($_POST['new_alb_name']) . "', 'NO',  '0')";
++    $query = "INSERT INTO {$CONFIG['TABLE_ALBUMS']} (category, title, uploads, pos, description) VALUES ('$category', '" . addslashes($_POST['new_alb_name']) . "', 'NO',  '0', '" . addslashes($_POST['new_alb_description']) . "')";
+     cpg_db_query($query);
+ 
+     $params = array('{NEW_ALB_CREATED}' => sprintf($lang_xp_publish_php['new_alb_created'], $_POST['new_alb_name']),
+@@ -702,9 +702,9 @@
+     if (!USER_ID || !USER_CAN_UPLOAD_PICTURES) simple_die(ERROR, $lang_errors['perm_denied'], __FILE__, __LINE__);
+ 
+     $album = (int)$_GET['album'];
+-    $title = '';
+-    $caption = '';
+-    $keywords = '';
++    $title = addslashes($_POST['title']);
++    $caption = addslashes($_POST['caption']);
++    $keywords = addslashes($_POST['keywords']);
+     $user1 = '';
+     $user2 = '';
+     $user3 = '';
