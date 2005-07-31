@@ -27,7 +27,7 @@
 				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
 				PBXFileTableDataSourceColumnWidthsKey = (
 					20,
-					226,
+					227,
 					20,
 					40,
 					43,
@@ -120,7 +120,7 @@
 					PBXFileDataSource_Warnings_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 130882386;
+			PBXPerProjectTemplateStateSaveDate = 139268246;
 			PBXPrepackagedSmartGroups_v2 = (
 				{
 					PBXTransientLocationAtTop = bottom;
@@ -297,15 +297,7 @@
 					};
 				},
 			);
-			PBXWorkspaceStateSaveDate = 130882386;
-		};
-		perUserProjectItems = {
-			5197F23A07CD205C00544684 = 5197F23A07CD205C00544684;
-			5197F23C07CD205C00544684 = 5197F23C07CD205C00544684;
-			5197F24007CD36DE00544684 = 5197F24007CD36DE00544684;
-			5197F24107CD36DE00544684 = 5197F24107CD36DE00544684;
-			5197F24207CD36DE00544684 = 5197F24207CD36DE00544684;
-			5197F26207CD420900544684 = 5197F26207CD420900544684;
+			PBXWorkspaceStateSaveDate = 139268246;
 		};
 		sourceControlManager = 514A609507A2EE72003C7B12;
 		userBookmarkGroup = 512700FB07AC4B32008BFCBF;
@@ -339,7 +331,7 @@
 		isa = PBXTextBookmark;
 		name = "Add proper error handling for album not created";
 		rLen = 0;
-		rLoc = 9508;
+		rLoc = 9560;
 		rType = 0;
 		vrLen = 957;
 		vrLoc = 11043;
@@ -370,58 +362,6 @@
 	514A609607A2EE72003C7B12 = {
 		indexTemplatePath = "";
 		isa = PBXCodeSenseManager;
-		usesDefaults = 1;
-		wantsCodeCompletion = 1;
-		wantsCodeCompletionAutoSuggestions = 0;
-		wantsCodeCompletionCaseSensitivity = 0;
-		wantsCodeCompletionListAlways = 0;
-		wantsCodeCompletionOnlyMatchingItems = 1;
-		wantsCodeCompletionParametersIncluded = 1;
-		wantsCodeCompletionPlaceholdersInserted = 1;
-		wantsCodeCompletionTabCompletes = 1;
-		wantsIndex = 1;
-	};
-	5197F23A07CD205C00544684 = {
-		fRef = 5FBB241D06D36F3300AE08E9;
-		isa = PBXBookmark;
-	};
-	5197F23C07CD205C00544684 = {
-		fRef = 5FBB241D06D36F3300AE08E9;
-		isa = PBXBookmark;
-	};
-	5197F24007CD36DE00544684 = {
-		fRef = 5F22633606CE2F0C0029AD4D;
-		isa = PBXTextBookmark;
-		name = "CopperMExport.m: 324";
-		rLen = 0;
-		rLoc = 10023;
-		rType = 0;
-		vrLen = 234;
-		vrLoc = 9989;
-	};
-	5197F24107CD36DE00544684 = {
-		fRef = 8D5B49B7048680CD000E48DA;
-		isa = PBXBookmark;
-	};
-	5197F24207CD36DE00544684 = {
-		fRef = 5F22633606CE2F0C0029AD4D;
-		isa = PBXTextBookmark;
-		name = "CopperMExport.m: 324";
-		rLen = 0;
-		rLoc = 10023;
-		rType = 0;
-		vrLen = 234;
-		vrLoc = 9989;
-	};
-	5197F26207CD420900544684 = {
-		fRef = 8D5B49B7048680CD000E48DA;
-		isa = PBXTextBookmark;
-		name = "Info.plist: 20";
-		rLen = 0;
-		rLoc = 650;
-		rType = 0;
-		vrLen = 0;
-		vrLoc = 0;
 	};
 	51ADB98D07B40DB4007C59A3 = {
 		activeExec = 0;
@@ -442,9 +382,9 @@
 	};
 	5F22633606CE2F0C0029AD4D = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1130, 11339}}";
-			sepNavSelRange = "{24336, 0}";
-			sepNavVisRect = "{{0, 10911}, {711, 428}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1040, 11381}}";
+			sepNavSelRange = "{2794, 0}";
+			sepNavVisRect = "{{0, 1025}, {711, 428}}";
 			sepNavWindowFrame = "{{15, 269}, {750, 558}}";
 		};
 	};
@@ -473,8 +413,8 @@
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {1154, 8777}}";
 			sepNavSelRange = "{6197, 14}";
-			sepNavVisRect = "{{0, 2436}, {711, 428}}";
-			sepNavWindowFrame = "{{15, 269}, {750, 558}}";
+			sepNavVisRect = "{{0, 2313}, {711, 428}}";
+			sepNavWindowFrame = "{{100, 244}, {750, 558}}";
 		};
 	};
 	5F2FA5100703578D00A3DFD2 = {
@@ -500,9 +440,9 @@
 	};
 	5F4E883606D48CD9003090DC = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {711, 2338}}";
-			sepNavSelRange = "{2855, 0}";
-			sepNavVisRect = "{{0, 0}, {711, 428}}";
+			sepNavIntBoundsRect = "{{0, 0}, {744, 2338}}";
+			sepNavSelRange = "{2728, 14}";
+			sepNavVisRect = "{{0, 816}, {744, 230}}";
 			sepNavWindowFrame = "{{15, 269}, {750, 558}}";
 		};
 	};
@@ -544,8 +484,8 @@
 	5FBB240A06D369FE00AE08E9 = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {836, 6173}}";
-			sepNavSelRange = "{2755, 73}";
-			sepNavVisRect = "{{0, 952}, {459, 183}}";
+			sepNavSelRange = "{9718, 35}";
+			sepNavVisRect = "{{0, 4838}, {711, 428}}";
 		};
 	};
 	5FE02A1B0710075600CDF3C6 = {
