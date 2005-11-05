@@ -6,7 +6,7 @@ DSTDIR=..
 
 # First the standard distribution
 
-DISTFILES="build/CopperExport.iPhotoExporter ReadMe.rtf ChangeLog cpg-patches"
+DISTFILES="build/Development/CopperExport.iPhotoExporter ReadMe.rtf ChangeLog cpg-patches"
 
 VERSION=`perl -ne '/CFBundleVersion/ && do { $_ = <> ; /<string>(.+)<\/string>/ && print "$1\n" }' Info.plist`
 if [ -z "$VERSION" ]; then
