@@ -7,6 +7,37 @@
 	objects = {
 
 /* Begin PBXAggregateTarget section */
+		5109355C096347A9002094D6 /* CopperExport and test */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 51093568096347CD002094D6 /* Build configuration list for PBXAggregateTarget "CopperExport and test" */;
+			buildPhases = (
+				5109355F096347BA002094D6 /* CopyFiles */,
+				5109356F096347F3002094D6 /* ShellScript */,
+			);
+			buildSettings = {
+				PRODUCT_NAME = "CopperExport and test";
+			};
+			dependencies = (
+				5109355E096347B1002094D6 /* PBXTargetDependency */,
+			);
+			name = "CopperExport and test";
+			productName = "CopperExport and test";
+		};
+		510935E6096349AD002094D6 /* Create package */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 510935ED09634A11002094D6 /* Build configuration list for PBXAggregateTarget "Create package" */;
+			buildPhases = (
+				510935E5096349AD002094D6 /* CopyFiles */,
+				510935E9096349E8002094D6 /* ShellScript */,
+			);
+			buildSettings = {
+				PRODUCT_NAME = "Create package";
+			};
+			dependencies = (
+			);
+			name = "Create package";
+			productName = "Create package";
+		};
 		51ADB98D07B40DB4007C59A3 /* Make distribution files */ = {
 			isa = PBXAggregateTarget;
 			buildConfigurationList = 513ED2610856246B00ADADB1 /* Build configuration list for PBXAggregateTarget "Make distribution files" */;
@@ -34,9 +65,14 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		51093521096346FC002094D6 /* makedist.sh in Resources */ = {isa = PBXBuildFile; fileRef = 5109351D096346FC002094D6 /* makedist.sh */; };
+		51093522096346FC002094D6 /* mkimage.sh in Resources */ = {isa = PBXBuildFile; fileRef = 5109351E096346FC002094D6 /* mkimage.sh */; };
+		51093523096346FC002094D6 /* mkpackage.sh in Resources */ = {isa = PBXBuildFile; fileRef = 5109351F096346FC002094D6 /* mkpackage.sh */; };
+		51093524096346FC002094D6 /* renameclass.sh in Resources */ = {isa = PBXBuildFile; fileRef = 51093520096346FC002094D6 /* renameclass.sh */; };
+		5109356E096347E9002094D6 /* CopperExport.iPhotoExporter in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8D5B49B6048680CD000E48DA /* CopperExport.iPhotoExporter */; };
+		510935FC09634E3C002094D6 /* CopperExport.iPhotoExporter in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8D5B49B6048680CD000E48DA /* CopperExport.iPhotoExporter */; };
 		512EE2CE07A2EF6800AF54A5 /* CopperAlbum.h in Resources */ = {isa = PBXBuildFile; fileRef = 512EE2CC07A2EF6800AF54A5 /* CopperAlbum.h */; };
 		512EE2CF07A2EF6800AF54A5 /* CopperAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = 512EE2CD07A2EF6800AF54A5 /* CopperAlbum.m */; };
-		512EE32F07A2F1F800AF54A5 /* CopperExport.iPhotoExporter in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8D5B49B6048680CD000E48DA /* CopperExport.iPhotoExporter */; };
 		5F22632A06CE2B260029AD4D /* ExportPluginProtocol.h in Resources */ = {isa = PBXBuildFile; fileRef = 5F22632906CE2B260029AD4D /* ExportPluginProtocol.h */; };
 		5F22633706CE2F0C0029AD4D /* CopperMExport.h in Resources */ = {isa = PBXBuildFile; fileRef = 5F22633506CE2F0C0029AD4D /* CopperMExport.h */; };
 		5F22633806CE2F0C0029AD4D /* CopperMExport.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F22633606CE2F0C0029AD4D /* CopperMExport.m */; };
@@ -98,6 +134,13 @@
 /* End PBXBuildStyle section */
 
 /* Begin PBXContainerItemProxy section */
+		5109355D096347B1002094D6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8D5B49AC048680CD000E48DA /* CopperExport */;
+			remoteInfo = CopperExport;
+		};
 		51ADB98E07B40DC0007C59A3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
@@ -108,14 +151,24 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		512EE32B07A2F18900AF54A5 /* CopyFiles */ = {
+		5109355F096347BA002094D6 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
-			comments = "Copy the compiled plugin to the iPhoto plugins directory.";
-			dstPath = /Applications/iPhoto.app/Contents/PlugIns/;
+			comments = "Copy plugin to iPhoto.app directory\n";
+			dstPath = /Applications/iPhoto.app/Contents/PlugIns;
 			dstSubfolderSpec = 0;
 			files = (
-				512EE32F07A2F1F800AF54A5 /* CopperExport.iPhotoExporter in CopyFiles */,
+				5109356E096347E9002094D6 /* CopperExport.iPhotoExporter in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		510935E5096349AD002094D6 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = ../Package_contents/Applications/iPhoto.app/Contents/PlugIns;
+			dstSubfolderSpec = 16;
+			files = (
+				510935FC09634E3C002094D6 /* CopperExport.iPhotoExporter in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -128,6 +181,11 @@
 		08FB77B6FE84183AC02AAC07 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1058C7ADFEA557BF11CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		32DBCF630370AF2F00C91783 /* CopperExport_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CopperExport_Prefix.pch; sourceTree = "<group>"; };
+		5109351D096346FC002094D6 /* makedist.sh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.script.sh; name = makedist.sh; path = scripts/makedist.sh; sourceTree = "<group>"; };
+		5109351E096346FC002094D6 /* mkimage.sh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.script.sh; name = mkimage.sh; path = scripts/mkimage.sh; sourceTree = "<group>"; };
+		5109351F096346FC002094D6 /* mkpackage.sh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.script.sh; name = mkpackage.sh; path = scripts/mkpackage.sh; sourceTree = "<group>"; };
+		51093520096346FC002094D6 /* renameclass.sh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.script.sh; name = renameclass.sh; path = scripts/renameclass.sh; sourceTree = "<group>"; };
+		510935570963471E002094D6 /* Info copy.plist */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Info copy.plist"; sourceTree = "<group>"; };
 		512EE2CC07A2EF6800AF54A5 /* CopperAlbum.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = CopperAlbum.h; sourceTree = "<group>"; };
 		512EE2CD07A2EF6800AF54A5 /* CopperAlbum.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = CopperAlbum.m; sourceTree = "<group>"; };
 		5F22632906CE2B260029AD4D /* ExportPluginProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExportPluginProtocol.h; sourceTree = "<group>"; };
@@ -184,6 +242,7 @@
 				089C167CFE841241C02AAC07 /* Resources */,
 				089C1671FE841209C02AAC07 /* Frameworks and Libraries */,
 				19C28FB8FE9D52D311CA2CBB /* Products */,
+				5109351C096346B5002094D6 /* Scripts */,
 			);
 			name = CopperExport;
 			sourceTree = "<group>";
@@ -208,6 +267,7 @@
 				5F22633B06CE31040029AD4D /* ExportUI.nib */,
 				8D5B49B7048680CD000E48DA /* Info.plist */,
 				089C167DFE841241C02AAC07 /* InfoPlist.strings */,
+				510935570963471E002094D6 /* Info copy.plist */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -258,6 +318,17 @@
 				08FB77B6FE84183AC02AAC07 /* main.m */,
 			);
 			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		5109351C096346B5002094D6 /* Scripts */ = {
+			isa = PBXGroup;
+			children = (
+				5109351D096346FC002094D6 /* makedist.sh */,
+				5109351E096346FC002094D6 /* mkimage.sh */,
+				5109351F096346FC002094D6 /* mkpackage.sh */,
+				51093520096346FC002094D6 /* renameclass.sh */,
+			);
+			name = Scripts;
 			sourceTree = "<group>";
 		};
 		5F7615FA07113963003437C3 /* Array Controllers */ = {
@@ -342,8 +413,6 @@
 				8D5B49AF048680CD000E48DA /* Resources */,
 				8D5B49B1048680CD000E48DA /* Sources */,
 				8D5B49B3048680CD000E48DA /* Frameworks */,
-				512EE32B07A2F18900AF54A5 /* CopyFiles */,
-				512EE35107A2F2AD00AF54A5 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -390,6 +459,8 @@
 			targets = (
 				8D5B49AC048680CD000E48DA /* CopperExport */,
 				51ADB98D07B40DB4007C59A3 /* Make distribution files */,
+				5109355C096347A9002094D6 /* CopperExport and test */,
+				510935E6096349AD002094D6 /* Create package */,
 			);
 		};
 /* End PBXProject section */
@@ -418,13 +489,31 @@
 				5F7615E807113438003437C3 /* CpgImageDragTableview.h in Resources */,
 				5FE0C31007521BC5005DE0CE /* FUCopperBox.h in Resources */,
 				512EE2CE07A2EF6800AF54A5 /* CopperAlbum.h in Resources */,
+				51093521096346FC002094D6 /* makedist.sh in Resources */,
+				51093522096346FC002094D6 /* mkimage.sh in Resources */,
+				51093523096346FC002094D6 /* mkpackage.sh in Resources */,
+				51093524096346FC002094D6 /* renameclass.sh in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		512EE35107A2F2AD00AF54A5 /* ShellScript */ = {
+		5109356F096347F3002094D6 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			comments = "Run iPhoto.\n";
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "osascript -e 'tell application \"iPhoto\" to launch'\nosascript -e 'tell application \"iPhoto\" to activate'\n";
+		};
+		510935E9096349E8002094D6 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -435,7 +524,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "osascript -e 'tell application \"iPhoto\" to launch'\nosascript -e 'tell application \"iPhoto\" to activate'\n";
+			shellScript = "/bin/bash scripts/mkpackage.sh\n";
 		};
 		51ADB98C07B40DB4007C59A3 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -475,6 +564,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		5109355E096347B1002094D6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8D5B49AC048680CD000E48DA /* CopperExport */;
+			targetProxy = 5109355D096347B1002094D6 /* PBXContainerItemProxy */;
+		};
 		51ADB98F07B40DC0007C59A3 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 8D5B49AC048680CD000E48DA /* CopperExport */;
@@ -502,6 +596,64 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		51093569096347CD002094D6 /* Development */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				PRODUCT_NAME = "CopperExport and test";
+			};
+			name = Development;
+		};
+		5109356A096347CD002094D6 /* Deployment */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				PRODUCT_NAME = "CopperExport and test";
+				ZERO_LINK = NO;
+			};
+			name = Deployment;
+		};
+		5109356B096347CD002094D6 /* Default */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "CopperExport and test";
+			};
+			name = Default;
+		};
+		510935EE09634A11002094D6 /* Development */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				PRODUCT_NAME = "Create package";
+			};
+			name = Development;
+		};
+		510935EF09634A11002094D6 /* Deployment */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				PRODUCT_NAME = "Create package";
+				ZERO_LINK = NO;
+			};
+			name = Deployment;
+		};
+		510935F009634A11002094D6 /* Default */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "Create package";
+			};
+			name = Default;
+		};
 		513ED25E0856246B00ADADB1 /* Development */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -636,6 +788,26 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		51093568096347CD002094D6 /* Build configuration list for PBXAggregateTarget "CopperExport and test" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				51093569096347CD002094D6 /* Development */,
+				5109356A096347CD002094D6 /* Deployment */,
+				5109356B096347CD002094D6 /* Default */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Default;
+		};
+		510935ED09634A11002094D6 /* Build configuration list for PBXAggregateTarget "Create package" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				510935EE09634A11002094D6 /* Development */,
+				510935EF09634A11002094D6 /* Deployment */,
+				510935F009634A11002094D6 /* Default */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Default;
+		};
 		513ED25D0856246B00ADADB1 /* Build configuration list for PBXNativeTarget "CopperExport" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
