@@ -14,6 +14,7 @@
                 credentialsSheetCancel = id; 
                 credentialsSheetOK = id; 
                 removeAllTags = id; 
+                removeSelectedTagFromAll = id; 
                 showCredentialsSheet = id; 
             }; 
             CLASS = CopperMExport; 

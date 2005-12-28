@@ -135,6 +135,7 @@
 - (IBAction)applyCurrentAccessToAll: (id)sender;
 - (IBAction)applyCurrentTagsToAll: (id)sender;
 - (IBAction)addSelectedTagToAll: (id)sender;
+- (IBAction)removeSelectedTagFromAll: (id)sender;
 - (IBAction)removeAllTags: (id)sender;
 - (IBAction)applyTitleToAll: (id)sender;
 - (IBAction)applyDescriptionToAll: (id)sender;

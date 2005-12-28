@@ -469,6 +469,20 @@
 	}
 }
 
+- (IBAction)removeSelectedTagFromAll: (id)sender {
+	[[settingsBox window] endEditingFor: nil];
+	
+	NSString *tag = [[tagController selectedObjects] objectAtIndex: 0];
+	NSEnumerator *en = [[self imageRecords] objectEnumerator];
+	CpgImageRecord *rec;
+	
+	while(rec = [en nextObject]) {
+		NSMutableArray *recordTags = [rec tags];
+		if([recordTags containsObject: tag])
+			[[rec mutableArrayValueForKey: @"tags"] removeObject: tag];
+	}
+}
+
 - (IBAction)removeAllTags: (id)sender {
 	[[self imageRecords] makeObjectsPerformSelector: @selector(clearAllTags)];
 }
