@@ -5,4 +5,5 @@ if [ -z "$VERSION" ]; then
     exit 1
 fi 
 /Developer/Tools/packagemaker -build -v -ds -p build/CopperExport.pkg -f build/Package_contents -r package/Install_resources -i package/Info.plist -d package/Description.plist
-cp package/TokenDefinitions.plist build/CopperExport.pkg/Contents/Resources/
+cp package/TokenDefinitions.plist package/IFRequirement.strings build/CopperExport.pkg/Contents/Resources/
+rm -rf build/Package_contents

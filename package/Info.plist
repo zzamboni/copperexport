@@ -47,5 +47,26 @@
 		<key>./Applications/iPhoto.app</key>
 		<string>{UserLocation}</string>
 	</dict>
+	<key>IFRequirementDicts</key>
+	<array>
+		<dict>
+			<key>LabelKey</key>
+			<string>CpgExpReqLabelKey1</string>
+			<key>MessageKey</key>
+			<string>CpgExpReqMessageKey1</string>
+			<key>SpecArgument</key>
+			<string>/System/Library/CoreServices/SystemVersion.plist</string>
+			<key>SpecProperty</key>
+			<string>ProductVersion</string>
+			<key>SpecType</key>
+			<string>plist</string>
+			<key>TestObject</key>
+			<string>10.3</string>
+			<key>TestOperator</key>
+			<string>&gt;=</string>
+			<key>TitleKey</key>
+			<string>CpgExpReqTitleKey1</string>
+		</dict>
+	</array>
 </dict>
 </plist>

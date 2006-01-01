@@ -38,29 +38,20 @@
 			name = "Create package";
 			productName = "Create package";
 		};
-		51ADB98D07B40DB4007C59A3 /* Make distribution files */ = {
+		5109361C09635013002094D6 /* Make disk image */ = {
 			isa = PBXAggregateTarget;
-			buildConfigurationList = 513ED2610856246B00ADADB1 /* Build configuration list for PBXAggregateTarget "Make distribution files" */;
+			buildConfigurationList = 5109362C09635035002094D6 /* Build configuration list for PBXAggregateTarget "Make disk image" */;
 			buildPhases = (
-				51ADB98C07B40DB4007C59A3 /* ShellScript */,
+				5109361B09635013002094D6 /* ShellScript */,
 			);
 			buildSettings = {
-				OTHER_CFLAGS = "";
-				OTHER_LDFLAGS = "";
-				OTHER_REZFLAGS = "";
-				PRODUCT_NAME = "Make distribution files";
-				SECTORDER_FLAGS = "";
-				WARNING_CFLAGS = (
-					"-Wmost",
-					"-Wno-four-char-constants",
-					"-Wno-unknown-pragmas",
-				);
+				PRODUCT_NAME = "Make disk image";
 			};
 			dependencies = (
-				51ADB98F07B40DC0007C59A3 /* PBXTargetDependency */,
+				5109361E0963501B002094D6 /* PBXTargetDependency */,
 			);
-			name = "Make distribution files";
-			productName = "Make distribution files";
+			name = "Make disk image";
+			productName = "Make disk image";
 		};
 /* End PBXAggregateTarget section */
 
@@ -73,6 +64,12 @@
 		510935FC09634E3C002094D6 /* CopperExport.iPhotoExporter in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8D5B49B6048680CD000E48DA /* CopperExport.iPhotoExporter */; };
 		512EE2CE07A2EF6800AF54A5 /* CopperAlbum.h in Resources */ = {isa = PBXBuildFile; fileRef = 512EE2CC07A2EF6800AF54A5 /* CopperAlbum.h */; };
 		512EE2CF07A2EF6800AF54A5 /* CopperAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = 512EE2CD07A2EF6800AF54A5 /* CopperAlbum.m */; };
+		518079BC0968745B00F6C019 /* Description.plist in CopyFiles */ = {isa = PBXBuildFile; fileRef = 518079B50968745B00F6C019 /* Description.plist */; };
+		518079BD0968745B00F6C019 /* IFRequirement.strings in CopyFiles */ = {isa = PBXBuildFile; fileRef = 518079B60968745B00F6C019 /* IFRequirement.strings */; };
+		518079BE0968745B00F6C019 /* Info.plist in CopyFiles */ = {isa = PBXBuildFile; fileRef = 518079B70968745B00F6C019 /* Info.plist */; };
+		518079BF0968745B00F6C019 /* License.rtf in CopyFiles */ = {isa = PBXBuildFile; fileRef = 518079B90968745B00F6C019 /* License.rtf */; };
+		518079C00968745C00F6C019 /* ReadMe.rtf in CopyFiles */ = {isa = PBXBuildFile; fileRef = 518079BA0968745B00F6C019 /* ReadMe.rtf */; };
+		518079C10968745C00F6C019 /* TokenDefinitions.plist in CopyFiles */ = {isa = PBXBuildFile; fileRef = 518079BB0968745B00F6C019 /* TokenDefinitions.plist */; };
 		5F22632A06CE2B260029AD4D /* ExportPluginProtocol.h in Resources */ = {isa = PBXBuildFile; fileRef = 5F22632906CE2B260029AD4D /* ExportPluginProtocol.h */; };
 		5F22633706CE2F0C0029AD4D /* CopperMExport.h in Resources */ = {isa = PBXBuildFile; fileRef = 5F22633506CE2F0C0029AD4D /* CopperMExport.h */; };
 		5F22633806CE2F0C0029AD4D /* CopperMExport.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F22633606CE2F0C0029AD4D /* CopperMExport.m */; };
@@ -138,15 +135,15 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 8D5B49AC048680CD000E48DA /* CopperExport */;
+			remoteGlobalIDString = 8D5B49AC048680CD000E48DA;
 			remoteInfo = CopperExport;
 		};
-		51ADB98E07B40DC0007C59A3 /* PBXContainerItemProxy */ = {
+		5109361D0963501B002094D6 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 8D5B49AC048680CD000E48DA;
-			remoteInfo = CopperExport;
+			remoteGlobalIDString = 510935E6096349AD002094D6;
+			remoteInfo = "Create package";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -169,6 +166,12 @@
 			dstSubfolderSpec = 16;
 			files = (
 				510935FC09634E3C002094D6 /* CopperExport.iPhotoExporter in CopyFiles */,
+				518079BC0968745B00F6C019 /* Description.plist in CopyFiles */,
+				518079BD0968745B00F6C019 /* IFRequirement.strings in CopyFiles */,
+				518079BE0968745B00F6C019 /* Info.plist in CopyFiles */,
+				518079BF0968745B00F6C019 /* License.rtf in CopyFiles */,
+				518079C00968745C00F6C019 /* ReadMe.rtf in CopyFiles */,
+				518079C10968745C00F6C019 /* TokenDefinitions.plist in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -185,9 +188,14 @@
 		5109351E096346FC002094D6 /* mkimage.sh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.script.sh; name = mkimage.sh; path = scripts/mkimage.sh; sourceTree = "<group>"; };
 		5109351F096346FC002094D6 /* mkpackage.sh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.script.sh; name = mkpackage.sh; path = scripts/mkpackage.sh; sourceTree = "<group>"; };
 		51093520096346FC002094D6 /* renameclass.sh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.script.sh; name = renameclass.sh; path = scripts/renameclass.sh; sourceTree = "<group>"; };
-		510935570963471E002094D6 /* Info copy.plist */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Info copy.plist"; sourceTree = "<group>"; };
 		512EE2CC07A2EF6800AF54A5 /* CopperAlbum.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = CopperAlbum.h; sourceTree = "<group>"; };
 		512EE2CD07A2EF6800AF54A5 /* CopperAlbum.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = CopperAlbum.m; sourceTree = "<group>"; };
+		518079B50968745B00F6C019 /* Description.plist */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.xml; name = Description.plist; path = package/Description.plist; sourceTree = "<group>"; };
+		518079B60968745B00F6C019 /* IFRequirement.strings */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.plist.strings; name = IFRequirement.strings; path = package/IFRequirement.strings; sourceTree = "<group>"; };
+		518079B70968745B00F6C019 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.xml; name = Info.plist; path = package/Info.plist; sourceTree = "<group>"; };
+		518079B90968745B00F6C019 /* License.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = License.rtf; sourceTree = "<group>"; };
+		518079BA0968745B00F6C019 /* ReadMe.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = ReadMe.rtf; sourceTree = "<group>"; };
+		518079BB0968745B00F6C019 /* TokenDefinitions.plist */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.xml; name = TokenDefinitions.plist; path = package/TokenDefinitions.plist; sourceTree = "<group>"; };
 		5F22632906CE2B260029AD4D /* ExportPluginProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExportPluginProtocol.h; sourceTree = "<group>"; };
 		5F22633506CE2F0C0029AD4D /* CopperMExport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CopperMExport.h; sourceTree = "<group>"; };
 		5F22633606CE2F0C0029AD4D /* CopperMExport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CopperMExport.m; sourceTree = "<group>"; };
@@ -243,6 +251,7 @@
 				089C1671FE841209C02AAC07 /* Frameworks and Libraries */,
 				19C28FB8FE9D52D311CA2CBB /* Products */,
 				5109351C096346B5002094D6 /* Scripts */,
+				518079B2096873CE00F6C019 /* Package files */,
 			);
 			name = CopperExport;
 			sourceTree = "<group>";
@@ -267,7 +276,6 @@
 				5F22633B06CE31040029AD4D /* ExportUI.nib */,
 				8D5B49B7048680CD000E48DA /* Info.plist */,
 				089C167DFE841241C02AAC07 /* InfoPlist.strings */,
-				510935570963471E002094D6 /* Info copy.plist */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -329,6 +337,28 @@
 				51093520096346FC002094D6 /* renameclass.sh */,
 			);
 			name = Scripts;
+			sourceTree = "<group>";
+		};
+		518079B2096873CE00F6C019 /* Package files */ = {
+			isa = PBXGroup;
+			children = (
+				518079B50968745B00F6C019 /* Description.plist */,
+				518079B60968745B00F6C019 /* IFRequirement.strings */,
+				518079B70968745B00F6C019 /* Info.plist */,
+				518079B80968745B00F6C019 /* Install_resources */,
+				518079BB0968745B00F6C019 /* TokenDefinitions.plist */,
+			);
+			name = "Package files";
+			sourceTree = "<group>";
+		};
+		518079B80968745B00F6C019 /* Install_resources */ = {
+			isa = PBXGroup;
+			children = (
+				518079B90968745B00F6C019 /* License.rtf */,
+				518079BA0968745B00F6C019 /* ReadMe.rtf */,
+			);
+			name = Install_resources;
+			path = package/Install_resources;
 			sourceTree = "<group>";
 		};
 		5F7615FA07113963003437C3 /* Array Controllers */ = {
@@ -458,9 +488,9 @@
 			projectDirPath = "";
 			targets = (
 				8D5B49AC048680CD000E48DA /* CopperExport */,
-				51ADB98D07B40DB4007C59A3 /* Make distribution files */,
 				5109355C096347A9002094D6 /* CopperExport and test */,
 				510935E6096349AD002094D6 /* Create package */,
+				5109361C09635013002094D6 /* Make disk image */,
 			);
 		};
 /* End PBXProject section */
@@ -526,10 +556,9 @@
 			shellPath = /bin/sh;
 			shellScript = "/bin/bash scripts/mkpackage.sh\n";
 		};
-		51ADB98C07B40DB4007C59A3 /* ShellScript */ = {
+		5109361B09635013002094D6 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
-			comments = "Create the ZIP file for distribution.\n";
 			files = (
 			);
 			inputPaths = (
@@ -538,7 +567,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# shell script goes here\n./makedist.sh\n";
+			shellScript = "/bin/bash scripts/mkimage.sh\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -569,10 +598,10 @@
 			target = 8D5B49AC048680CD000E48DA /* CopperExport */;
 			targetProxy = 5109355D096347B1002094D6 /* PBXContainerItemProxy */;
 		};
-		51ADB98F07B40DC0007C59A3 /* PBXTargetDependency */ = {
+		5109361E0963501B002094D6 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 8D5B49AC048680CD000E48DA /* CopperExport */;
-			targetProxy = 51ADB98E07B40DC0007C59A3 /* PBXContainerItemProxy */;
+			target = 510935E6096349AD002094D6 /* Create package */;
+			targetProxy = 5109361D0963501B002094D6 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -654,6 +683,35 @@
 			};
 			name = Default;
 		};
+		5109362D09635035002094D6 /* Development */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				PRODUCT_NAME = "Make disk image";
+			};
+			name = Development;
+		};
+		5109362E09635035002094D6 /* Deployment */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				PRODUCT_NAME = "Make disk image";
+				ZERO_LINK = NO;
+			};
+			name = Deployment;
+		};
+		5109362F09635035002094D6 /* Default */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "Make disk image";
+			};
+			name = Default;
+		};
 		513ED25E0856246B00ADADB1 /* Development */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -706,67 +764,6 @@
 			};
 			name = Default;
 		};
-		513ED2620856246B00ADADB1 /* Development */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COPY_PHASE_STRIP = NO;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_FIX_AND_CONTINUE = YES;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				OTHER_CFLAGS = "";
-				OTHER_LDFLAGS = "";
-				OTHER_REZFLAGS = "";
-				PREBINDING = NO;
-				PRODUCT_NAME = "Make distribution files";
-				SECTORDER_FLAGS = "";
-				WARNING_CFLAGS = (
-					"-Wmost",
-					"-Wno-four-char-constants",
-					"-Wno-unknown-pragmas",
-				);
-				ZERO_LINK = YES;
-			};
-			name = Development;
-		};
-		513ED2630856246B00ADADB1 /* Deployment */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COPY_PHASE_STRIP = YES;
-				DEPLOYMENT_LOCATION = NO;
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
-				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
-				OTHER_CFLAGS = "";
-				OTHER_LDFLAGS = "";
-				OTHER_REZFLAGS = "";
-				PREBINDING = NO;
-				PRODUCT_NAME = "Make distribution files";
-				SECTORDER_FLAGS = "";
-				WARNING_CFLAGS = (
-					"-Wmost",
-					"-Wno-four-char-constants",
-					"-Wno-unknown-pragmas",
-				);
-				ZERO_LINK = NO;
-			};
-			name = Deployment;
-		};
-		513ED2640856246B00ADADB1 /* Default */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				OTHER_CFLAGS = "";
-				OTHER_LDFLAGS = "";
-				OTHER_REZFLAGS = "";
-				PRODUCT_NAME = "Make distribution files";
-				SECTORDER_FLAGS = "";
-				WARNING_CFLAGS = (
-					"-Wmost",
-					"-Wno-four-char-constants",
-					"-Wno-unknown-pragmas",
-				);
-			};
-			name = Default;
-		};
 		513ED2660856246B00ADADB1 /* Development */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -808,22 +805,22 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Default;
 		};
+		5109362C09635035002094D6 /* Build configuration list for PBXAggregateTarget "Make disk image" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5109362D09635035002094D6 /* Development */,
+				5109362E09635035002094D6 /* Deployment */,
+				5109362F09635035002094D6 /* Default */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Default;
+		};
 		513ED25D0856246B00ADADB1 /* Build configuration list for PBXNativeTarget "CopperExport" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				513ED25E0856246B00ADADB1 /* Development */,
 				513ED25F0856246B00ADADB1 /* Deployment */,
 				513ED2600856246B00ADADB1 /* Default */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Default;
-		};
-		513ED2610856246B00ADADB1 /* Build configuration list for PBXAggregateTarget "Make distribution files" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				513ED2620856246B00ADADB1 /* Development */,
-				513ED2630856246B00ADADB1 /* Deployment */,
-				513ED2640856246B00ADADB1 /* Default */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Default;
