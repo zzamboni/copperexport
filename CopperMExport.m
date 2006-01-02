@@ -222,9 +222,17 @@
 		[self setUsername: [prefs objectForKey:@"username"]];
 		[self setShouldOpenCopper: [[prefs objectForKey: @"shouldOpenCopper"] boolValue]];
 		[self setCpgurl: [prefs objectForKey: @"cpgurl"]];
+		[self setUseDefaultSize: [[prefs objectForKey:@"useDefaultSize"] boolValue]];
+		if ([self useDefaultSize]) {
+			defaultWidth = [[prefs objectForKey:@"defaultWidth"] intValue];
+			defaultHeight = [[prefs objectForKey:@"defaultHeight"] intValue];
+		}
 	}
 	else {
 		[self setShouldOpenCopper: YES];
+		[self setUseDefaultSize: NO];
+		defaultWidth = 0;
+		defaultHeight = 0;
 	}
 	
 	albums = [NSMutableArray arrayWithCapacity:5];
@@ -241,7 +249,10 @@
 	}
 	
 	[recordController setSelectionIndexes: [NSIndexSet indexSet]];
-
+	
+	if ([self useDefaultSize]) {
+		[self resizeAlltoWidth:defaultWidth height:defaultHeight];
+	}
 }
 
 - (id)lastView {
@@ -384,21 +395,26 @@
 			
 		[imgRec setNewWidth: w];
 	}
+	if (([imgRec newWidth] == defaultWidth && [imgRec newHeight] == defaultHeight) ||
+		([imgRec newWidth] == defaultHeight && [imgRec newHeight] == defaultWidth)) {
+		[self setUseDefaultSize:YES];
+	}
+	else {
+		[self setUseDefaultSize:NO];
+	}
 }
 
-- (IBAction)applyCurrentScalingToAll:(id)sender {
-	[[settingsBox window] endEditingFor: nil];
-	CpgImageRecord *currentImage = [[recordController selectedObjects] objectAtIndex:0];
-	BOOL currentDimensionsAreLandscape = [currentImage newWidth] > [currentImage newHeight];
+- (void)resizeAlltoWidth:(int)newWidth height:(int)newHeight {
+	BOOL currentDimensionsAreLandscape = newWidth > newHeight;
 	
 	int shortSide, longSide;
 	if(currentDimensionsAreLandscape) {
-		shortSide = [currentImage newHeight];
-		longSide = [currentImage newWidth];
+		shortSide = newHeight;
+		longSide = newWidth;
 	}
 	else {
-		shortSide = [currentImage newWidth];
-		longSide = [currentImage newHeight];		
+		shortSide = newWidth;
+		longSide = newHeight;		
 	}
 	
 	NSEnumerator *en = [[self imageRecords] objectEnumerator];
@@ -413,7 +429,13 @@
 			[rec setNewWidth: shortSide];
 			[rec setNewHeight: longSide];
 		}
-	}
+	}	
+}
+
+- (IBAction)applyCurrentScalingToAll:(id)sender {
+	[[settingsBox window] endEditingFor: nil];
+	CpgImageRecord *currentImage = [[recordController selectedObjects] objectAtIndex:0];
+	[self resizeAlltoWidth:[currentImage newWidth] height:[currentImage newHeight]];
 }
 
 - (IBAction)applyCurrentAccessToAll: (id)sender {
@@ -611,11 +633,50 @@
 	shouldOpenCopper = flag;
 }
 
+- (BOOL) useDefaultSize
+{
+	return useDefaultSize;
+}
+- (void) setUseDefaultSize:(BOOL)newUseDefaultSize
+{
+	useDefaultSize=newUseDefaultSize;
+}
+
+- (IBAction) setDefaultSize:(id)sender {
+	[self setUseDefaultSize:YES];
+	CpgImageRecord *currentImage = [[recordController selectedObjects] objectAtIndex:0];
+	defaultHeight = [currentImage newHeight];
+	defaultWidth = [currentImage newWidth];
+	[self savePreferences];
+}
+- (IBAction) clearDefaultSize:(id)sender {
+	[self setUseDefaultSize:NO];
+	defaultHeight = 0;
+	defaultWidth = 0;
+	[self savePreferences];	
+}
+
 - (void)savePreferences {
 	[[settingsBox window] endEditingFor: nil];
 	if([self username] != nil) {
-		prefs = [[NSDictionary alloc] initWithObjects: [NSArray arrayWithObjects: [self username], [NSNumber numberWithBool: [self shouldOpenCopper]], [self cpgurl], nil]
-											  forKeys: [NSArray arrayWithObjects: @"username", @"shouldOpenCopper", @"cpgurl", nil]];
+		prefs = [[NSDictionary alloc] initWithObjects: 
+			[NSArray arrayWithObjects: 
+				[self username], 
+				[NSNumber numberWithBool: [self shouldOpenCopper]], 
+				[self cpgurl], 
+				[NSNumber numberWithBool:[self useDefaultSize]], 
+				[NSNumber numberWithInt:defaultWidth], 
+				[NSNumber numberWithInt:defaultHeight], 
+				nil]
+											  forKeys: 
+			[NSArray arrayWithObjects: 
+				@"username", 
+				@"shouldOpenCopper", 
+				@"cpgurl", 
+				@"useDefaultSize", 
+				@"defaultWidth", 
+				@"defaultHeight", 
+				nil]];
 		
 		[[NSUserDefaults standardUserDefaults] removePersistentDomainForName:[[NSBundle bundleForClass: [self class]] bundleIdentifier]];
 		[[NSUserDefaults standardUserDefaults] setPersistentDomain:prefs forName:[[NSBundle bundleForClass:[self class]] bundleIdentifier]];

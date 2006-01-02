@@ -11,10 +11,12 @@
                 applyDescriptionToAll = id; 
                 applyTitleToAll = id; 
                 cancelUpload = id; 
+                clearDefaultSize = id; 
                 credentialsSheetCancel = id; 
                 credentialsSheetOK = id; 
                 removeAllTags = id; 
                 removeSelectedTagFromAll = id; 
+                setDefaultSize = id; 
                 showCredentialsSheet = id; 
             }; 
             CLASS = CopperMExport; 
