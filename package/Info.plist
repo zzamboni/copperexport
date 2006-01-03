@@ -3,11 +3,11 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleGetInfoString</key>
-	<string>CopperExport 0.3.1</string>
+	<string>CopperExport [[version]]</string>
 	<key>CFBundleIdentifier</key>
 	<string>org.zzamboni.iphotoexport.copper</string>
 	<key>CFBundleShortVersionString</key>
-	<string>0.3.1</string>
+	<string>[[version]]</string>
 	<key>IFMajorVersion</key>
 	<integer>0</integer>
 	<key>IFMinorVersion</key>

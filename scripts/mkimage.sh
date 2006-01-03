@@ -1,13 +1,8 @@
 #!/bin/bash
 IMGDIR=build/distimage
-SOURCE_FILES="build/CopperExport.pkg package/Install_resources/ReadMe.rtf"
+SOURCE_FILES="build/CopperExport.pkg build/CopperExport.pkg/Contents/Resources/ReadMe.rtf"
 
-VERSION=`perl -ne '/CFBundleVersion/ && do { $_ = <> ; /<string>(.+)<\/string>/ && print "$1\n" }' Info.plist`
-if [ -z "$VERSION" ]; then
-    echo "Cannot determine version number!" >&2
-    exit 1
-fi
-FINALIMG=build/CopperExport-${VERSION}.dmg
+FINALIMG=`echo 'build/CopperExport-[[version]].dmg' | ./scripts/subst_keywords.pl`
 
 rm -rf ${IMGDIR} ${FINALIMG}
 mkdir -p ${IMGDIR}

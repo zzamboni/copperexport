@@ -71,6 +71,8 @@
 		518079C00968745C00F6C019 /* ReadMe.rtf in CopyFiles */ = {isa = PBXBuildFile; fileRef = 518079BA0968745B00F6C019 /* ReadMe.rtf */; };
 		518079C10968745C00F6C019 /* TokenDefinitions.plist in CopyFiles */ = {isa = PBXBuildFile; fileRef = 518079BB0968745B00F6C019 /* TokenDefinitions.plist */; };
 		518079DD096884A800F6C019 /* notes.wiki in Resources */ = {isa = PBXBuildFile; fileRef = 518079DC096884A800F6C019 /* notes.wiki */; };
+		51807AC3096B29AE00F6C019 /* subst_keywords.pl in Resources */ = {isa = PBXBuildFile; fileRef = 51807AC2096B29AE00F6C019 /* subst_keywords.pl */; };
+		51807AC4096B29AE00F6C019 /* subst_keywords.pl in CopyFiles */ = {isa = PBXBuildFile; fileRef = 51807AC2096B29AE00F6C019 /* subst_keywords.pl */; };
 		5F22632A06CE2B260029AD4D /* ExportPluginProtocol.h in Resources */ = {isa = PBXBuildFile; fileRef = 5F22632906CE2B260029AD4D /* ExportPluginProtocol.h */; };
 		5F22633706CE2F0C0029AD4D /* CopperMExport.h in Resources */ = {isa = PBXBuildFile; fileRef = 5F22633506CE2F0C0029AD4D /* CopperMExport.h */; };
 		5F22633806CE2F0C0029AD4D /* CopperMExport.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F22633606CE2F0C0029AD4D /* CopperMExport.m */; };
@@ -173,6 +175,7 @@
 				518079BF0968745B00F6C019 /* License.rtf in CopyFiles */,
 				518079C00968745C00F6C019 /* ReadMe.rtf in CopyFiles */,
 				518079C10968745C00F6C019 /* TokenDefinitions.plist in CopyFiles */,
+				51807AC4096B29AE00F6C019 /* subst_keywords.pl in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -198,6 +201,7 @@
 		518079BA0968745B00F6C019 /* ReadMe.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = ReadMe.rtf; path = package/Install_resources/ReadMe.rtf; sourceTree = "<group>"; };
 		518079BB0968745B00F6C019 /* TokenDefinitions.plist */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.xml; name = TokenDefinitions.plist; path = package/TokenDefinitions.plist; sourceTree = "<group>"; };
 		518079DC096884A800F6C019 /* notes.wiki */ = {isa = PBXFileReference; lastKnownFileType = file; path = notes.wiki; sourceTree = "<group>"; };
+		51807AC2096B29AE00F6C019 /* subst_keywords.pl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.perl; name = subst_keywords.pl; path = scripts/subst_keywords.pl; sourceTree = "<group>"; };
 		5F22632906CE2B260029AD4D /* ExportPluginProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExportPluginProtocol.h; sourceTree = "<group>"; };
 		5F22633506CE2F0C0029AD4D /* CopperMExport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CopperMExport.h; sourceTree = "<group>"; };
 		5F22633606CE2F0C0029AD4D /* CopperMExport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CopperMExport.m; sourceTree = "<group>"; };
@@ -338,6 +342,7 @@
 				5109351E096346FC002094D6 /* mkimage.sh */,
 				5109351F096346FC002094D6 /* mkpackage.sh */,
 				51093520096346FC002094D6 /* renameclass.sh */,
+				51807AC2096B29AE00F6C019 /* subst_keywords.pl */,
 			);
 			name = Scripts;
 			sourceTree = "<group>";
@@ -526,6 +531,7 @@
 				51093523096346FC002094D6 /* mkpackage.sh in Resources */,
 				51093524096346FC002094D6 /* renameclass.sh in Resources */,
 				518079DD096884A800F6C019 /* notes.wiki in Resources */,
+				51807AC3096B29AE00F6C019 /* subst_keywords.pl in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
