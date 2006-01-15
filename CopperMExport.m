@@ -38,6 +38,8 @@
 #import "CpgImageRecord.h"
 #import "CopperResponse.h"
 #import "CpgKeyChain.h"
+#import "CpgDNDArrayController.h"
+#import "ExportController.h"
 
 @implementation CopperMExport
 - (id)description {
@@ -283,7 +285,7 @@
 }
 
 - (void)uploaderWillUploadImageAtIndex: (NSNumber *)idx {
-	[progText setStringValue: [NSString stringWithFormat:@"Uploading %d of %d", [idx intValue]+1, [exportManager imageCount]]];
+	[progText setStringValue: [NSString stringWithFormat:@"Uploading %d of %d", [idx intValue]+1, [[self imageRecords] count]]];
 	[progBar incrementBy: 1.0];
 	
 }
@@ -294,7 +296,7 @@
 
 - (void)uploaderWillResizeImageAtIndex: (NSNumber *)idx {
 	[progBar incrementBy: 1.0];
-	[progText setStringValue: [NSString stringWithFormat:@"Resizing %d of %d", [idx intValue]+1, [exportManager imageCount]]];
+	[progText setStringValue: [NSString stringWithFormat:@"Resizing %d of %d", [idx intValue]+1, [[self imageRecords] count]]];
 }
 
 - (void)uploaderDidResizeImageAtIndex: (NSNumber *)idx {
@@ -303,7 +305,7 @@
 
 - (void)uploaderWillConvertImageAtIndex: (NSNumber *)idx {
 	[progBar incrementBy: 1.0];
-	[progText setStringValue: [NSString stringWithFormat:@"Converting %d of %d to JPEG", [idx intValue]+1, [exportManager imageCount]]];
+	[progText setStringValue: [NSString stringWithFormat:@"Converting %d of %d to JPEG", [idx intValue]+1, [[self imageRecords] count]]];
 }
 
 - (void)uploaderDidConvertImageAtIndex: (NSNumber *)idx {
@@ -519,6 +521,17 @@
 	CpgImageRecord *rec = [[recordController selectedObjects] objectAtIndex: 0];
 	[[self imageRecords] makeObjectsPerformSelector: @selector(setDescriptionText:)
 										 withObject: [rec descriptionText]];
+}
+
+- (IBAction)removeSelectedImage: (id)sender {
+	CpgImageRecord *rec = [[recordController selectedObjects] objectAtIndex: 0];
+	[recordController setSelectedObjects:nil];
+	[[self imageRecords] removeObject:rec];
+	[[(CpgDNDArrayController *)recordController tableView] reloadData];
+	// TODO FIX: ugly hack to make the "X photos" count update
+	ExportController *ec=[exportManager exportController];
+	NSTextField *count=ec->mImageCount;
+	[count setObjectValue:[NSString stringWithFormat:@"%d photos", [[self imageRecords] count]]];
 }
 
 - (IBAction)cancelUpload: (id)sender {

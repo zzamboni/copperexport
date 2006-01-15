@@ -15,6 +15,7 @@
                 credentialsSheetCancel = id; 
                 credentialsSheetOK = id; 
                 removeAllTags = id; 
+                removeSelectedImage = id; 
                 removeSelectedTagFromAll = id; 
                 setDefaultSize = id; 
                 showCredentialsSheet = id; 

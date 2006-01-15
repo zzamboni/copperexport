@@ -151,6 +151,8 @@
 - (IBAction)applyTitleToAll: (id)sender;
 - (IBAction)applyDescriptionToAll: (id)sender;
 
+- (IBAction)removeSelectedImage: (id)sender;
+
 - (IBAction)cancelUpload: (id)sender;
 
 // Credentials
