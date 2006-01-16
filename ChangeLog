@@ -1,3 +1,27 @@
+2006-01-16  Diego Zamboni  <copperexport@zzamboni.org>
+
+	* Version 0.4.0
+
+	Main changes:
+
+	* Allow saving a default resize size, which will be automatically
+  	  applied to all pictures from then on.
+
+	* Allow removing items from the list of photos to upload, directly
+	  from the export dialog. This removes the photo only from the
+	  upload list, not from the library (of course).
+
+	* Reverted back to using the original filename for uploading to
+	  Coppermine, rather than a generated unique ID, which was harder
+	  to interpret.
+	
+	* Added patches for xp_publish.php for Coppermine 1.4.3.
+	
+	* CopperExport now has an installer, so no manual fiddling with
+	  the iPhoto plugins is necessary anymore.
+
+	* Distribution is now in the form of a disk image.
+
 2005-07-31  Diego Zamboni  <copperexport@zzamboni.org>
 
 	* Version 0.3.0

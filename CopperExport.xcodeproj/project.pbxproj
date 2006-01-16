@@ -192,6 +192,16 @@
 		5109351E096346FC002094D6 /* mkimage.sh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.script.sh; name = mkimage.sh; path = scripts/mkimage.sh; sourceTree = "<group>"; };
 		5109351F096346FC002094D6 /* mkpackage.sh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.script.sh; name = mkpackage.sh; path = scripts/mkpackage.sh; sourceTree = "<group>"; };
 		51093520096346FC002094D6 /* renameclass.sh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.script.sh; name = renameclass.sh; path = scripts/renameclass.sh; sourceTree = "<group>"; };
+		5120B0F1097B14BA00521F3D /* README */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
+		5120B0F2097B14BA00521F3D /* xp_publish.php.cpg132 */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; path = xp_publish.php.cpg132; sourceTree = "<group>"; };
+		5120B0F3097B14BA00521F3D /* xp_publish.php.cpg132.patch */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; path = xp_publish.php.cpg132.patch; sourceTree = "<group>"; };
+		5120B0F4097B14BA00521F3D /* xp_publish.php.cpg133 */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; path = xp_publish.php.cpg133; sourceTree = "<group>"; };
+		5120B0F5097B14BA00521F3D /* xp_publish.php.cpg133.patch */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; path = xp_publish.php.cpg133.patch; sourceTree = "<group>"; };
+		5120B0F6097B14BA00521F3D /* xp_publish.php.cpg141beta */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; path = xp_publish.php.cpg141beta; sourceTree = "<group>"; };
+		5120B0F7097B14BA00521F3D /* xp_publish.php.cpg141beta.patch */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; path = xp_publish.php.cpg141beta.patch; sourceTree = "<group>"; };
+		5120B0F8097B14BA00521F3D /* xp_publish.php.cpg143 */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; path = xp_publish.php.cpg143; sourceTree = "<group>"; };
+		5120B0F9097B14BA00521F3D /* xp_publish.php.cpg143.patch */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; path = xp_publish.php.cpg143.patch; sourceTree = "<group>"; };
+		5120B13D097B1A4000521F3D /* ChangeLog */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; path = ChangeLog; sourceTree = "<group>"; };
 		512EE2CC07A2EF6800AF54A5 /* CopperAlbum.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = CopperAlbum.h; sourceTree = "<group>"; };
 		512EE2CD07A2EF6800AF54A5 /* CopperAlbum.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = CopperAlbum.m; sourceTree = "<group>"; };
 		518079B50968745B00F6C019 /* Description.plist */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.xml; name = Description.plist; path = package/Description.plist; sourceTree = "<group>"; };
@@ -260,6 +270,7 @@
 				5109351C096346B5002094D6 /* Scripts */,
 				518079B2096873CE00F6C019 /* Package files */,
 				518079DB0968846F00F6C019 /* Docs */,
+				5120B0F0097B14BA00521F3D /* cpg-patches */,
 			);
 			name = CopperExport;
 			sourceTree = "<group>";
@@ -349,6 +360,22 @@
 			name = Scripts;
 			sourceTree = "<group>";
 		};
+		5120B0F0097B14BA00521F3D /* cpg-patches */ = {
+			isa = PBXGroup;
+			children = (
+				5120B0F1097B14BA00521F3D /* README */,
+				5120B0F2097B14BA00521F3D /* xp_publish.php.cpg132 */,
+				5120B0F3097B14BA00521F3D /* xp_publish.php.cpg132.patch */,
+				5120B0F4097B14BA00521F3D /* xp_publish.php.cpg133 */,
+				5120B0F5097B14BA00521F3D /* xp_publish.php.cpg133.patch */,
+				5120B0F6097B14BA00521F3D /* xp_publish.php.cpg141beta */,
+				5120B0F7097B14BA00521F3D /* xp_publish.php.cpg141beta.patch */,
+				5120B0F8097B14BA00521F3D /* xp_publish.php.cpg143 */,
+				5120B0F9097B14BA00521F3D /* xp_publish.php.cpg143.patch */,
+			);
+			path = "cpg-patches";
+			sourceTree = "<group>";
+		};
 		518079B2096873CE00F6C019 /* Package files */ = {
 			isa = PBXGroup;
 			children = (
@@ -363,6 +390,7 @@
 		518079DB0968846F00F6C019 /* Docs */ = {
 			isa = PBXGroup;
 			children = (
+				5120B13D097B1A4000521F3D /* ChangeLog */,
 				518079B90968745B00F6C019 /* License.rtf */,
 				518079BA0968745B00F6C019 /* ReadMe.rtf */,
 				518079DC096884A800F6C019 /* notes.wiki */,
