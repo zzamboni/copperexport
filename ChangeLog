@@ -4,6 +4,9 @@
 
 	Main changes:
 
+	* Built as a universal binary - should run in both Intel- and
+ 	  PPC-based Macs (I haven't tested it on Intel).
+	
 	* Allow saving a default resize size, which will be automatically
   	  applied to all pictures from then on.
 
@@ -13,7 +16,7 @@
 
 	* Reverted back to using the original filename for uploading to
 	  Coppermine, rather than a generated unique ID, which was harder
-	  to interpret.
+	  to interpret and to handle manually on the server.
 	
 	* Added patches for xp_publish.php for Coppermine 1.4.3.
 	
