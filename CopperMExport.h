@@ -72,6 +72,10 @@
 	NSMutableArray *responses;
 	
 	BOOL shouldOpenCopper;
+
+	BOOL useDefaultSize;
+	int defaultWidth;
+	int defaultHeight;
 	
 	// Upload Sheet
 	IBOutlet NSWindow *progressSheet;
@@ -120,6 +124,12 @@
 - (BOOL)shouldOpenCopper;
 - (void)setShouldOpenCopper:(BOOL)flag;
 
+- (BOOL) useDefaultSize;
+- (void) setUseDefaultSize:(BOOL)newUseDefaultSize;
+
+- (IBAction) setDefaultSize:(id)sender;
+- (IBAction) clearDefaultSize:(id)sender;
+
 - (NSString *)username;
 - (void)setUsername:(NSString *)anUsername;
 - (NSString *)password;
@@ -131,13 +141,17 @@
 - (NSString *)passwordForUsername: (NSString *)username;
 - (void) savePasswordToKeychain;
 
+- (void)resizeAlltoWidth:(int)newWidth height:(int)newHeight;
 - (IBAction)applyCurrentScalingToAll:(id)sender;
 - (IBAction)applyCurrentAccessToAll: (id)sender;
 - (IBAction)applyCurrentTagsToAll: (id)sender;
 - (IBAction)addSelectedTagToAll: (id)sender;
+- (IBAction)removeSelectedTagFromAll: (id)sender;
 - (IBAction)removeAllTags: (id)sender;
 - (IBAction)applyTitleToAll: (id)sender;
 - (IBAction)applyDescriptionToAll: (id)sender;
+
+- (IBAction)removeSelectedImage: (id)sender;
 
 - (IBAction)cancelUpload: (id)sender;
 

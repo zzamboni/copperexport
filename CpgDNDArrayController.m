@@ -180,7 +180,9 @@ NSString *MovedRowsType = @"CopperCpgImageRecordType";
     return NO;
 }
 
-
+- (NSTableView *)tableView {
+	return tableView;
+}
 
 -(void) moveObjectsInArrangedObjectsFromIndexes:(NSIndexSet*)indexSet
 										toIndex:(unsigned int)insertIndex

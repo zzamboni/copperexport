@@ -38,6 +38,8 @@
 #import "CpgImageRecord.h"
 #import "CopperResponse.h"
 #import "CpgKeyChain.h"
+#import "CpgDNDArrayController.h"
+#import "ExportController.h"
 
 @implementation CopperMExport
 - (id)description {
@@ -222,9 +224,17 @@
 		[self setUsername: [prefs objectForKey:@"username"]];
 		[self setShouldOpenCopper: [[prefs objectForKey: @"shouldOpenCopper"] boolValue]];
 		[self setCpgurl: [prefs objectForKey: @"cpgurl"]];
+		[self setUseDefaultSize: [[prefs objectForKey:@"useDefaultSize"] boolValue]];
+		if ([self useDefaultSize]) {
+			defaultWidth = [[prefs objectForKey:@"defaultWidth"] intValue];
+			defaultHeight = [[prefs objectForKey:@"defaultHeight"] intValue];
+		}
 	}
 	else {
 		[self setShouldOpenCopper: YES];
+		[self setUseDefaultSize: NO];
+		defaultWidth = 0;
+		defaultHeight = 0;
 	}
 	
 	albums = [NSMutableArray arrayWithCapacity:5];
@@ -241,7 +251,10 @@
 	}
 	
 	[recordController setSelectionIndexes: [NSIndexSet indexSet]];
-
+	
+	if ([self useDefaultSize]) {
+		[self resizeAlltoWidth:defaultWidth height:defaultHeight];
+	}
 }
 
 - (id)lastView {
@@ -272,7 +285,7 @@
 }
 
 - (void)uploaderWillUploadImageAtIndex: (NSNumber *)idx {
-	[progText setStringValue: [NSString stringWithFormat:@"Uploading %d of %d", [idx intValue]+1, [exportManager imageCount]]];
+	[progText setStringValue: [NSString stringWithFormat:@"Uploading %d of %d", [idx intValue]+1, [[self imageRecords] count]]];
 	[progBar incrementBy: 1.0];
 	
 }
@@ -283,7 +296,7 @@
 
 - (void)uploaderWillResizeImageAtIndex: (NSNumber *)idx {
 	[progBar incrementBy: 1.0];
-	[progText setStringValue: [NSString stringWithFormat:@"Resizing %d of %d", [idx intValue]+1, [exportManager imageCount]]];
+	[progText setStringValue: [NSString stringWithFormat:@"Resizing %d of %d", [idx intValue]+1, [[self imageRecords] count]]];
 }
 
 - (void)uploaderDidResizeImageAtIndex: (NSNumber *)idx {
@@ -292,7 +305,7 @@
 
 - (void)uploaderWillConvertImageAtIndex: (NSNumber *)idx {
 	[progBar incrementBy: 1.0];
-	[progText setStringValue: [NSString stringWithFormat:@"Converting %d of %d to JPEG", [idx intValue]+1, [exportManager imageCount]]];
+	[progText setStringValue: [NSString stringWithFormat:@"Converting %d of %d to JPEG", [idx intValue]+1, [[self imageRecords] count]]];
 }
 
 - (void)uploaderDidConvertImageAtIndex: (NSNumber *)idx {
@@ -384,21 +397,26 @@
 			
 		[imgRec setNewWidth: w];
 	}
+	if (([imgRec newWidth] == defaultWidth && [imgRec newHeight] == defaultHeight) ||
+		([imgRec newWidth] == defaultHeight && [imgRec newHeight] == defaultWidth)) {
+		[self setUseDefaultSize:YES];
+	}
+	else {
+		[self setUseDefaultSize:NO];
+	}
 }
 
-- (IBAction)applyCurrentScalingToAll:(id)sender {
-	[[settingsBox window] endEditingFor: nil];
-	CpgImageRecord *currentImage = [[recordController selectedObjects] objectAtIndex:0];
-	BOOL currentDimensionsAreLandscape = [currentImage newWidth] > [currentImage newHeight];
+- (void)resizeAlltoWidth:(int)newWidth height:(int)newHeight {
+	BOOL currentDimensionsAreLandscape = newWidth > newHeight;
 	
 	int shortSide, longSide;
 	if(currentDimensionsAreLandscape) {
-		shortSide = [currentImage newHeight];
-		longSide = [currentImage newWidth];
+		shortSide = newHeight;
+		longSide = newWidth;
 	}
 	else {
-		shortSide = [currentImage newWidth];
-		longSide = [currentImage newHeight];		
+		shortSide = newWidth;
+		longSide = newHeight;		
 	}
 	
 	NSEnumerator *en = [[self imageRecords] objectEnumerator];
@@ -413,7 +431,13 @@
 			[rec setNewWidth: shortSide];
 			[rec setNewHeight: longSide];
 		}
-	}
+	}	
+}
+
+- (IBAction)applyCurrentScalingToAll:(id)sender {
+	[[settingsBox window] endEditingFor: nil];
+	CpgImageRecord *currentImage = [[recordController selectedObjects] objectAtIndex:0];
+	[self resizeAlltoWidth:[currentImage newWidth] height:[currentImage newHeight]];
 }
 
 - (IBAction)applyCurrentAccessToAll: (id)sender {
@@ -469,6 +493,20 @@
 	}
 }
 
+- (IBAction)removeSelectedTagFromAll: (id)sender {
+	[[settingsBox window] endEditingFor: nil];
+	
+	NSString *tag = [[tagController selectedObjects] objectAtIndex: 0];
+	NSEnumerator *en = [[self imageRecords] objectEnumerator];
+	CpgImageRecord *rec;
+	
+	while(rec = [en nextObject]) {
+		NSMutableArray *recordTags = [rec tags];
+		if([recordTags containsObject: tag])
+			[[rec mutableArrayValueForKey: @"tags"] removeObject: tag];
+	}
+}
+
 - (IBAction)removeAllTags: (id)sender {
 	[[self imageRecords] makeObjectsPerformSelector: @selector(clearAllTags)];
 }
@@ -483,6 +521,17 @@
 	CpgImageRecord *rec = [[recordController selectedObjects] objectAtIndex: 0];
 	[[self imageRecords] makeObjectsPerformSelector: @selector(setDescriptionText:)
 										 withObject: [rec descriptionText]];
+}
+
+- (IBAction)removeSelectedImage: (id)sender {
+	CpgImageRecord *rec = [[recordController selectedObjects] objectAtIndex: 0];
+	[recordController setSelectedObjects:nil];
+	[[self imageRecords] removeObject:rec];
+	[[(CpgDNDArrayController *)recordController tableView] reloadData];
+	// TODO FIX: ugly hack to make the "X photos" count update
+	ExportController *ec=[exportManager exportController];
+	NSTextField *count=ec->mImageCount;
+	[count setObjectValue:[NSString stringWithFormat:@"%d photos", [[self imageRecords] count]]];
 }
 
 - (IBAction)cancelUpload: (id)sender {
@@ -597,11 +646,50 @@
 	shouldOpenCopper = flag;
 }
 
+- (BOOL) useDefaultSize
+{
+	return useDefaultSize;
+}
+- (void) setUseDefaultSize:(BOOL)newUseDefaultSize
+{
+	useDefaultSize=newUseDefaultSize;
+}
+
+- (IBAction) setDefaultSize:(id)sender {
+	[self setUseDefaultSize:YES];
+	CpgImageRecord *currentImage = [[recordController selectedObjects] objectAtIndex:0];
+	defaultHeight = [currentImage newHeight];
+	defaultWidth = [currentImage newWidth];
+	[self savePreferences];
+}
+- (IBAction) clearDefaultSize:(id)sender {
+	[self setUseDefaultSize:NO];
+	defaultHeight = 0;
+	defaultWidth = 0;
+	[self savePreferences];	
+}
+
 - (void)savePreferences {
 	[[settingsBox window] endEditingFor: nil];
 	if([self username] != nil) {
-		prefs = [[NSDictionary alloc] initWithObjects: [NSArray arrayWithObjects: [self username], [NSNumber numberWithBool: [self shouldOpenCopper]], [self cpgurl], nil]
-											  forKeys: [NSArray arrayWithObjects: @"username", @"shouldOpenCopper", @"cpgurl", nil]];
+		prefs = [[NSDictionary alloc] initWithObjects: 
+			[NSArray arrayWithObjects: 
+				[self username], 
+				[NSNumber numberWithBool: [self shouldOpenCopper]], 
+				[self cpgurl], 
+				[NSNumber numberWithBool:[self useDefaultSize]], 
+				[NSNumber numberWithInt:defaultWidth], 
+				[NSNumber numberWithInt:defaultHeight], 
+				nil]
+											  forKeys: 
+			[NSArray arrayWithObjects: 
+				@"username", 
+				@"shouldOpenCopper", 
+				@"cpgurl", 
+				@"useDefaultSize", 
+				@"defaultWidth", 
+				@"defaultHeight", 
+				nil]];
 		
 		[[NSUserDefaults standardUserDefaults] removePersistentDomainForName:[[NSBundle bundleForClass: [self class]] bundleIdentifier]];
 		[[NSUserDefaults standardUserDefaults] setPersistentDomain:prefs forName:[[NSBundle bundleForClass:[self class]] bundleIdentifier]];
