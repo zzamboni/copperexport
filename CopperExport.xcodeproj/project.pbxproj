@@ -34,6 +34,7 @@
 				PRODUCT_NAME = "Create package";
 			};
 			dependencies = (
+				5120B153097BA8DF00521F3D /* PBXTargetDependency */,
 			);
 			name = "Create package";
 			productName = "Create package";
@@ -56,10 +57,6 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		51093521096346FC002094D6 /* makedist.sh in Resources */ = {isa = PBXBuildFile; fileRef = 5109351D096346FC002094D6 /* makedist.sh */; };
-		51093522096346FC002094D6 /* mkimage.sh in Resources */ = {isa = PBXBuildFile; fileRef = 5109351E096346FC002094D6 /* mkimage.sh */; };
-		51093523096346FC002094D6 /* mkpackage.sh in Resources */ = {isa = PBXBuildFile; fileRef = 5109351F096346FC002094D6 /* mkpackage.sh */; };
-		51093524096346FC002094D6 /* renameclass.sh in Resources */ = {isa = PBXBuildFile; fileRef = 51093520096346FC002094D6 /* renameclass.sh */; };
 		5109356E096347E9002094D6 /* CopperExport.iPhotoExporter in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8D5B49B6048680CD000E48DA /* CopperExport.iPhotoExporter */; };
 		510935FC09634E3C002094D6 /* CopperExport.iPhotoExporter in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8D5B49B6048680CD000E48DA /* CopperExport.iPhotoExporter */; };
 		512EE2CE07A2EF6800AF54A5 /* CopperAlbum.h in Resources */ = {isa = PBXBuildFile; fileRef = 512EE2CC07A2EF6800AF54A5 /* CopperAlbum.h */; };
@@ -70,8 +67,6 @@
 		518079BF0968745B00F6C019 /* License.rtf in CopyFiles */ = {isa = PBXBuildFile; fileRef = 518079B90968745B00F6C019 /* License.rtf */; };
 		518079C00968745C00F6C019 /* ReadMe.rtf in CopyFiles */ = {isa = PBXBuildFile; fileRef = 518079BA0968745B00F6C019 /* ReadMe.rtf */; };
 		518079C10968745C00F6C019 /* TokenDefinitions.plist in CopyFiles */ = {isa = PBXBuildFile; fileRef = 518079BB0968745B00F6C019 /* TokenDefinitions.plist */; };
-		518079DD096884A800F6C019 /* notes.wiki in Resources */ = {isa = PBXBuildFile; fileRef = 518079DC096884A800F6C019 /* notes.wiki */; };
-		51807AC3096B29AE00F6C019 /* subst_keywords.pl in Resources */ = {isa = PBXBuildFile; fileRef = 51807AC2096B29AE00F6C019 /* subst_keywords.pl */; };
 		51807AC4096B29AE00F6C019 /* subst_keywords.pl in CopyFiles */ = {isa = PBXBuildFile; fileRef = 51807AC2096B29AE00F6C019 /* subst_keywords.pl */; };
 		5F22632A06CE2B260029AD4D /* ExportPluginProtocol.h in Resources */ = {isa = PBXBuildFile; fileRef = 5F22632906CE2B260029AD4D /* ExportPluginProtocol.h */; };
 		5F22633706CE2F0C0029AD4D /* CopperMExport.h in Resources */ = {isa = PBXBuildFile; fileRef = 5F22633506CE2F0C0029AD4D /* CopperMExport.h */; };
@@ -147,6 +142,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 510935E6096349AD002094D6;
 			remoteInfo = "Create package";
+		};
+		5120B152097BA8DF00521F3D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8D5B49AC048680CD000E48DA;
+			remoteInfo = CopperExport;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -556,12 +558,6 @@
 				5F7615E807113438003437C3 /* CpgImageDragTableview.h in Resources */,
 				5FE0C31007521BC5005DE0CE /* FUCopperBox.h in Resources */,
 				512EE2CE07A2EF6800AF54A5 /* CopperAlbum.h in Resources */,
-				51093521096346FC002094D6 /* makedist.sh in Resources */,
-				51093522096346FC002094D6 /* mkimage.sh in Resources */,
-				51093523096346FC002094D6 /* mkpackage.sh in Resources */,
-				51093524096346FC002094D6 /* renameclass.sh in Resources */,
-				518079DD096884A800F6C019 /* notes.wiki in Resources */,
-				51807AC3096B29AE00F6C019 /* subst_keywords.pl in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -641,6 +637,11 @@
 			isa = PBXTargetDependency;
 			target = 510935E6096349AD002094D6 /* Create package */;
 			targetProxy = 5109361D0963501B002094D6 /* PBXContainerItemProxy */;
+		};
+		5120B153097BA8DF00521F3D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8D5B49AC048680CD000E48DA /* CopperExport */;
+			targetProxy = 5120B152097BA8DF00521F3D /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
