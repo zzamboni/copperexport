@@ -234,7 +234,53 @@
 		</dict>
 	</array>
 	<key>OpenEditors</key>
-	<array/>
+	<array>
+		<dict>
+			<key>Content</key>
+			<dict>
+				<key>PBXProjectModuleGUID</key>
+				<string>51F80394097F153D004DADE2</string>
+				<key>PBXProjectModuleLabel</key>
+				<string>CopperUploader.m</string>
+				<key>PBXSplitModuleInNavigatorKey</key>
+				<dict>
+					<key>Split0</key>
+					<dict>
+						<key>PBXProjectModuleGUID</key>
+						<string>51F80398097F1737004DADE2</string>
+						<key>PBXProjectModuleLabel</key>
+						<string>CopperUploader.m</string>
+						<key>_historyCapacity</key>
+						<integer>0</integer>
+						<key>bookmark</key>
+						<string>51F803A5097F1CAB004DADE2</string>
+						<key>history</key>
+						<array>
+							<string>51F80399097F1737004DADE2</string>
+							<string>51F8039A097F1737004DADE2</string>
+						</array>
+						<key>prevStack</key>
+						<array>
+							<string>51F8039B097F1737004DADE2</string>
+						</array>
+					</dict>
+					<key>SplitCount</key>
+					<string>1</string>
+				</dict>
+				<key>StatusBarVisibility</key>
+				<true/>
+			</dict>
+			<key>Geometry</key>
+			<dict>
+				<key>Frame</key>
+				<string>{{0, 20}, {792, 607}}</string>
+				<key>PBXModuleWindowStatusBarHidden2</key>
+				<false/>
+				<key>RubberWindowFrame</key>
+				<string>416 133 792 648 0 0 1280 832 </string>
+			</dict>
+		</dict>
+	</array>
 	<key>PerspectiveWidths</key>
 	<array>
 		<integer>-1</integer>
@@ -267,6 +313,8 @@
 			<key>Layout</key>
 			<array>
 				<dict>
+					<key>BecomeActive</key>
+					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -305,13 +353,12 @@
 								<string>089C166AFE841209C02AAC07</string>
 								<string>19C28FB8FE9D52D311CA2CBB</string>
 								<string>1C37FBAC04509CD000000102</string>
-								<string>510F1F33097F04A000D40008</string>
 								<string>1CC0EA4004350EF90041110B</string>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>10</integer>
+									<integer>1</integer>
 									<integer>0</integer>
 								</array>
 							</array>
@@ -335,7 +382,7 @@
 							<real>186</real>
 						</array>
 						<key>RubberWindowFrame</key>
-						<string>453 129 737 523 0 0 1280 832 </string>
+						<string>206 169 737 523 0 0 1280 832 </string>
 					</dict>
 					<key>Module</key>
 					<string>PBXSmartGroupTreeModule</string>
@@ -372,7 +419,7 @@
 								<key>Frame</key>
 								<string>{{0, 0}, {529, 0}}</string>
 								<key>RubberWindowFrame</key>
-								<string>453 129 737 523 0 0 1280 832 </string>
+								<string>206 169 737 523 0 0 1280 832 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
@@ -380,8 +427,6 @@
 							<string>0pt</string>
 						</dict>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -394,7 +439,7 @@
 								<key>Frame</key>
 								<string>{{0, 5}, {529, 477}}</string>
 								<key>RubberWindowFrame</key>
-								<string>453 129 737 523 0 0 1280 832 </string>
+								<string>206 169 737 523 0 0 1280 832 </string>
 							</dict>
 							<key>Module</key>
 							<string>XCDetailModule</string>
@@ -418,9 +463,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>510F1EF5097EFA4000D40008</string>
+				<string>51F8035B097F1400004DADE2</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>510F1EF6097EFA4000D40008</string>
+				<string>51F8035C097F1400004DADE2</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -533,7 +578,7 @@
 	<key>PerspectivesBarVisible</key>
 	<false/>
 	<key>PinnedNavigatorIdentifier</key>
-	<string>510F1F2C097F027100D40008</string>
+	<string>51F80394097F153D004DADE2</string>
 	<key>ShelfIsVisible</key>
 	<false/>
 	<key>SourceDescription</key>
@@ -541,7 +586,7 @@
 	<key>StatusbarIsVisible</key>
 	<true/>
 	<key>TimeStamp</key>
-	<real>159319200.43074501</real>
+	<real>159325355.072438</real>
 	<key>ToolbarDisplayMode</key>
 	<integer>1</integer>
 	<key>ToolbarIsVisible</key>
@@ -556,11 +601,12 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>51333A97089CCE7700399D90</string>
 		<string>/Users/zamboni/Devel/Cocoa/CopperExport/CopperExport.xcodeproj</string>
+		<string>51333A97089CCE7700399D90</string>
+		<string>51F80394097F153D004DADE2</string>
 	</array>
 	<key>WindowString</key>
-	<string>453 129 737 523 0 0 1280 832 </string>
+	<string>206 169 737 523 0 0 1280 832 </string>
 	<key>WindowTools</key>
 	<array>
 		<dict>
@@ -581,7 +627,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string></string>
+								<string>CopperUploader.m</string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>
@@ -598,6 +644,8 @@
 							<string>240pt</string>
 						</dict>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -637,7 +685,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>51333A97089CCE7700399D90</string>
-				<string>510F1EF7097EFA4000D40008</string>
+				<string>51F803A4097F17A2004DADE2</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>
@@ -648,7 +696,7 @@
 			<key>WindowToolGUID</key>
 			<string>51333A97089CCE7700399D90</string>
 			<key>WindowToolIsVisible</key>
-			<false/>
+			<true/>
 		</dict>
 		<dict>
 			<key>Identifier</key>

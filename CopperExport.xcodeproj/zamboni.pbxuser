@@ -160,7 +160,7 @@
 					PBXFileDataSource_Warnings_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 159316465;
+			PBXPerProjectTemplateStateSaveDate = 159323126;
 			PBXPrepackagedSmartGroups_v2 = (
 				{
 					PBXTransientLocationAtTop = bottom;
@@ -337,8 +337,14 @@
 					};
 				},
 			);
-			PBXWorkspaceStateSaveDate = 159316465;
+			PBXWorkspaceStateSaveDate = 159323126;
 			com.apple.ide.smrt.PBXUserSmartGroupsKey.Rev10 = <040b747970656473747265616d8103e88401408484840e4e534d757461626c654172726179008484074e534172726179008484084e534f626a65637400858401690192848484134e534d757461626c6544696374696f6e6172790084840c4e5344696374696f6e6172790095960792848484084e53537472696e67019584012b146162736f6c75746550617468546f42756e646c658692849a9a008692849a9a046e616d658692849a9a0d5061636b6167652066696c65738692849a9a03636c7a8692849a9a1550425846696c656e616d65536d61727447726f75708692849a9a0b6465736372697074696f6e8692849a9a103c6e6f206465736372697074696f6e3e8692849a9a08676c6f62616c49448692849a9a183531383037394143303936383733373830304636433031398692849a9a195042585472616e7369656e744c6f636174696f6e4174546f708692849a9a06626f74746f6d8692849a9a0b707265666572656e63657386928497960892849a9a1250425850726f6a65637453636f70654b65798692849a9a035945538692849a9a05696d6167658692849a9a0b536d617274466f6c6465728692849a9a0763616e536176658692848484084e534e756d626572008484074e5356616c7565009584012a848401639e018692849a9a0572656765788692849a9a0a7061636b6167652f2e2a8692849a9a04726f6f748692849a9a093c50524f4a4543543e8692849a9a097265637572736976658692ad92849a9a0669734c656166869284ae9db09e008692849a9a07666e6d617463688692849a9a0086868686>;
+		};
+		perUserProjectItems = {
+			51F80399097F1737004DADE2 /* PBXTextBookmark */ = 51F80399097F1737004DADE2 /* PBXTextBookmark */;
+			51F8039A097F1737004DADE2 /* PBXTextBookmark */ = 51F8039A097F1737004DADE2 /* PBXTextBookmark */;
+			51F8039B097F1737004DADE2 /* PBXTextBookmark */ = 51F8039B097F1737004DADE2 /* PBXTextBookmark */;
+			51F803A5097F1CAB004DADE2 /* PBXTextBookmark */ = 51F803A5097F1CAB004DADE2 /* PBXTextBookmark */;
 		};
 		sourceControlManager = 514A609507A2EE72003C7B12 /* Source Control */;
 		userBookmarkGroup = 512700FB07AC4B32008BFCBF /* PBXBookmarkGroup */;
@@ -509,6 +515,43 @@
 			sepNavWindowFrame = "{{2, 254}, {787, 578}}";
 		};
 	};
+	51F80399097F1737004DADE2 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5F22635506CE5E200029AD4D /* CopperUploader.h */;
+		name = "CopperUploader.h: uploaderDidConvertImageAtIndex:";
+		rLen = 0;
+		rLoc = 2330;
+		rType = 0;
+		vrLen = 1164;
+		vrLoc = 1591;
+	};
+	51F8039A097F1737004DADE2 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5F22635606CE5E200029AD4D /* CopperUploader.m */;
+		rLen = 0;
+		rLoc = "-2147483512";
+		rType = 0;
+	};
+	51F8039B097F1737004DADE2 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5F22635506CE5E200029AD4D /* CopperUploader.h */;
+		name = "CopperUploader.h: uploaderDidConvertImageAtIndex:";
+		rLen = 0;
+		rLoc = 2330;
+		rType = 0;
+		vrLen = 1164;
+		vrLoc = 1591;
+	};
+	51F803A5097F1CAB004DADE2 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5F22635606CE5E200029AD4D /* CopperUploader.m */;
+		name = "CopperUploader.m: 389";
+		rLen = 0;
+		rLoc = 12133;
+		rType = 0;
+		vrLen = 1654;
+		vrLoc = 11752;
+	};
 	5F22632906CE2B260029AD4D /* ExportPluginProtocol.h */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {765, 490}}";
@@ -552,16 +595,16 @@
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {753, 1694}}";
 			sepNavSelRange = "{2330, 0}";
-			sepNavVisRect = "{{0, 546}, {753, 575}}";
+			sepNavVisRect = "{{0, 449}, {753, 575}}";
 			sepNavWindowFrame = "{{416, 77}, {792, 704}}";
 		};
 	};
 	5F22635606CE5E200029AD4D /* CopperUploader.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1154, 9212}}";
-			sepNavSelRange = "{6581, 0}";
-			sepNavVisRect = "{{0, 2408}, {753, 449}}";
-			sepNavWindowFrame = "{{49, 0}, {792, 578}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1154, 9226}}";
+			sepNavSelRange = "{12133, 0}";
+			sepNavVisRect = "{{0, 5292}, {753, 575}}";
+			sepNavWindowFrame = "{{416, 77}, {792, 704}}";
 		};
 	};
 	5F2FA5100703578D00A3DFD2 /* CpgTagEditArrayController.h */ = {
