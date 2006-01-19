@@ -385,7 +385,8 @@ The idea here is that we kick off the first image upload, and set our cursor to 
 
 	CpgImageRecord *image = [imageRecords objectAtIndex: cursor];
 	NSLog([@"Uploading image " stringByAppendingString:[image filePath]]);
-	NSString *tmpfile = [@"/tmp/" stringByAppendingPathComponent:[[image filePath] lastPathComponent]];
+//	NSString *tmpfile = [@"/tmp/" stringByAppendingPathComponent:[[image filePath] lastPathComponent]];
+	NSString *tmpfile = [NSString stringWithFormat:@"/tmp/%@.jpg", [[[image filePath] lastPathComponent] stringByDeletingPathExtension]];
 	
 	NS_DURING
 		NSFileManager *man = [NSFileManager defaultManager];
