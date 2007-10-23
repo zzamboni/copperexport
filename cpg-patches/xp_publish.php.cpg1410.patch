@@ -1,0 +1,40 @@
+*** xp_publish.php.1410	Mon Oct 22 23:19:16 2007
+--- xp_publish.php	Mon Oct 22 23:21:48 2007
+***************
+*** 677,683 ****
+          $category = FIRST_USER_CAT + USER_ID;
+      }
+  
+!     $query = "INSERT INTO {$CONFIG['TABLE_ALBUMS']} (category, title, uploads, pos) VALUES ('$category', '" . addslashes($_POST['new_alb_name']) . "', 'NO',  '0')";
+      cpg_db_query($query);
+  
+      $params = array('{NEW_ALB_CREATED}' => sprintf($lang_xp_publish_php['new_alb_created'], $_POST['new_alb_name']),
+--- 677,683 ----
+          $category = FIRST_USER_CAT + USER_ID;
+      }
+  
+!     $query = "INSERT INTO {$CONFIG['TABLE_ALBUMS']} (category, title, uploads, pos, description) VALUES ('$category', '" . addslashes($_POST['new_alb_name']) . "', 'NO',  '0', '" . addslashes($_POST['new_alb_description']) . "')";
+      cpg_db_query($query);
+  
+      $params = array('{NEW_ALB_CREATED}' => sprintf($lang_xp_publish_php['new_alb_created'], $_POST['new_alb_name']),
+***************
+*** 703,711 ****
+      if (!USER_ID || !USER_CAN_UPLOAD_PICTURES) simple_die(ERROR, $lang_errors['perm_denied'], __FILE__, __LINE__);
+  
+      $album = (int)$_GET['album'];
+!     $title = '';
+!     $caption = '';
+!     $keywords = '';
+      $user1 = '';
+      $user2 = '';
+      $user3 = '';
+--- 703,711 ----
+      if (!USER_ID || !USER_CAN_UPLOAD_PICTURES) simple_die(ERROR, $lang_errors['perm_denied'], __FILE__, __LINE__);
+  
+      $album = (int)$_GET['album'];
+!     $title = addslashes($_POST['title']);
+!     $caption = addslashes($_POST['caption']);
+!     $keywords = addslashes($_POST['keywords']);
+      $user1 = '';
+      $user2 = '';
+      $user3 = '';

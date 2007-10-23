@@ -909,4 +909,8 @@
 	return [[NSString stringWithFormat:@"CopperExport v%@", [self version]] autorelease];
 }
 
+- (BOOL)handlesMovieFiles {
+	return FALSE;
+}
+	
 @end

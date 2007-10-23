@@ -32,4 +32,5 @@
 - (id)firstView;
 - (id)settingsView;
 - (id)initWithExportImageObj:(id)fp8;
+- (BOOL)handlesMovieFiles;
 @end

@@ -96,3 +96,7 @@
 - (id)imageKeywordsAtIndex:(unsigned int)fp8;
 - (id)imageCommentsAtIndex:(unsigned int)fp8;
 @end
+
+@interface ExportMgr (iPhoto7Additions)
+- (NSString *)imageTitleAtIndex:(unsigned)index;
+@end
