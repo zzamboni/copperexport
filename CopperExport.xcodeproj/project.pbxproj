@@ -48,6 +48,10 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		5106E6010CCEB223004037DD /* xp_publish.php.cpg1410 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5106E5FD0CCEB223004037DD /* xp_publish.php.cpg1410 */; };
+		5106E6020CCEB223004037DD /* xp_publish.php.cpg1410.patch in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5106E5FE0CCEB223004037DD /* xp_publish.php.cpg1410.patch */; };
+		5106E6030CCEB223004037DD /* xp_publish.php.cpg1413 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5106E5FF0CCEB223004037DD /* xp_publish.php.cpg1413 */; };
+		5106E6040CCEB223004037DD /* xp_publish.php.cpg1413.patch in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5106E6000CCEB223004037DD /* xp_publish.php.cpg1413.patch */; };
 		5109356E096347E9002094D6 /* CopperExport.iPhotoExporter in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8D5B49B6048680CD000E48DA /* CopperExport.iPhotoExporter */; };
 		510935FC09634E3C002094D6 /* CopperExport.iPhotoExporter in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8D5B49B6048680CD000E48DA /* CopperExport.iPhotoExporter */; };
 		510B9E220A3F715A007FF1C7 /* xp_publish.php.cpg148 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 510B9E200A3F715A007FF1C7 /* xp_publish.php.cpg148 */; };
@@ -149,6 +153,10 @@
 				510B9E230A3F715A007FF1C7 /* xp_publish.php.cpg148.patch in CopyFiles */,
 				51A70F250AAA03B400D89BDB /* xp_publish.php.cpg149 in CopyFiles */,
 				51A70F260AAA03B400D89BDB /* xp_publish.php.cpg149.patch in CopyFiles */,
+				5106E6010CCEB223004037DD /* xp_publish.php.cpg1410 in CopyFiles */,
+				5106E6020CCEB223004037DD /* xp_publish.php.cpg1410.patch in CopyFiles */,
+				5106E6030CCEB223004037DD /* xp_publish.php.cpg1413 in CopyFiles */,
+				5106E6040CCEB223004037DD /* xp_publish.php.cpg1413.patch in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -161,6 +169,10 @@
 		08FB77B6FE84183AC02AAC07 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1058C7ADFEA557BF11CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		32DBCF630370AF2F00C91783 /* CopperExport_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CopperExport_Prefix.pch; sourceTree = "<group>"; };
+		5106E5FD0CCEB223004037DD /* xp_publish.php.cpg1410 */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = text; path = xp_publish.php.cpg1410; sourceTree = "<group>"; };
+		5106E5FE0CCEB223004037DD /* xp_publish.php.cpg1410.patch */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = text; path = xp_publish.php.cpg1410.patch; sourceTree = "<group>"; };
+		5106E5FF0CCEB223004037DD /* xp_publish.php.cpg1413 */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = text; path = xp_publish.php.cpg1413; sourceTree = "<group>"; };
+		5106E6000CCEB223004037DD /* xp_publish.php.cpg1413.patch */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = text; path = xp_publish.php.cpg1413.patch; sourceTree = "<group>"; };
 		5109351D096346FC002094D6 /* makedist.sh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.script.sh; name = makedist.sh; path = scripts/makedist.sh; sourceTree = "<group>"; };
 		5109351E096346FC002094D6 /* mkimage.sh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.script.sh; name = mkimage.sh; path = scripts/mkimage.sh; sourceTree = "<group>"; };
 		5109351F096346FC002094D6 /* mkpackage.sh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.script.sh; name = mkpackage.sh; path = scripts/mkpackage.sh; sourceTree = "<group>"; };
@@ -340,6 +352,10 @@
 		5120B0F0097B14BA00521F3D /* cpg-patches */ = {
 			isa = PBXGroup;
 			children = (
+				5106E5FD0CCEB223004037DD /* xp_publish.php.cpg1410 */,
+				5106E5FE0CCEB223004037DD /* xp_publish.php.cpg1410.patch */,
+				5106E5FF0CCEB223004037DD /* xp_publish.php.cpg1413 */,
+				5106E6000CCEB223004037DD /* xp_publish.php.cpg1413.patch */,
 				51A70F230AAA03B400D89BDB /* xp_publish.php.cpg149 */,
 				51A70F240AAA03B400D89BDB /* xp_publish.php.cpg149.patch */,
 				510B9E200A3F715A007FF1C7 /* xp_publish.php.cpg148 */,

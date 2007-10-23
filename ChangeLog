@@ -5,10 +5,14 @@
 	Main changes:
 
 	* Works with iPhoto7 (part of iLife'08)
-
+	
 	* Tested on both PPC and Intel platforms.
 
-	
+	* Added server-side patches for Coppermine versions up to 1.4.13.
+
+	* Fixed an old-standing bug that would prevent uploads in some
+	cases, producing an HTTP 406 error (thanks to nonplus for the
+	patch).
 
 2006-01-16  Diego Zamboni  <copperexport@zzamboni.org>
 
