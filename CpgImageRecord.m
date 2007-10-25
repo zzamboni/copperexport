@@ -55,6 +55,7 @@ static NSLock *nsimageLock;
 	self = [super init];
 	if(self) {
 		BOOL usingiPhoto4 = [exportManager respondsToSelector: @selector(imageDictionaryAtIndex:)];
+		BOOL usingiPhoto7 = [exportManager respondsToSelector: @selector(imageTitleAtIndex:)];
 		NSDictionary *iPhotoMetadata = nil;
 		
 		if(usingiPhoto4)
@@ -81,7 +82,12 @@ static NSLock *nsimageLock;
 			[self setDescriptionText: [exportManager imageCommentsAtIndex: idx]];
 		}
 		
-		NSString *caption = [exportManager imageCaptionAtIndex: idx];  //[iPhotoMetadata objectForKey:@"Caption"];
+		NSString *caption;
+		if (usingiPhoto7)
+			caption = [exportManager imageTitleAtIndex: idx];
+		else
+			caption = [exportManager imageCaptionAtIndex: idx];
+
 		if(caption)
 			[self setTitle: caption];
 		else 

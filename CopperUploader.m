@@ -490,23 +490,23 @@ The idea here is that we kick off the first image upload, and set our cursor to 
 	{
 		id value = [dict valueForKey: [keys objectAtIndex: i]];
 		
-		[result appendData:[[NSString stringWithFormat:@"--%@\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+		[result appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
 
 		if ([value class] != [NSURL class]) {
-			[result appendData:[[NSString stringWithFormat: @"Content-Disposition: form-data; name=\"%@\"\n\n", [keys objectAtIndex:i]] dataUsingEncoding:NSUTF8StringEncoding]];
+			[result appendData:[[NSString stringWithFormat: @"Content-Disposition: form-data; name=\"%@\"\r\n\r\n", [keys objectAtIndex:i]] dataUsingEncoding:NSUTF8StringEncoding]];
 			[result appendData:[[NSString stringWithFormat:@"%@",value] dataUsingEncoding:NSISOLatin1StringEncoding]];
 		}
 		else if ([value class] == [NSURL class] && [value isFileURL]) {
-			NSString *disposition = [NSString stringWithFormat: @"Content-Disposition: form-data; name=\"%@\"; filename=\"%@\"\n", [keys objectAtIndex:i], [[value path] lastPathComponent]];
+			NSString *disposition = [NSString stringWithFormat: @"Content-Disposition: form-data; name=\"%@\"; filename=\"%@\"\r\n", [keys objectAtIndex:i], [[value path] lastPathComponent]];
 			[result appendData: [disposition dataUsingEncoding:NSUTF8StringEncoding]];
 			
-			[result appendData:[[NSString stringWithString: @"Content-Type: application/octet-stream\n\n"] dataUsingEncoding:NSUTF8StringEncoding]];
+			[result appendData:[[NSString stringWithString: @"Content-Type: application/octet-stream\r\n\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
 			[result appendData:[NSData dataWithContentsOfFile:[value path]]];
 		}
-		[result appendData:[[NSString stringWithString:@"\n"]
+		[result appendData:[[NSString stringWithString:@"\r\n"]
        dataUsingEncoding:NSUTF8StringEncoding]];
 	}
-	[result appendData:[[NSString stringWithFormat:@"--%@--\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+	[result appendData:[[NSString stringWithFormat:@"--%@--\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
 	
 	return [result autorelease];
 }
@@ -549,7 +549,10 @@ The idea here is that we kick off the first image upload, and set our cursor to 
 	[post addValue: boundaryString forHTTPHeaderField: @"Content-Type"];
 	[post setHTTPMethod:@"POST"];
 	[post setHTTPBody:regData];
-	
+	// Set Content-Length
+	NSString *contentLength = [NSString stringWithFormat: @"%d", [regData length]];
+	[post setValue: contentLength forHTTPHeaderField: @"Content-Length"];
+
 	NSHTTPURLResponse *response;
 	NSData *result = [NSURLConnection sendSynchronousRequest: post
 										   returningResponse: &response

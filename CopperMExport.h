@@ -191,4 +191,6 @@
 - (void)setVersion: (NSString *)newversion;
 - (NSString *)versionString;
 
+- (BOOL)handlesMovieFiles;
+
 @end
