@@ -1,86 +1,134 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-
-	<title>zzamboni/copperexport @ GitHub</title>
-	
-	<style type="text/css">
-		body {
-  		margin-top: 1.0em;
-  		background-color: #49fb8d;
-		  font-family: "Helvetica,Arial,FreeSans";
-  		color: #000000;
-    }
-    #container {
-      margin: 0 auto;
-      width: 700px;
-    }
-		h1 { font-size: 3.8em; color: #b60472; margin-bottom: 3px; }
-		h1 .small { font-size: 0.4em; }
-		h1 a { text-decoration: none }
-		h2 { font-size: 1.5em; color: #b60472; }
-    h3 { text-align: center; color: #b60472; }
-    a { color: #b60472; }
-    .description { font-size: 1.2em; margin-bottom: 30px; margin-top: 30px; font-style: italic;}
-    .download { float: right; }
-		pre { background: #000; color: #fff; padding: 15px;}
-    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-    .footer { text-align:center; padding-top:30px; font-style: italic; }
-	</style>
-	
-</head>
-
-<body>
-  <a href="http://github.com/zzamboni/copperexport"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" /></a>
-
-  <div id="container">
-
+---
+layout: paramaibo
+accent: '#0D4E0A'
+title: CopperExport
+pageurl: http://zzamboni.org/copperexport/
+subtitle: zzamboni.org &raquo; code
+subtitleurl: http://zzamboni.org/code.html
+posttitle: Export photos from iPhoto to Coppermine
+forkme: true
+forkmeurl: http://github.com/zzamboni/copperexport
+sidebar: false
+---
+{% assign version='0.5.0' %}
     <div class="download">
-      <a href="http://github.com/zzamboni/copperexport/zipball/master">
-        <img border="0" width="90" src="http://github.com/images/modules/download/zip.png"></a>
-      <a href="http://github.com/zzamboni/copperexport/tarball/master">
-        <img border="0" width="90" src="http://github.com/images/modules/download/tar.png"></a>
+      <p align="center"><b>Download version {{ version}}</b></p>
+      <a href="http://github.com/downloads/zzamboni/copperexport/CopperExport-0.5.0.dmg">
+        <img border="0" width="90" src="http://github.com/teambox/Free-file-icons/raw/master/512px/dmg.png"></a>
+      <br/><a href="http://github.com/zzamboni/zzamboni/raw/master/ChangeLog">(ChangeLog)</a>
     </div>
 
-    <h1><a href="http://github.com/zzamboni/copperexport">copperexport</a>
-      <span class="small">by <a href="http://github.com/zzamboni">zzamboni</a></span></h1>
+<p><a href="copperexport040.jpg" title="CopperExport
+screenshot"><img src="copperexport040.thumbnail.jpg" alt='CopperExport
+screenshot' class="left" style="margin-right: 30px; margin-bottom:5px;"/></a>
 
-    <div class="description">
-      Coppermine iPhoto export plugin
-    </div>
+CopperExport for iPhoto is a plugin for iPhoto which
+allows you to export pictures directly into
+a <a href="http://coppermine-gallery.net/">Coppermine</a> gallery. It has
+been tested with iPhoto 4-7 and Coppermine 1.3.x and 1.4.x.</p>
 
-    <p>CopperExport for iPhoto is a plugin for iPhoto 4 through 7 which allows you to export pictures directly into a Coppermine gallery. It works with Coppermine 1.3.x and 1.4.x.
+<p>Click on the thumbnail to see a larger screenshot.</p> 
 
-Click on the screenshot to the right to see a larger version.
+<h2>Current development status: paused</h2>
 
-I would love to hear from you if you find it useful, if you find something that does not work properly, or if you have any other comments or suggestions. See the email address at the bottom of this document, or visit the forums.
+<p><strong>I am aware that CopperExport 0.5.0 fails to run in recent versions
+of Snow Leopard and iPhoto.</strong></p>
 
-See the ChangeLog below for a detailed list of changes. I also post updates periodically in my blog, with the CopperExport tag.</p><h2>Authors</h2>
-<p>Diego Zamboni (diego@zzamboni.org)<br/><br/>      </p>
-<h2>Contact</h2>
-<p>Diego Zamboni (diego@zzamboni.org)<br/>      </p>
+<p>Unfortunately,
+since <a href="http://blog.zzamboni.org/after-the-move">the big
+move</a>, I find myself without easy access to a Mac for development
+(I had a Mac at my previous job, and I use Windows at my new job),
+which pretty much makes fixing these bugs impossible. I also have
+stopped using Coppermine myself, which makes development even harder.
+Until I get a new machine, I will not be able to provide updates to
+CopperExport. Of course, if any developers out there want to make the
+appropriate fixes, I will happily accept patches that you submit, and
+produce a new release myself.</p>
 
+<p>I apologize to my users for this not-so-happy
+state, and I want to assure you that as soon as possible, I will
+resume development. Thank you for your patience and your support, and
+for the many kind words you have sent me about the plugin itself.</p>
 
-    <h2>Download</h2>
-    <p>
-      You can download this project in either
-      <a href="http://github.com/zzamboni/copperexport/zipball/master">zip</a> or
-      <a href="http://github.com/zzamboni/copperexport/tarball/master">tar</a> formats.
+<h2>Download</h2> 
+
+<p>Current
+version: <a href="http://github.com/downloads/zzamboni/copperexport/CopperExport-0.5.0.dmg">CopperExport-0.5.0.dmg</a>,
+released on October 24th, 2007. This release is a universal
+binary.</p>
+
+<p>Older binary releases are available from
+the <a href="http://developer.berlios.de/projects/copperexport/">old
+project home page at berlios.de</a>.</p>
+
+<p>
+      You can download the source code for this project in
+      either <a href="http://github.com/zzamboni/copperexport/zipball/master">zip</a>
+      or <a href="http://github.com/zzamboni/copperexport/tarball/master">tar</a>
+      formats.
     </p>
     <p>You can also clone the project with <a href="http://git-scm.com">Git</a>
       by running:
       <pre>$ git clone git://github.com/zzamboni/copperexport</pre>
     </p>
 
-    <div class="footer">
-      get the source code on GitHub : <a href="http://github.com/zzamboni/copperexport">zzamboni/copperexport</a>
-    </div>
+<p>CopperExport is released under the BSD License.</p>
 
-  </div>
+<h2>Feedback and Contributions</h2>
 
-  
-</body>
-</html>
+<p>If you have any comments, problems or questions, please post them at
+the <a href="http://github.com/zzamboni/copperexport/issues">issue
+tracker</a>.</p>
+
+<p>If you make any changes to the code, please fork the code
+in <a href="http://github.com/zzamboni/copperexport/">github</a> and
+then send a pull request.</p>
+
+<h2>System Requirements</h2> 
+
+<p>CopperExport for iPhoto requires Mac OS X 10.3 or later and iPhoto
+4.x-7.x.  iPhoto 2.x may work, but has not been tested.  Versions of
+Mac OS X prior to 10.3 will certainly not work.</p>
+
+<p>It has been tested with Coppermine 1.3.2, 1.3.3 and 1.4.0 through
+1.4.13. Older and newer versions may work, but have not been tested.</p>
+
+<h2>Author</h2> 
+
+<p>CopperExport was written
+by <a href="http://zzamboni.org/about.html">Diego Zamboni</a>. It is
+based on a very old version of
+the <a href="http://connectedflow.com/flickrexport/iphoto/">FlickrExport
+for iPhoto</a> plugin by Fraser Speirs, which was originally released
+as open source.</p>
+
+<p>You should follow me <a href="http://twitter.com/zzamboni">on Twitter (@zzamboni)</a>.</p>
+
+<h2>Links</h2> 
+
+<p>Email: <a  href="mailto:copperexport@zzamboni.org">copperexport@zzamboni.org</a><br /> 
+Home Page: <a  href="http://www.zzamboni.org/copperexport/">http://www.zzamboni.org/copperexport/</a><br /> 
+GitHub project page: <a  href="http://github.com/zzamboni/copperexport/">http://github.com/zzamboni/copperexport/</a><br/>
+Pages in <a  href="http://macupdate.com/info.php/id/17055">MacUpdate</a> and <a  href="http://freshmeat.net/projects/copperexport/">Freshmeat</a>.</p>
+
+<h2>Donations</h2> 
+
+<p>CopperExport is completely free and open source. If you are feeling
+generous and would like to make a donation to support its development,
+please use the buttons below.</p>
+
+<!--
+<p>Make a PayPal donation:<br />
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post"> 
+<input type="hidden" name="cmd" value="_s-xclick"> 
+<input type="image" src="https://www.paypal.com/en_US/i/btn/x-click-but21.gif" border="0" name="submit" alt="Make payments with PayPal - it's fast, free and secure!"> 
+<img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1"></p> 
+<input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----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-----END PKCS7-----<br />"><br /> 
+</form> 
+-->
+
+<p>Get me something from my Amazon wishlist:
+<br/><a  href="http://www.amazon.com/gp/registry/wishlist/3TZK22VIX9YR2/ref=wl_web"><img src="http://g-ecx.images-amazon.com/images/G/01/gifts/registries/wishlist/v2/web/wl-btn-74-b._V46774601_.gif"
+width="74" alt="My Amazon.com Wish List" height="42" border="0"
+/></a></p> 
+
