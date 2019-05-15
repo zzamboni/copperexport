@@ -191,12 +191,12 @@
 		5120B13D097B1A4000521F3D /* ChangeLog */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; path = ChangeLog; sourceTree = "<group>"; };
 		512EE2CC07A2EF6800AF54A5 /* CopperAlbum.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = CopperAlbum.h; sourceTree = "<group>"; };
 		512EE2CD07A2EF6800AF54A5 /* CopperAlbum.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = CopperAlbum.m; sourceTree = "<group>"; };
-		518079B50968745B00F6C019 /* Description.plist */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.xml; name = Description.plist; path = package/Description.plist; sourceTree = "<group>"; };
+		518079B50968745B00F6C019 /* Description.plist */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.plist.xml; name = Description.plist; path = package/Description.plist; sourceTree = "<group>"; };
 		518079B60968745B00F6C019 /* IFRequirement.strings */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.plist.strings; name = IFRequirement.strings; path = package/IFRequirement.strings; sourceTree = "<group>"; };
-		518079B70968745B00F6C019 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.xml; name = Info.plist; path = package/Info.plist; sourceTree = "<group>"; };
+		518079B70968745B00F6C019 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.plist.xml; name = Info.plist; path = package/Info.plist; sourceTree = "<group>"; };
 		518079B90968745B00F6C019 /* License.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = License.rtf; path = package/Install_resources/License.rtf; sourceTree = "<group>"; };
 		518079BA0968745B00F6C019 /* ReadMe.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = ReadMe.rtf; path = package/Install_resources/ReadMe.rtf; sourceTree = "<group>"; };
-		518079BB0968745B00F6C019 /* TokenDefinitions.plist */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.xml; name = TokenDefinitions.plist; path = package/TokenDefinitions.plist; sourceTree = "<group>"; };
+		518079BB0968745B00F6C019 /* TokenDefinitions.plist */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.plist.xml; name = TokenDefinitions.plist; path = package/TokenDefinitions.plist; sourceTree = "<group>"; };
 		518079DC096884A800F6C019 /* notes.wiki */ = {isa = PBXFileReference; lastKnownFileType = file; path = notes.wiki; sourceTree = "<group>"; };
 		51807AC2096B29AE00F6C019 /* subst_keywords.pl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.perl; name = subst_keywords.pl; path = scripts/subst_keywords.pl; sourceTree = "<group>"; };
 		51807CB0096C824D00F6C019 /* ExportController.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = ExportController.h; sourceTree = "<group>"; };
@@ -231,7 +231,7 @@
 		5FE0C30F07521BC5005DE0CE /* FUCopperBox.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = FUCopperBox.m; sourceTree = "<group>"; };
 		5FEF2005074A3BB2000AC5B8 /* UnitKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UnitKit.framework; path = /Library/Frameworks/UnitKit.framework; sourceTree = "<absolute>"; };
 		8D5B49B6048680CD000E48DA /* CopperExport.iPhotoExporter */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CopperExport.iPhotoExporter; sourceTree = BUILT_PRODUCTS_DIR; };
-		8D5B49B7048680CD000E48DA /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Info.plist; sourceTree = "<group>"; };
+		8D5B49B7048680CD000E48DA /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -494,6 +494,8 @@
 		089C1669FE841209C02AAC07 /* Project object */ = {
 			isa = PBXProject;
 			buildConfigurationList = 513ED2650856246B00ADADB1 /* Build configuration list for PBXProject "CopperExport" */;
+			compatibilityVersion = "Xcode 2.4";
+			developmentRegion = English;
 			hasScannedForEncodings = 1;
 			knownRegions = (
 				English,
@@ -504,6 +506,7 @@
 			);
 			mainGroup = 089C166AFE841209C02AAC07 /* CopperExport */;
 			projectDirPath = "";
+			projectRoot = "";
 			targets = (
 				8D5B49AC048680CD000E48DA /* CopperExport */,
 				5109355C096347A9002094D6 /* CopperExport and test */,
@@ -764,6 +767,7 @@
 				INSTALL_PATH = "$(HOME)/Library/Bundles";
 				PREBINDING = NO;
 				PRODUCT_NAME = CopperExport;
+				SDKROOT_ppc = /Developer/SDKs/MacOSX10.4u.sdk;
 				WRAPPER_EXTENSION = iPhotoExporter;
 				ZERO_LINK = NO;
 			};
@@ -795,6 +799,7 @@
 				GCC_VERSION_ppc = 3.3;
 				MACOSX_DEPLOYMENT_TARGET_i386 = 10.4;
 				MACOSX_DEPLOYMENT_TARGET_ppc = 10.3;
+				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
 				SDKROOT_i386 = /Developer/SDKs/MacOSX10.4u.sdk;
 				SDKROOT_ppc = /Developer/SDKs/MacOSX10.3.9.sdk;
 			};
@@ -811,6 +816,7 @@
 				GCC_VERSION_ppc = 3.3;
 				MACOSX_DEPLOYMENT_TARGET_i386 = 10.4;
 				MACOSX_DEPLOYMENT_TARGET_ppc = 10.3;
+				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
 				SDKROOT_i386 = /Developer/SDKs/MacOSX10.4u.sdk;
 				SDKROOT_ppc = /Developer/SDKs/MacOSX10.3.9.sdk;
 			};
@@ -827,6 +833,7 @@
 				GCC_VERSION_ppc = 3.3;
 				MACOSX_DEPLOYMENT_TARGET_i386 = 10.4;
 				MACOSX_DEPLOYMENT_TARGET_ppc = 10.3;
+				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
 				SDKROOT_i386 = /Developer/SDKs/MacOSX10.4u.sdk;
 				SDKROOT_ppc = /Developer/SDKs/MacOSX10.3.9.sdk;
 			};
